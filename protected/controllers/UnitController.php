@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends Controller
+class UnitController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -27,14 +27,17 @@ class UsersController extends Controller
 	public function accessRules()
 	{
 		return array(
-		    array('allow',
-                'actions'=>array('password'),
-                'users'=>array('@')
-            ),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','create','update','admin','delete','adminAssignment'),
+				'actions'=>array('create','update'),
 				'users'=>array('@'),
-				'roles'=>array('admin'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -59,16 +62,16 @@ class UsersController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new UserAddForm();
+		$model=new UnitCustom;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['UserAddForm']))
+		if(isset($_POST['UnitCustom']))
 		{
-			$model->attributes=$_POST['UserAddForm'];
+			$model->attributes=$_POST['UnitCustom'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->data->id));
+				$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('create',array(
@@ -88,9 +91,9 @@ class UsersController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Users']))
+		if(isset($_POST['UnitCustom']))
 		{
-			$model->attributes=$_POST['Users'];
+			$model->attributes=$_POST['UnitCustom'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -119,7 +122,7 @@ class UsersController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Users');
+		$dataProvider=new CActiveDataProvider('UnitCustom');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -130,24 +133,12 @@ class UsersController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Users('search');
+		$model=new UnitCustom('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Users']))
-			$model->attributes=$_GET['Users'];
+		if(isset($_GET['UnitCustom']))
+			$model->attributes=$_GET['UnitCustom'];
 
 		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
-	public function actionAdminAssignment()
-	{
-		$model=new Users('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Users']))
-			$model->attributes=$_GET['Users'];
-
-		$this->render('adminAssignment',array(
 			'model'=>$model,
 		));
 	}
@@ -156,12 +147,12 @@ class UsersController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Users the loaded model
+	 * @return UnitCustom the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Users::model()->findByPk($id);
+		$model=UnitCustom::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -169,40 +160,14 @@ class UsersController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Users $model the model to be validated
+	 * @param UnitCustom $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='users-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='unit-custom-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-
-    /**
-     * @throws CDbException
-     * @throws CException
-     * @throws CHttpException
-     */
-    public function actionPassword()
-    {
-        $user = $this->loadModel(Yii::app()->user->getId());
-        $model = new ChangePasswordForm();
-
-        if (isset($_POST['ChangePasswordForm'])) {
-            $model->attributes = $_POST['ChangePasswordForm'];
-            if ($model->save())
-            {
-                Yii::app()->user->setFlash('message', 'Password berhasil diubah');
-            }
-        }
-
-        $model->unsetAttributes();
-        $model->userid=$user->id;
-
-        $this->render('password', array(
-            'model'=>$model
-        ));
-    }
 }

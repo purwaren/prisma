@@ -26,7 +26,7 @@
             'items'=>array(
                 array('label'=>'MAIN NAVIGATION','itemOptions'=>array('class'=>'header')),
                 array(
-                    'label'=>'<i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>',
+                    'label'=>'<i class="fa fa-dashboard"></i> <span>Dashboard</span></i>',
                     'url'=>array('/site/index'),
                     'itemOptions'=>array('class'=>'treeview')
                 ),
@@ -35,35 +35,20 @@
                     'itemOptions'=>array('class'=>'treeview'),
                     'url'=>'#',
                     'items'=>array(
-                        array('label'=>'<i class="fa fa-book"></i> Halaman Statis','url'=>array('/page/admin')),
-                        array('label'=>'<i class="fa fa-newspaper-o"></i> Artikel','url'=>array('/news/admin')),
-                        array('label'=>'<i class="fa fa-picture-o"></i> Gallery','url'=>array('/album/admin')),
-                        array('label'=>'<i class="fa fa-calendar"></i> Event','url'=>array('/event/admin')),
+                        array('label'=>'<i class="fa fa-newspaper-o"></i> Berita','url'=>array('/news/admin')),
                         array('label'=>'<i class="fa fa-folder-o"></i> Kategori','url'=>array('/category/admin'),'visible'=>!Yii::app()->user->checkAccess('unit')),
                     ),
                     'encodeLabel'=>false,
                 ),
                 array(
-                    'label'=>'<i class="fa fa-archive"></i><span>Pendaftaran</span><i class="fa fa-angle-left pull-right"></i>',
+                    'label'=>'<i class="fa fa-file-text"></i><span>Data Unit</span><i class="fa fa-angle-left pull-right"></i>',
                     'itemOptions'=>array('class'=>'treeview'),
                     'url'=>'#',
                     'items'=>array(
-                        array('label'=>'<i class="fa fa-users"></i> Pendaftar','url'=>array('/registrant/admin')),
-                        array('label'=>'<i class="fa fa-paperclip"></i> Lampiran Dokumen','url'=>array('/registrant/adminDocument')),
+                        array('label'=>'<i class="fa fa-plus-square"></i> Tambah Unit','url'=>array('/unit/create')),
+                        array('label'=>'<i class="fa fa-archive"></i> Kelola Unit','url'=>array('/unit/admin'),'visible'=>!Yii::app()->user->checkAccess('unit')),
                     ),
                     'encodeLabel'=>false,
-                    'visible'=>Yii::app()->user->checkAccess('admin'),
-                ),
-                array(
-                    'label'=>'<i class="fa fa-users"></i><span>Dosen</span><i class="fa fa-angle-left pull-right"></i>',
-                    'itemOptions'=>array('class'=>'treeview'),
-                    'url'=>'#',
-                    'items'=>array(
-                        array('label'=>'<i class="fa fa-plus"></i> Tambah Dosen','url'=>array('/dosen/create')),
-                        array('label'=>'<i class="fa fa-file"></i> Daftar Dosen','url'=>array('/dosen/admin')),
-                    ),
-                    'encodeLabel'=>false,
-                    'visible'=>Yii::app()->user->checkAccess('admin'),
                 ),
                 array(
                     'label'=>'<i class="fa fa-wrench"></i><span>Konfigurasi Sistem</span><i class="fa fa-angle-left pull-right"></i>',
@@ -75,6 +60,10 @@
                     ),
                     'encodeLabel'=>false,
                     'visible'=>Yii::app()->user->checkAccess('admin'),
+                ),
+                array(
+                    'label'=>'<i class="fa fa-key"></i> <span>Change Password</span>',
+                    'url'=>array('/users/password'),
                 ),
             ),
             'encodeLabel'=>false,

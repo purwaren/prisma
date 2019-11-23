@@ -36,7 +36,7 @@ $this->breadcrumbs = array(
                         'headerHtmlOptions'=>array('class'=>'hidden-xs'),
                     ),
                     array(
-                        'name'=>'timestamp_created',
+                        'name'=>'created_at',
                         'htmlOptions'=>array('class'=>'hidden-xs'),
                         'headerHtmlOptions'=>array('class'=>'hidden-xs'),
                     ),

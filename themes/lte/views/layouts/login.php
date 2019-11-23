@@ -25,7 +25,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition login-page bg-green">
+<body class="hold-transition login-page bg-light-blue">
 <div class="login-box">
     <?php echo $content ?>
 </div><!-- /.login-box -->

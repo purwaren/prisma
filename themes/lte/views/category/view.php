@@ -29,10 +29,10 @@ $this->breadcrumbs=array(
 							'id',
 							'name',
 							'description',
-							'timestamp_created',
-							'timestamp_updated',
-							'user_create',
-							'user_update',
+							'created_at',
+							'created_by',
+							'updated_at',
+							'updated_by',
 					),
 					'htmlOptions'=>array(
 						'class'=>'table table-hover table-striped'

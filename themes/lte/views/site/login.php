@@ -1,6 +1,14 @@
+<?php
+/**
+ * @var $model LoginForm
+ * @var $this SiteController
+ * @var $form CActiveForm
+ */
+?>
+
 <div class="login-logo">
-    <?php echo CHtml::image(Yii::app()->theme->baseUrl.'/assets/img/logo.png')?>
-    <a href="../../index2.html" style="color:white;"><b>Web</b>Administrator</a>
+    <?php echo CHtml::image(Yii::app()->theme->baseUrl.'/assets/img/logo-prisma.jpeg','logo', array('class'=>'img-responsive'))?>
+    <a href="<?php echo Yii::app()->baseUrl ?>" style="color:white;"><b>Web</b>Administrator</a>
 </div><!-- /.login-logo -->
 <div class="login-box-body">
     <p class="login-box-msg">Silakan login terlebih dahulu</p>

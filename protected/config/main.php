@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Web Administrator',
+	'name'=>'PRISMA Kalkulator Tangan',
 
 	'theme'=>'lte',
 	'language'=>'id',
@@ -18,7 +18,8 @@ return array(
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
-		'application.models.dto.*',
+		'application.models.form.*',
+		'application.models.custom.*',
 		'application.components.*',
 	),
 
