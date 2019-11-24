@@ -38,7 +38,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 0.1
         </div>
-        <strong>Copyright &copy; <?php echo date('Y') ?> Perguruan Al Ulum. <?php echo Yii::powered(); ?>.</strong>
+        <strong>Copyright &copy; <?php echo date('Y') ?> PRISMA Kalkulator Tangan. <?php echo Yii::powered(); ?>.</strong>
       </footer>
 
     </div><!-- ./wrapper -->
