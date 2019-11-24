@@ -21,6 +21,7 @@ return array(
 		'application.models.form.*',
 		'application.models.custom.*',
 		'application.models.const.*',
+		'application.models.search.*',
 		'application.components.*',
 	),
 

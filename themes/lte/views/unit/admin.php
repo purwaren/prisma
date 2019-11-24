@@ -8,6 +8,12 @@ $this->breadcrumbs = array(
 ?>
 <!-- Main content -->
 <section class="content">
+    <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title"><a href="#search" data-widget="collapse" aria-controls="#search" aria-expanded="false" role="button">Advance Search</a></h3>
+        </div>
+        <?php $this->renderPartial('_search', array('model'=>$model))?>
+    </div>
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
@@ -17,7 +23,7 @@ $this->breadcrumbs = array(
                 <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
             </div>
         </div>
-        <div class="box-body">
+        <div class="box-body table-responsive">
             <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id'=>'unit-grid',
                 'dataProvider'=>$model->search(),
@@ -77,11 +83,20 @@ $this->breadcrumbs = array(
                     'internalPageCssClass'=>'paginate_button',
                     'selectedPageCssClass'=>'active',
                     'header'=>''
-                )
+                ),
+                'beforeAjaxUpdate'=>"function(){
+                    $('#loading').show();
+                }",
+                'afterAjaxUpdate'=>"function(){
+                    $('#loading').hide();
+                }"
             )); ?>
         </div><!-- /.box-body -->
+        <div class="overlay" id="loading" style="display: none">
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
         <div class="box-footer">
-            <?php echo CHtml::link('Tambah Kategori',array('category/create'),array('class'=>'btn btn-primary'))?>
+            <?php echo CHtml::link('Tambah Unit',array('unit/create'),array('class'=>'btn btn-primary'))?>
         </div><!-- /.box-footer-->
     </div><!-- /.box -->
 </section><!-- /.content -->

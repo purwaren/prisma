@@ -132,10 +132,10 @@ class UnitController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new UnitCustom('search');
+		$model=new UnitSearch('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['UnitCustom']))
-			$model->attributes=$_GET['UnitCustom'];
+		if(isset($_GET['UnitSearch']))
+			$model->attributes=$_GET['UnitSearch'];
 
 		$this->render('admin',array(
 			'model'=>$model,
