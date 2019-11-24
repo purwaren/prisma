@@ -56,11 +56,11 @@ class Address extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'address_1' => 'Address 1',
-			'address_2' => 'Address 2',
-			'district' => 'District',
-			'city' => 'City',
-			'state' => 'State',
+			'address_1' => 'Jln / Perumahan',
+			'address_2' => 'Kelurahan',
+			'district' => 'Kecamatan',
+			'city' => 'Kab / Kota',
+			'state' => 'Provinsi',
 			'country' => 'Country',
 		);
 	}
