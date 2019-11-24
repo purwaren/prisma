@@ -110,4 +110,36 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+    public function actionDistrict($city_id)
+    {
+        $model = DistrictCustom::model()->findAllByAttributes(array('city_id'=>$city_id));
+        $options = array();
+        if (!empty($model)) {
+            foreach ($model as $row) {
+                $item = new Select2Options();
+                $item->id = $row->id;
+                $item->text = $row->name;
+                $options[] = $item;
+            }
+        }
+
+        echo CJSON::encode($options);
+    }
+
+    public function actionCity($state_id)
+    {
+        $model = CityCustom::model()->findAllByAttributes(array('state_id'=>$state_id));
+        $options = array();
+        if (!empty($model)) {
+            foreach ($model as $row) {
+                $item = new Select2Options();
+                $item->id = $row->id;
+                $item->text = $row->name;
+                $options[] = $item;
+            }
+        }
+
+        echo CJSON::encode($options);
+    }
 }

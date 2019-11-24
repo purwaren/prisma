@@ -18,6 +18,9 @@
  * @property string $created_at
  * @property string $updated_by
  * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Address $address
  */
 class Unit extends CActiveRecord
 {
@@ -57,6 +60,7 @@ class Unit extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'address' => array(self::BELONGS_TO, 'Address', 'address_id'),
 		);
 	}
 

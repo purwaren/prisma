@@ -27,17 +27,9 @@ class UnitController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','index','view','admin','delete'),
 				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -45,10 +37,11 @@ class UnitController extends Controller
 		);
 	}
 
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
+    /**
+     * Displays a particular model.
+     * @param integer $id the ID of the model to be displayed
+     * @throws CHttpException
+     */
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -62,14 +55,14 @@ class UnitController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new UnitCustom;
+		$model=new CreateUnitForm();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['UnitCustom']))
+		if(isset($_POST['CreateUnitForm']))
 		{
-			$model->attributes=$_POST['UnitCustom'];
+			$model->attributes=$_POST['CreateUnitForm'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

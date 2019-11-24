@@ -46,5 +46,5 @@
     margin-bottom: 5px;
 }
 .table-detail-view tbody tr th {
-    min-width: 150px !important;
+    width: 150px !important;
 }
