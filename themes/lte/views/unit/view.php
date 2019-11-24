@@ -55,15 +55,15 @@ $this->breadcrumbs=array(
                     'address.address_1',
                     'address.address_2',
                     array(
-                        'name'=>'district',
+                        'name'=>'address.district',
                         'value'=>$model->address->getDistrict()
                     ),
                     array(
-                        'name'=>'city',
+                        'name'=>'address.city',
                         'value'=>$model->address->getCity()
                     ),
                     array(
-                        'name'=>'state',
+                        'name'=>'address.state',
                         'value'=>$model->address->getState()
                     )
                 ),
