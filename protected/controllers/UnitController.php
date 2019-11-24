@@ -72,35 +72,41 @@ class UnitController extends Controller
 		));
 	}
 
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     * @throws CHttpException
+     */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$unit=$this->loadModel($id);
+		$model = new CreateUnitForm();
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['UnitCustom']))
+		if(isset($_POST['CreateUnitForm']))
 		{
-			$model->attributes=$_POST['UnitCustom'];
-			if($model->save())
+			$model->attributes=$_POST['CreateUnitForm'];
+			$model->id = $id;
+			if($model->update())
 				$this->redirect(array('view','id'=>$model->id));
 		}
+        $model->attributes = $unit->attributes;
+		$model->setAddress($unit->address);
 
 		$this->render('update',array(
 			'model'=>$model,
 		));
 	}
 
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     * @throws CDbException
+     */
 	public function actionDelete($id)
 	{
 		$this->loadModel($id)->delete();
