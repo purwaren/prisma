@@ -33,6 +33,11 @@ class SiteController extends Controller
 		else $this->render('index');
 	}
 
+	public function actionIndex2() {
+        $this->layout = '//layouts/landing';
+	    $this->render('index2');
+    }
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
