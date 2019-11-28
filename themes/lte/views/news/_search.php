@@ -1,5 +1,10 @@
+<?php
+/**
+ * @var $model NewsCustom
+ * @var $form CActiveForm
+ */
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+$form=$this->beginWidget('CActiveForm', array(
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 	'htmlOptions'=>array('role'=>'form')

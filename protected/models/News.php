@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'news':
  * @property string $id
+ * @property string $cat_id
  * @property string $title
  * @property string $permalink
  * @property string $summary
@@ -15,12 +16,9 @@
  * @property string $created_by
  * @property string $updated_at
  * @property string $updated_by
- * @property string $cat_id
  */
 class News extends CActiveRecord
 {
-    const FLAG_PUBLISHED_INACTIVE = 0;
-    const FLAG_PUBLISHED_ACTIVE = 1;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -37,7 +35,7 @@ class News extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, title, permalink, summary, content, banner, flag_published, created_at, created_by, cat_id', 'required'),
+			array('cat_id, title, permalink, summary, content, banner, flag_published, created_at, created_by', 'required'),
 			array('flag_published', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>512),
 			array('permalink', 'length', 'max'=>128),
@@ -47,7 +45,7 @@ class News extends CActiveRecord
 			array('updated_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, title, permalink, summary, content, banner, flag_published, created_at, created_by, updated_at, updated_by, cat_id', 'safe', 'on'=>'search'),
+			array('id, cat_id, title, permalink, summary, content, banner, flag_published, created_at, created_by, updated_at, updated_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +67,7 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'cat_id' => 'Cat',
 			'title' => 'Title',
 			'permalink' => 'Permalink',
 			'summary' => 'Summary',
@@ -79,7 +78,6 @@ class News extends CActiveRecord
 			'created_by' => 'Created By',
 			'updated_at' => 'Updated At',
 			'updated_by' => 'Updated By',
-			'cat_id' => 'Cat',
 		);
 	}
 
@@ -102,6 +100,7 @@ class News extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
+		$criteria->compare('cat_id',$this->cat_id,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('permalink',$this->permalink,true);
 		$criteria->compare('summary',$this->summary,true);
@@ -112,7 +111,6 @@ class News extends CActiveRecord
 		$criteria->compare('created_by',$this->created_by,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 		$criteria->compare('updated_by',$this->updated_by,true);
-		$criteria->compare('cat_id',$this->cat_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

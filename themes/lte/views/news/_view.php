@@ -1,6 +1,7 @@
 <?php
 /**
- * @var $data News
+ * @var $this NewsController
+ * @var $data NewsCustom
  */
 ?>
 
@@ -21,7 +22,7 @@
     <div class="box-footer">
         <?php echo CHtml::link('<i class="fa fa-search"></i> Pratinjau',array('news/view','id'=>$data->id),array('class'=>'btn btn-app'))?>
         <?php echo CHtml::link('<i class="fa fa-edit"></i> Ubah',array('news/update','id'=>$data->id),array('class'=>'btn btn-app'))?>
-        <?php if($data->flag_published == News::FLAG_PUBLISHED_INACTIVE && !Yii::app()->user->checkAccess('unit')) {
+        <?php if($data->flag_published == NewsCustom::FLAG_PUBLISHED_INACTIVE && !Yii::app()->user->checkAccess('unit')) {
             echo CHtml::link('<i class="fa fa-check"></i> Setujui', array('news/approve', 'id' => $data->id), array('class' => 'btn btn-app btn-approve'));
         }?>
         <?php if(Yii::app()->user->checkAccess('admin')) { echo CHtml::link('<i class="fa fa-trash"></i> Hapus',array('news/delete','id'=>$data->id),array('class'=>'btn btn-app btn-delete')); }?>

@@ -7,7 +7,7 @@
 ?>
 
 <div class="login-logo">
-    <?php echo CHtml::image(Yii::app()->theme->baseUrl.'/assets/img/logo-prisma.jpeg','logo', array('class'=>'img-responsive'))?>
+    <?php echo CHtml::image(Yii::app()->theme->baseUrl.'/assets/img/logo-white-big.png','logo', array('class'=>'img-responsive'))?>
     <a href="<?php echo Yii::app()->baseUrl ?>" style="color:white;"><b>Web</b>Administrator</a>
 </div><!-- /.login-logo -->
 <div class="login-box-body">

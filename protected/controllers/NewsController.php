@@ -179,14 +179,14 @@ class NewsController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new News('search');
+		$model=new NewsCustom('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['News']))
-			$model->attributes=$_GET['News'];
+		if(isset($_GET['NewsCustom']))
+			$model->attributes=$_GET['NewsCustom'];
 
 		//only allowed to edit their own article, except admin
 		if(!Yii::app()->user->checkAccess('admin'))
-			$model->user_create=Yii::app()->user->getName();
+			$model->created_by=Yii::app()->user->getName();
 
 		$this->render('admin',array(
 			'model'=>$model,

@@ -44,8 +44,8 @@ class NewsForm extends CFormModel
     public static function getAllFlagPublishedOptions()
     {
         return array(
-            News::FLAG_PUBLISHED_ACTIVE => 'Ya',
-            News::FLAG_PUBLISHED_INACTIVE => 'Tidak'
+            NewsCustom::FLAG_PUBLISHED_ACTIVE => 'Ya',
+            NewsCustom::FLAG_PUBLISHED_INACTIVE => 'Tidak'
         );
     }
 

@@ -1,5 +1,7 @@
 <?php
-/* @var $this Controller */
+/* @var $this NewsController */
+/* @var $model NewsCustom */
+
 $this->pageTitle = 'Artikel';
 $this->breadcrumbs = array(
     'Artikel'
