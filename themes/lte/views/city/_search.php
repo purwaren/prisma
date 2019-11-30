@@ -9,7 +9,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/assets
 Yii::app()->clientScript->registerScript('search', "
     $('#search').collapse('hide');
     $('.search-form').submit(function(){
-        $('#state-grid').yiiGridView('update', {
+        $('#city-grid').yiiGridView('update', {
             data: $(this).serialize()
         });
         return false;
@@ -26,6 +26,9 @@ $form=$this->beginWidget('CActiveForm', array(
 	<div class="form-group">
 		<?php echo $form->textField($model,'name',array('class'=>'form-control','placeholder'=>'Nama Wilayah')); ?>
 	</div>
+    <div class="form-group">
+        <?php echo $form->textField($model,'unit_code',array('class'=>'form-control','placeholder'=>'Kode Wilayah Prisma')); ?>
+    </div>
 	<div class="form-group">
 		<?php echo CHtml::submitButton('Search', array('class'=>'btn btn-primary search-button')); ?>
 	</div>

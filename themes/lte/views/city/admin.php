@@ -25,7 +25,7 @@ $this->breadcrumbs = array(
         </div>
         <div class="box-body table-responsive">
             <?php $this->widget('zii.widgets.grid.CGridView', array(
-                'id'=>'state-grid',
+                'id'=>'city-grid',
                 'dataProvider'=>$model->search(),
                 //'filter'=>$model,
                 'columns'=>array(
@@ -39,9 +39,10 @@ $this->breadcrumbs = array(
                         'name'=>'state_id',
                         'value'=>'$data->state->name'
                     ),
+                    'unit_code',
                     array(
                         'class'=>'CButtonColumn',
-                        'template'=>'{view}',
+                        'template'=>'{view} {update}',
                         'buttons'=>array(
                             'view'=>array(
                                 'label'=>'<i class="fa fa-search"></i>',

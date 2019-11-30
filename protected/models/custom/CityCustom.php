@@ -13,9 +13,10 @@ class CityCustom extends RefCities
     public function attributeLabels()
     {
         return array(
-            'id'=>'Kode Wialayah',
+            'id'=>'Kode Wilayah',
             'name'=> 'Nama',
-            'state_id' => 'Provinsi'
+            'state_id' => 'Provinsi',
+            'unit_code' => 'Kode Prisma'
         );
     }
 
@@ -44,5 +45,21 @@ class CityCustom extends RefCities
             'state' => array(self::BELONGS_TO, 'StateCustom', 'state_id'),
             'districts' => array(self::HAS_MANY, 'DistrictCustom', 'city_id'),
         );
+    }
+
+    public function search()
+    {
+        // @todo Please modify the following code to remove attributes that should not be searched.
+
+        $criteria=new CDbCriteria;
+
+        $criteria->compare('id',$this->id,true);
+        $criteria->compare('state_id',$this->state_id,true);
+        $criteria->compare('name',strtoupper($this->name),true);
+        $criteria->compare('unit_code',$this->unit_code,true);
+
+        return new CActiveDataProvider($this, array(
+            'criteria'=>$criteria,
+        ));
     }
 }

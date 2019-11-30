@@ -32,6 +32,7 @@ $this->breadcrumbs=array(
                             'name'=>'state_id',
                             'value'=>$model->state->name
                         ),
+                        'unit_code'
 					),
 					'htmlOptions'=>array(
 						'class'=>'table table-hover table-striped table-detail-view'
@@ -40,7 +41,7 @@ $this->breadcrumbs=array(
 			</div>
 		</div><!-- /.box-body -->
 		<div class="box-footer">
-			<?php echo CHtml::link('Kembali',array('state/admin'),array('class'=>'btn btn-primary'))?>
+			<?php echo CHtml::link('Kembali',array('city/admin'),array('class'=>'btn btn-primary'))?>
 		</div><!-- /.box-footer-->
 	</div><!-- /.box -->
 </section><!-- /.content -->

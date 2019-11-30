@@ -56,7 +56,7 @@
                     'url'=>'#',
                     'items'=>array(
                         array('label'=>'<i class="fa fa-map"></i> Provinsi','url'=>array('/state/admin')),
-                        array('label'=>'<i class="fa fa-map"></i> Kabupaten','url'=>array('/city/admin')),
+                        array('label'=>'<i class="fa fa-map"></i> Kabupaten / Kota','url'=>array('/city/admin')),
                         array('label'=>'<i class="fa fa-map"></i> Kecamatan','url'=>array('/district/admin')),
                     ),
                     'encodeLabel'=>false,
