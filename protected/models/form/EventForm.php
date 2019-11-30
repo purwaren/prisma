@@ -33,18 +33,14 @@ class EventForm extends CFormModel
 
     public function save()
     {
-        if($this->validate())
-        {
-            if(empty($this->id))
-            {
+        if ($this->validate()) {
+            if (empty($this->id)) {
                 $model = new Event();
                 $model->attributes = $this->attributes;
                 $model->user_create = Yii::app()->user->getName();
                 $model->timestamp_create = new CDbExpression('NOW()');
 
-            }
-            else
-            {
+            } else {
                 $model = Event::model()->findByPk($this->id);
                 $model->attributes = $this->attributes;
                 $model->id = $this->id;
@@ -57,13 +53,10 @@ class EventForm extends CFormModel
             $model->start_date = trim(str_replace('/', '-', $tmp[0]));
             $model->end_date = trim(str_replace('/', '-', $tmp[1]));
 
-            if($model->save())
-            {
+            if ($model->save()) {
                 $this->id = $model->id;
                 return true;
-            }
-            else
-            {
+            } else {
                 $this->addErrors($model->getErrors());
                 $this->addError('datetime', $model->getError('start_date'));
                 $this->addError('datetime', $model->getError('end_date'));

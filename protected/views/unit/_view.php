@@ -5,35 +5,35 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
+    <?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id' => $data->id)); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('unit_no')); ?>:</b>
-	<?php echo CHtml::encode($data->unit_no); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('unit_no')); ?>:</b>
+    <?php echo CHtml::encode($data->unit_no); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('owner')); ?>:</b>
-	<?php echo CHtml::encode($data->owner); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('owner')); ?>:</b>
+    <?php echo CHtml::encode($data->owner); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('address_id')); ?>:</b>
-	<?php echo CHtml::encode($data->address_id); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('address_id')); ?>:</b>
+    <?php echo CHtml::encode($data->address_id); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('wa_number')); ?>:</b>
-	<?php echo CHtml::encode($data->wa_number); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('wa_number')); ?>:</b>
+    <?php echo CHtml::encode($data->wa_number); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('trainer')); ?>:</b>
-	<?php echo CHtml::encode($data->trainer); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('trainer')); ?>:</b>
+    <?php echo CHtml::encode($data->trainer); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('consultant')); ?>:</b>
-	<?php echo CHtml::encode($data->consultant); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('consultant')); ?>:</b>
+    <?php echo CHtml::encode($data->consultant); ?>
+    <br/>
 
-	<?php /*
+    <?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
 	<?php echo CHtml::encode($data->status); ?>
 	<br />

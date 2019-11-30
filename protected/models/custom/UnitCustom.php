@@ -12,7 +12,7 @@ class UnitCustom extends Unit
             'wa_number' => 'Nomor WA',
             'trainer' => 'Pelatih',
             'consultant' => 'Konsultan',
-            'status'=> 'Status',
+            'status' => 'Status',
             'start_date' => 'Mulai Aktif',
             'expired_at' => 'Berakhir Lisensi'
         );
@@ -48,7 +48,8 @@ class UnitCustom extends Unit
         );
     }
 
-    public function getStatus() {
+    public function getStatus()
+    {
         return UnitStatus::getStatus($this->status);
     }
 }

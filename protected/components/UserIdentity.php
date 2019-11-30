@@ -7,7 +7,7 @@
  */
 class UserIdentity extends CUserIdentity
 {
-	private $_id;
+    private $_id;
 
     /**
      * Authenticates a user.
@@ -18,39 +18,35 @@ class UserIdentity extends CUserIdentity
      * @return boolean whether authentication succeeds.
      * @throws CException
      */
-	public function authenticate()
-	{
-		$user = Users::model()->findByUsername($this->username);
-		if($user === null)
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		else
-		{
-			if (!CPasswordHelper::verifyPassword($this->password, $user->password))
-			{
-				$user->login_atemp = $user->login_atemp+1;
-				$this->errorCode = self::ERROR_PASSWORD_INVALID;
-			}
-			else
-			{
-				$this->_id = $user->id;
-				$user->last_login_time = new CDbExpression('NOW()');
-				$user->login_atemp = 0;
-				$this->errorCode = self::ERROR_NONE;
+    public function authenticate()
+    {
+        $user = Users::model()->findByUsername($this->username);
+        if ($user === null)
+            $this->errorCode = self::ERROR_USERNAME_INVALID;
+        else {
+            if (!CPasswordHelper::verifyPassword($this->password, $user->password)) {
+                $user->login_atemp = $user->login_atemp + 1;
+                $this->errorCode = self::ERROR_PASSWORD_INVALID;
+            } else {
+                $this->_id = $user->id;
+                $user->last_login_time = new CDbExpression('NOW()');
+                $user->login_atemp = 0;
+                $this->errorCode = self::ERROR_NONE;
 
-				//set session variable
-				$this->setState('fullname', $user->name);
-			}
-			$user->last_login_attempt = new CDbExpression('NOW()');
-		}
-		return !$this->errorCode;
-	}
+                //set session variable
+                $this->setState('fullname', $user->name);
+            }
+            $user->last_login_attempt = new CDbExpression('NOW()');
+        }
+        return !$this->errorCode;
+    }
 
-	/**
-	 * Retrieve the ID of logged in user
-	 * @return mixed
-	 */
-	public function getId()
-	{
-		return $this->_id;
-	}
+    /**
+     * Retrieve the ID of logged in user
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->_id;
+    }
 }

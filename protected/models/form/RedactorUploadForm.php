@@ -17,20 +17,18 @@ class RedactorUploadForm extends CFormModel
     {
         return array(
             array('type, file', 'required'),
-            array('file', 'file', 'on'=>'image, banner', 'types'=>'jpg,png,jpeg,gif'),
-            array('file', 'file', 'on'=>'file', 'types'=>'pdf')
+            array('file', 'file', 'on' => 'image, banner', 'types' => 'jpg,png,jpeg,gif'),
+            array('file', 'file', 'on' => 'file', 'types' => 'pdf')
         );
     }
 
     public function save($path)
     {
-        $this->file = ($this->type == 'image'||$this->type=='file')?CUploadedFile::getInstanceByName('file'):CUploadedFile::getInstanceByName('file_data');
-        if($this->validate())
-        {
-            $this->filename = date('YmdHis').'.'.$this->file->extensionName;
+        $this->file = ($this->type == 'image' || $this->type == 'file') ? CUploadedFile::getInstanceByName('file') : CUploadedFile::getInstanceByName('file_data');
+        if ($this->validate()) {
+            $this->filename = date('YmdHis') . '.' . $this->file->extensionName;
             $path .= $this->filename;
             return $this->file->saveAs($path);
-        }
-        else return false;
+        } else return false;
     }
 }

@@ -12,11 +12,11 @@ class VideoUploadForm extends CFormModel
     public $albumId;
     public $captions;
     public $files;
-    
+
     public function rules()
     {
         return array(
-            array('albumId, files, captions','required'),
+            array('albumId, files, captions', 'required'),
         );
     }
 
@@ -30,12 +30,9 @@ class VideoUploadForm extends CFormModel
 
     public function save()
     {
-        if($this->validate())
-        {
-            foreach ($this->files as $idx => $fileUrl)
-            {
-                if(!empty($fileUrl))
-                {
+        if ($this->validate()) {
+            foreach ($this->files as $idx => $fileUrl) {
+                if (!empty($fileUrl)) {
                     //save record to album content
                     $model = new AlbumContent();
                     $model->album_id = $this->albumId;
@@ -47,7 +44,6 @@ class VideoUploadForm extends CFormModel
                 }
             }
             return true;
-        }
-        else return false;
+        } else return false;
     }
 }

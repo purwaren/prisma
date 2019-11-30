@@ -14,31 +14,30 @@ class UserAddForm extends CFormModel
     public $password;
     public $passwordConfirm;
     public $data;
-    public $isNewRecord=true;
+    public $isNewRecord = true;
 
     public function rules()
     {
         return array(
             array('name, username, email, password, passwordConfirm', 'required'),
-            array('passwordConfirm', 'compare', 'compareAttribute'=>'password')
+            array('passwordConfirm', 'compare', 'compareAttribute' => 'password')
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'name'=>'Nama Lengkap',
-            'username'=>'Username',
-            'email'=>'Alamat Email',
-            'password'=>'Password',
-            'passwordConfirm'=>'Konfirmasi Password'
+            'name' => 'Nama Lengkap',
+            'username' => 'Username',
+            'email' => 'Alamat Email',
+            'password' => 'Password',
+            'passwordConfirm' => 'Konfirmasi Password'
         );
     }
 
     public function save()
     {
-        if($this->validate())
-        {
+        if ($this->validate()) {
             $model = new Users();
             $model->attributes = $this->attributes;
             $model->user_create = 'admin';
@@ -47,13 +46,10 @@ class UserAddForm extends CFormModel
             $model->salt = CPasswordHelper::generateSalt();
             $model->status = Users::STATUS_ACTIVE;
             $model->flag_delete = Users::FLAG_DELETE_INACTIVE;
-            if($model->save())
-            {
+            if ($model->save()) {
                 $this->data = $model;
                 return true;
-            }
-            else
-            {
+            } else {
                 $this->addErrors($model->getErrors());
                 return false;
             }

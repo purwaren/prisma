@@ -3,8 +3,8 @@
  * @var $form CActiveForm
  * @var $model UnitCustom
  */
-Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl.'/assets/plugins/select2/select2.css');
-Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl.'/assets/plugins/select2/select2.full.min.js');
+Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/assets/plugins/select2/select2.css');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/assets/plugins/select2/select2.full.min.js');
 
 Yii::app()->clientScript->registerScript('search', "
     $('#search').collapse('hide');
@@ -16,22 +16,22 @@ Yii::app()->clientScript->registerScript('search', "
     });
 ");
 
-$form=$this->beginWidget('CActiveForm', array(
-	'action'=>Yii::app()->createUrl($this->route),
-	'method'=>'get',
-	'htmlOptions'=>array('role'=>'form','class'=>'search-form')
+$form = $this->beginWidget('CActiveForm', array(
+    'action' => Yii::app()->createUrl($this->route),
+    'method' => 'get',
+    'htmlOptions' => array('role' => 'form', 'class' => 'search-form')
 ));
 ?>
 <div class="box-body" id="search">
-	<div class="form-group">
-		<?php echo $form->textField($model,'name',array('class'=>'form-control','placeholder'=>'Nama Wilayah')); ?>
-	</div>
     <div class="form-group">
-        <?php echo $form->textField($model,'unit_code',array('class'=>'form-control','placeholder'=>'Kode Wilayah Prisma')); ?>
+        <?php echo $form->textField($model, 'name', array('class' => 'form-control', 'placeholder' => 'Nama Wilayah')); ?>
     </div>
-	<div class="form-group">
-		<?php echo CHtml::submitButton('Search', array('class'=>'btn btn-primary search-button')); ?>
-	</div>
+    <div class="form-group">
+        <?php echo $form->textField($model, 'unit_code', array('class' => 'form-control', 'placeholder' => 'Kode Wilayah Prisma')); ?>
+    </div>
+    <div class="form-group">
+        <?php echo CHtml::submitButton('Search', array('class' => 'btn btn-primary search-button')); ?>
+    </div>
 </div>
 
 <?php $this->endWidget(); ?>

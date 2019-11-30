@@ -5,35 +5,35 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
+    <?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id' => $data->id)); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('firstname')); ?>:</b>
-	<?php echo CHtml::encode($data->firstname); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('firstname')); ?>:</b>
+    <?php echo CHtml::encode($data->firstname); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('lastname')); ?>:</b>
-	<?php echo CHtml::encode($data->lastname); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('lastname')); ?>:</b>
+    <?php echo CHtml::encode($data->lastname); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('nickname')); ?>:</b>
-	<?php echo CHtml::encode($data->nickname); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('nickname')); ?>:</b>
+    <?php echo CHtml::encode($data->nickname); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('gender')); ?>:</b>
-	<?php echo CHtml::encode($data->gender); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('gender')); ?>:</b>
+    <?php echo CHtml::encode($data->gender); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('birth_place')); ?>:</b>
-	<?php echo CHtml::encode($data->birth_place); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('birth_place')); ?>:</b>
+    <?php echo CHtml::encode($data->birth_place); ?>
+    <br/>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('birth_date')); ?>:</b>
-	<?php echo CHtml::encode($data->birth_date); ?>
-	<br />
+    <b><?php echo CHtml::encode($data->getAttributeLabel('birth_date')); ?>:</b>
+    <?php echo CHtml::encode($data->birth_date); ?>
+    <br/>
 
-	<?php /*
+    <?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('address')); ?>:</b>
 	<?php echo CHtml::encode($data->address); ?>
 	<br />

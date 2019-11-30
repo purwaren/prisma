@@ -20,15 +20,17 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?php echo Yii::app()->theme->baseUrl?>/assets/img/avatar04.png" class="user-image" alt="User Image">
-                        <span class="hidden-xs"><?php echo Yii::app()->user->fullname?></span>
+                        <img src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/avatar04.png" class="user-image"
+                             alt="User Image">
+                        <span class="hidden-xs"><?php echo Yii::app()->user->fullname ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?php echo Yii::app()->theme->baseUrl?>/assets/img/avatar04.png" class="img-circle" alt="User Image">
+                            <img src="<?php echo Yii::app()->theme->baseUrl ?>/assets/img/avatar04.png"
+                                 class="img-circle" alt="User Image">
                             <p>
-                                <?php echo Yii::app()->user->fullname?>
+                                <?php echo Yii::app()->user->fullname ?>
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
@@ -38,7 +40,8 @@
                                 <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="<?php echo Yii::app()->createUrl('site/logout')?>" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="<?php echo Yii::app()->createUrl('site/logout') ?>"
+                                   class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

@@ -17,8 +17,8 @@ class ChangePasswordForm extends CFormModel
     {
         return array(
             array('userid, old_password, new_password, new_password_confirm', 'required'),
-            array('new_password, new_password_confirm', 'length', 'min'=>6),
-            array('new_password_confirm','compare','compareAttribute'=>'new_password'),
+            array('new_password, new_password_confirm', 'length', 'min' => 6),
+            array('new_password_confirm', 'compare', 'compareAttribute' => 'new_password'),
             array('old_password', 'valid')
         );
     }
@@ -26,9 +26,9 @@ class ChangePasswordForm extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'old_password'=>'Password Lama',
-            'new_password'=>'Password Baru',
-            'new_password_confirm'=>'Konfirmasi Password Baru'
+            'old_password' => 'Password Lama',
+            'new_password' => 'Password Baru',
+            'new_password_confirm' => 'Konfirmasi Password Baru'
         );
     }
 
@@ -39,15 +39,11 @@ class ChangePasswordForm extends CFormModel
      */
     public function valid($param, $attribute)
     {
-        if(!$this->hasErrors())
-        {
+        if (!$this->hasErrors()) {
             $user = Users::model()->findByPk($this->userid);
-            if($user === null)
-            {
+            if ($user === null) {
                 $this->addError('old_password', 'Password salah');
-            }
-            else
-            {
+            } else {
                 if (!CPasswordHelper::verifyPassword($this->old_password, $user->password)) {
                     $this->addError('old_password', 'Password salah');
                 }
@@ -60,7 +56,8 @@ class ChangePasswordForm extends CFormModel
      * @throws CDbException
      * @throws CException
      */
-    public function save() {
+    public function save()
+    {
         if ($this->validate()) {
             $user = Users::model()->findByPk($this->userid);
             $user->password = CPasswordHelper::hashPassword($this->new_password);

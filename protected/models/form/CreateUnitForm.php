@@ -23,7 +23,7 @@ class CreateUnitForm extends CFormModel
     public $district;
     public $city;
     public $state;
-    public $country='INDONESIA';
+    public $country = 'INDONESIA';
 
     public function attributeLabels()
     {
@@ -34,7 +34,7 @@ class CreateUnitForm extends CFormModel
             'wa_number' => 'Nomor Whatsapp',
             'trainer' => 'Pelatih',
             'consultant' => 'Konsultan',
-            'status'=> 'Status',
+            'status' => 'Status',
             'start_date' => 'Mulai Aktif',
             'expired_at' => 'Berakhir Lisensi',
             'address_1' => 'Perumahan / Jalan',
@@ -53,7 +53,8 @@ class CreateUnitForm extends CFormModel
         );
     }
 
-    public function save() {
+    public function save()
+    {
         if ($this->validate()) {
             $addr = new AddressCustom();
             $addr->address_1 = $this->address_1;
@@ -72,16 +73,15 @@ class CreateUnitForm extends CFormModel
                 if ($unit->save()) {
                     $this->id = $unit->id;
                     return true;
-                }
-                else {
+                } else {
                     $this->addErrors($unit->getErrors());
                 }
-            }
-            else $this->addErrors($addr->getErrors());
+            } else $this->addErrors($addr->getErrors());
         }
     }
 
-    public function update() {
+    public function update()
+    {
         if ($this->validate()) {
             $unit = UnitCustom::model()->findByPk($this->id);
             if (empty($unit->address_id)) {
@@ -122,7 +122,8 @@ class CreateUnitForm extends CFormModel
     /**
      * @param $address AddressCustom
      */
-    public function setAddress($address) {
+    public function setAddress($address)
+    {
         if (!empty($address)) {
             $this->address_id = $address->id;
             $this->address_1 = $address->address_1;

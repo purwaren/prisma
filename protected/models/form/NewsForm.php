@@ -23,21 +23,21 @@ class NewsForm extends CFormModel
     {
         return array(
             array('title, permalink, summary, content, banner, cat_id, flag_published', 'required'),
-            array('tag','safe')
+            array('tag', 'safe')
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'title'=>'Judul Berita',
-            'permalink'=>'Permalink (tautan rapih)',
-            'summary'=>'Ringkasan Berita',
-            'content'=>'Isi Berita',
-            'banner'=>'Banner',
-            'cat_id'=>'Kategori',
-            'flag_published'=>'Status Publikasi',
-            'tag'=>'Unit'
+            'title' => 'Judul Berita',
+            'permalink' => 'Permalink (tautan rapih)',
+            'summary' => 'Ringkasan Berita',
+            'content' => 'Isi Berita',
+            'banner' => 'Banner',
+            'cat_id' => 'Kategori',
+            'flag_published' => 'Status Publikasi',
+            'tag' => 'Unit'
         );
     }
 
@@ -51,19 +51,15 @@ class NewsForm extends CFormModel
 
     public function save()
     {
-        if($this->validate())
-        {
+        if ($this->validate()) {
             $model = new News();
             $model->attributes = $this->attributes;
             $model->timestamp_created = new CDbExpression('NOW()');
             $model->user_create = Yii::app()->user->getName();
-            if($model->save())
-            {
+            if ($model->save()) {
                 $this->data = $model;
                 return true;
-            }
-            else
-            {
+            } else {
                 $this->addErrors($model->getErrors());
                 return false;
             }

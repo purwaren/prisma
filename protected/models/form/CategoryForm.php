@@ -15,37 +15,32 @@ class CategoryForm extends CFormModel
     public function rules()
     {
         return array(
-            array('name, description','required')
+            array('name, description', 'required')
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'name'=>'Nama Kategori',
-            'description'=>'Keterangan'
+            'name' => 'Nama Kategori',
+            'description' => 'Keterangan'
         );
     }
 
     public function save()
     {
-        if($this->validate())
-        {
+        if ($this->validate()) {
             $model = new Category();
             $model->attributes = $this->attributes;
             $model->created_at = new CDbExpression('NOW()');
             $model->created_by = Yii::app()->user->getName();
-            if($model->save())
-            {
+            if ($model->save()) {
                 $this->data = $model;
                 return true;
-            }
-            else
-            {
+            } else {
                 $this->addErrors($model->getErrors());
                 return false;
             }
-        }
-        else return false;
+        } else return false;
     }
 }

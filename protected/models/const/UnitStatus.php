@@ -7,7 +7,8 @@ class UnitStatus
     const NOT_YET_ACTIVE = 2;
     const BLOCKED = 3;
 
-    public static function getAllOptions() {
+    public static function getAllOptions()
+    {
         return array(
             self::NOT_YET_ACTIVE => 'Belum Aktif',
             self::ACTIVE => 'Aktif',
@@ -15,7 +16,8 @@ class UnitStatus
         );
     }
 
-    public static function getStatus($status) {
+    public static function getStatus($status)
+    {
         $options = self::getAllOptions();
         return $options[$status];
     }
