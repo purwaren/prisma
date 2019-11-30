@@ -51,6 +51,17 @@
                     'encodeLabel'=>false,
                 ),
                 array(
+                    'label'=>'<i class="fa fa-archive"></i><span>Wilayah</span><i class="fa fa-angle-left pull-right"></i>',
+                    'itemOptions'=>array('class'=>'treeview'),
+                    'url'=>'#',
+                    'items'=>array(
+                        array('label'=>'<i class="fa fa-map"></i> Provinsi','url'=>array('/state/admin')),
+                        array('label'=>'<i class="fa fa-map"></i> Kabupaten','url'=>array('/city/admin')),
+                        array('label'=>'<i class="fa fa-map"></i> Kecamatan','url'=>array('/district/admin')),
+                    ),
+                    'encodeLabel'=>false,
+                ),
+                array(
                     'label'=>'<i class="fa fa-wrench"></i><span>Konfigurasi Sistem</span><i class="fa fa-angle-left pull-right"></i>',
                     'itemOptions'=>array('class'=>'treeview'),
                     'url'=>'#',

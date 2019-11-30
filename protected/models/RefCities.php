@@ -7,6 +7,10 @@
  * @property string $id
  * @property string $state_id
  * @property string $name
+ *
+ * The followings are the available model relations:
+ * @property RefStates $state
+ * @property RefDistricts[] $refDistricts
  */
 class RefCities extends CActiveRecord
 {
@@ -42,6 +46,8 @@ class RefCities extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'state' => array(self::BELONGS_TO, 'RefStates', 'state_id'),
+			'refDistricts' => array(self::HAS_MANY, 'RefDistricts', 'city_id'),
 		);
 	}
 
