@@ -84,6 +84,18 @@ class CreateUnitForm extends CFormModel
     public function update() {
         if ($this->validate()) {
             $unit = UnitCustom::model()->findByPk($this->id);
+            if (empty($unit->address_id)) {
+                $addr = new AddressCustom();
+                $addr->address_1 = $this->address_1;
+                $addr->address_2 = $this->address_2;
+                $addr->district = $this->district;
+                $addr->city = $this->city;
+                $addr->state = $this->state;
+                $addr->country = $this->country;
+                if ($addr->save()) {
+                    $unit->address_id = $addr->id;
+                }
+            }
             $this->address_id = $unit->address_id;
             $unit->attributes = $this->attributes;
             $unit->updated_by = Yii::app()->user->getName();
@@ -111,11 +123,13 @@ class CreateUnitForm extends CFormModel
      * @param $address AddressCustom
      */
     public function setAddress($address) {
-        $this->address_id = $address->id;
-        $this->address_1 = $address->address_1;
-        $this->address_2 = $address->address_2;
-        $this->state = $address->state;
-        $this->city = $address->city;
-        $this->district = $address->district;
+        if (!empty($address)) {
+            $this->address_id = $address->id;
+            $this->address_1 = $address->address_1;
+            $this->address_2 = $address->address_2;
+            $this->state = $address->state;
+            $this->city = $address->city;
+            $this->district = $address->district;
+        }
     }
 }

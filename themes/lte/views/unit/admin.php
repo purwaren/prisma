@@ -42,15 +42,15 @@ $this->breadcrumbs = array(
                     'address.address_1',
                     array(
                         'name'=>'address.district',
-                        'value'=>'$data->address->getDistrict()'
+                        'value'=>'!empty($data->address)?$data->address->getDistrict():null'
                     ),
                     array(
                         'name'=>'address.city',
-                        'value'=>'$data->address->getCity()'
+                        'value'=>'!empty($data->address)?$data->address->getCity():null'
                     ),
                     array(
                         'name'=>'address.state',
-                        'value'=>'$data->address->getState()'
+                        'value'=>'!empty($data->address)?$data->address->getState():null'
                     ),
                     array(
                         'class'=>'CButtonColumn',
