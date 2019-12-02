@@ -29,7 +29,7 @@
                 array('label' => 'MAIN NAVIGATION', 'itemOptions' => array('class' => 'header')),
                 array(
                     'label' => '<i class="fa fa-dashboard"></i> <span>Dashboard</span></i>',
-                    'url' => array('/site/index'),
+                    'url' => array('/site/dashboard'),
                     'itemOptions' => array('class' => 'treeview')
                 ),
                 array(

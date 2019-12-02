@@ -25,18 +25,18 @@ class SiteController extends Controller
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
-    public function actionIndex()
+    public function actionDashboard()
     {
         $this->layout = '//layouts/column2';
         if (Yii::app()->user->isGuest)
             $this->redirect(array('login'));
-        else $this->render('index');
+        else $this->render('dashboard');
     }
 
-    public function actionIndex2()
+    public function actionIndex()
     {
         $this->layout = '//layouts/landing';
-        $this->render('index2');
+        $this->render('index');
     }
 
     /**

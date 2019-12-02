@@ -76,7 +76,14 @@
                         array(
                             'label'=>'Login',
                             'url' => array('/site/login'),
-                            'linkOptions'=>array('class'=>'nav-link')
+                            'linkOptions'=>array('class'=>'nav-link'),
+                            'visible'=>Yii::app()->user->isGuest
+                        ),
+                        array(
+                            'label'=>'Dashboard',
+                            'url' => array('/site/dashboard'),
+                            'linkOptions'=>array('class'=>'nav-link'),
+                            'visible'=>!Yii::app()->user->isGuest
                         ),
                     ),
                     'encodeLabel' => false,
@@ -89,15 +96,13 @@
     </div><!--//top-bar-->
     <div class="branding">
         <div class="container">
-            <h1 class="logo">
-                <a href="index.html"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-prisma.png"
-                                          alt=""></a>
-            </h1><!--//logo-->
-            <h2 class="tagline" style="padding-top: 0px !important">
+            <h1 class="tagline" style="padding-top: 0px !important">
+                <img style="max-height: 60px" src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-prisma-grayscale.png"
+                     alt="" class="img-responsive"></a>
                 <img style="max-height: 60px"
-                     src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-prisma-word.png" alt=""
+                     src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-prisma-white.png" alt=""
                      class="img-responsive">
-            </h2>
+            </h1>
         </div><!--//container-->
     </div><!--//branding-->
 </header><!--//header-->
@@ -110,7 +115,7 @@
         <div class="row">
             <div class="footer-col col-12 col-lg-4">
                 <div class="logo-holder">
-                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/img/logo-white-big.png" alt="">
+                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/img/logo.png" alt="">
                 </div><!--//logo-holder-->
                 <div class="contact-details">
                     <div class="address">
@@ -119,7 +124,7 @@
                     <div class="contact">
                         <div class="item">T: <a href="#">(0286) 3326222</a></div>
                         <div class="item">M: <a href="#">081327027605</a></div>
-                        <div class="item">E: <a href="#">info@prismakalkulatortangan.id</a></div>
+                        <div class="item">E: <a href="#">zaenalahmad62@gmail.com</a></div>
                     </div><!--//contact-->
                 </div>
             </div><!--//footer-col-->
@@ -137,7 +142,7 @@
                     <div class="sub-col col-12 col-md-4">
                         <h4 class="col-title">Informasi Lain</h4>
                         <ul class="footer-links list-unstyled">
-                            <li class="link-item"><a href="#">Web Admin</a></li>
+                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/login') ?>">Web Admin</a></li>
                             <li class="link-item"><a href="#">Berita</a></li>
                             <li class="link-item"><a href="#">Event</a></li>
                         </ul>
@@ -145,12 +150,8 @@
                 </div><!--//row-->
                 <div class="divider"></div>
                 <ul class="social-media list-inline">
-                    <!--                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>-->
                     <li class="list-inline-item"><a href="https://web.facebook.com/profile.php?id=100007456336047"><i
                                     class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                    <!--                    <li class="list-inline-item"><a href="#"><i class="fab fa-google-plus-g" aria-hidden="true"></i></a></li>-->
-                    <!--                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>-->
-                    <!--                    <li class="list-inline-item"><a href="#"><i class="fab fa-vimeo" aria-hidden="true"></i></a></li>-->
                 </ul>
             </div><!--//footer-col-->
         </div><!--//row-->
