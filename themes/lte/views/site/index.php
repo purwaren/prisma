@@ -141,15 +141,14 @@
 
                             </div><!--//thumb-holder-->
                             <div class="content-holder">
-                                <h4 class="news-title"><a href="#" data-toggle="modal" data-target="#news-modal-1">School
-                                        Concert</a></h4>
+                                <h4 class="news-title"><a href="#">Pembukaan Unit Bandung</a></h4>
                                 <div class="intro">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis...
+                                    Pembukaan PRISMA Kalkulator Tangan Unit Bandung, Cabang ke 68, Unit Ke 147, 148, 149, 150,
+                                    dan 151 Pelatihan dilaksanakan pada hari Sabtu, 23 November 2019. Mereka semua adalah para
+                                    pengelola Bimbel Profesional, bahkan yang membuat kami terharu ada salah satu Peserta
+                                    yang datang dari Subang rela datang dan menginap di Bandung hanya untuk pelatihan Kalkulator Tangan.
                                 </div><!--//intro-->
-                                <a class="btn btn-ghost" href="#" data-toggle="modal" data-target="#news-modal-1">Read
-                                    more<i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                <a class="btn btn-ghost" href="#" >Selengkapnya<i class="fas fa-angle-right" aria-hidden="true"></i></a>
                             </div><!--//content-holder-->
                         </div><!--//item-->
                         <div class="item item-2">
@@ -157,15 +156,17 @@
 
                             </div><!--//thumb-holder-->
                             <div class="content-holder">
-                                <h4 class="news-title"><a href="#" data-toggle="modal" data-target="#news-modal-2">Year
-                                        6 Sports Day</a></h4>
+                                <h4 class="news-title">
+                                    <a href="#">
+                                        Pelatihan PRISMA Wilayah Kebumen
+                                    </a></h4>
                                 <div class="intro">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis...
+                                    Proses pelatihan PRISMA Cabang Kebumen untuk unit Puring, Kebumen, Klirong dan Alian
+                                    yang dilaksanakan pada tanggal 13 Oktober 2019.
                                 </div><!--//intro-->
-                                <a class="btn btn-ghost" href="#" data-toggle="modal" data-target="#news-modal-2">Read
-                                    more<i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                <a class="btn btn-ghost" href="#">
+                                    Selengkapnya <i class="fas fa-angle-right" aria-hidden="true"></i>
+                                </a>
                             </div><!--//content-holder-->
                         </div><!--//item-->
                         <div class="item item-3">
@@ -173,15 +174,13 @@
 
                             </div><!--//thumb-holder-->
                             <div class="content-holder">
-                                <h4 class="news-title"><a href="#" data-toggle="modal" data-target="#news-modal-3">ICT
-                                        Week</a></h4>
+                                <h4 class="news-title"><a href="#" >Pembukaan Unit Bali</a></h4>
                                 <div class="intro">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-                                    nascetur ridiculus mus. Donec quam felis...
+                                    Alhamdulillah berdiri lagi 2 Unit PRISMA Kalkulator Tangan di Denpasar Bali, Unit Ke 131 dan 132,
+                                    Padahal baru 2 Calon Mitra tapi sudah langsung mulai pelatihan, karena kepingin segera di aplikasikan ke Anak didik.
                                 </div><!--//intro-->
-                                <a class="btn btn-ghost" href="#" data-toggle="modal" data-target="#news-modal-3">Read
-                                    more<i class="fas fa-angle-right" aria-hidden="true"></i></a>
+                                <a class="btn btn-ghost" href="#" >
+                                    Selengkapnya<i class="fas fa-angle-right" aria-hidden="true"></i></a>
                             </div><!--//content-holder-->
                         </div><!--//item-->
                     </div><!--//news-items-->
@@ -262,34 +261,19 @@
 <section class="awards-section">
     <div class="container">
         <div class="logos row">
-            <div class="logo-item col-md-2 col-4">
-                <a href="#"><img class="img-fluid"
-                                 src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/awards/award1.jpg"
+            <div class="logo-item col-md-4 col-4">
+                <a href="https://www.lensaindonesia.com/2016/12/19/wow-anak-jago-berhitung-dengan-metode-kalkulator-tangan.html"><img class="img-fluid"
+                                 src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/awards/award1.png"
                                  alt=""></a>
             </div>
-            <div class="logo-item col-md-2 col-4">
-                <a href="#"><img class="img-fluid"
-                                 src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/awards/award2.jpg"
+            <div class="logo-item col-md-4 col-4">
+                <a href="https://suaraindonesia-news.com/metode-kalkulator-tangan-digemari-anak-bangsa/"><img class="img-fluid"
+                                 src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/awards/award2.gif"
                                  alt=""></a>
             </div>
-            <div class="logo-item col-md-2 col-4">
-                <a href="#"><img class="img-fluid"
+            <div class="logo-item col-md-4 col-4">
+                <a href="http://rri.co.id/malang/post/berita/339752/ruang_publik/metode_kalkulator_tangan_cara_berhitung_cepat_dengan_jari.html"><img class="img-fluid"
                                  src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/awards/award3.jpg"
-                                 alt=""></a>
-            </div>
-            <div class="logo-item col-md-2 col-4">
-                <a href="#"><img class="img-fluid"
-                                 src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/awards/award4.jpg"
-                                 alt=""></a>
-            </div>
-            <div class="logo-item col-md-2 col-4">
-                <a href="#"><img class="img-fluid"
-                                 src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/awards/award5.jpg"
-                                 alt=""></a>
-            </div>
-            <div class="logo-item col-md-2 col-4">
-                <a href="#"><img class="img-fluid"
-                                 src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/awards/award6.jpg"
                                  alt=""></a>
             </div>
         </div><!--//logos-->
@@ -410,7 +394,7 @@
                 </div><!--//form-group-->
 
                 <div class="btn-wrapper col-md-2 col-12">
-                    <button type="submit" class="btn btn-cta btn-ghost btn-block">Daftar<i class="fas fa-angle-right"
+                    <button type="submit" class="btn btn-cta btn-ghost btn-block">Daftar  <i class="fas fa-angle-right"
                                                                                             aria-hidden="true"></i>
                     </button>
                 </div>
