@@ -161,26 +161,6 @@
     </div><!--//container-->
 </footer><!--//footer-->
 
-<!-- Video Modal -->
-<div class="modal modal-video" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 id="videoModalLabel" class="modal-title sr-only">Video Tour</h4>
-            </div>
-            <div class="modal-body">
-                <div class="video-container embed-responsive embed-responsive-16by9">
-                    <iframe id="vimeo-video" src="//player.vimeo.com/video/135878017?color=ffffff&amp;wmode=transparent"
-                            width="720" height="405" frameborder="0" webkitallowfullscreen mozallowfullscreen
-                            allowfullscreen></iframe>
-                </div><!--//video-container-->
-            </div><!--//modal-body-->
-        </div><!--//modal-content-->
-    </div><!--//modal-dialog-->
-</div><!--//modal-->
-
 <!-- News Modal 1-->
 <div id="news-modal-1" class="news-modal modal modal-fullscreen" tabindex="-1" role="dialog"
      aria-labelledby="newsModal1Label">

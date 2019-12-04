@@ -6,13 +6,13 @@
                     <div class="container">
                         <div class="slide-box">
                             <div class="slide-box-inner">
-                                <div class="text">"The object of education is to prepare the young to educate themselves
-                                    throughout their lives."
+                                <div class="text">Belajar matematika lebih mudah dan cepat hanya dengan menggunakan jari
+                                    tangan, tanpa alat tanpa rumus
                                 </div>
                                 <a href="#" class="play-trigger" data-toggle="modal" data-target="#modal-video"><img
                                             class="play-icon"
                                             src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/play-icon.svg"
-                                            alt="">Watch School Video</a>
+                                            alt="">Tonton Video</a>
                             </div><!--//slide-box-inner-->
                         </div><!--//slide-box-->
                     </div>
@@ -21,11 +21,13 @@
                     <div class="container">
                         <div class="slide-box">
                             <div class="slide-box-inner">
-                                <div class="text">2 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                                    commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                    parturient montes, nascetur ridiculus mus.
+                                <div class="text">Menghitung dengan metode PRISMA Kalkulator tangan menjadi hal yang menyenangkan. Anak-anak seperti
+                                    sedang diajak bermain jari.
                                 </div>
-                                <div class="more-link">Read More</div>
+                                <a href="#" class="play-trigger" data-toggle="modal" data-target="#modal-video2"><img
+                                            class="play-icon"
+                                            src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/play-icon.svg"
+                                            alt="">Tonton Video</a>
                             </div><!--//slide-box-inner-->
                         </div><!--//slide-box-->
                     </div><!--//container-->
@@ -34,10 +36,14 @@
                     <div class="container">
                         <div class="slide-box">
                             <div class="slide-box-inner">
-                                <div class="text">3 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                                    commodo ligula eget dolor.
+                                <div class="text">
+                                    Menghitung dengan metode PRISMA Kalkulator Tangan membuat anak-anak menjadi percaya diri.
+                                    Ketika anak-anak percaya dengan dirinya, apapun akan bisa mereka raih.
                                 </div>
-                                <div class="more-link">Read More</div>
+                                <a href="#" class="play-trigger" data-toggle="modal" data-target="#modal-video3"><img
+                                            class="play-icon"
+                                            src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/play-icon.svg"
+                                            alt="">Tonton Video</a>
                             </div><!--//slide-box-inner-->
                         </div><!--//slide-box-->
                     </div><!--//container-->
@@ -46,8 +52,7 @@
                     <div class="container">
                         <div class="slide-box">
                             <div class="slide-box-inner">
-                                <div class="text">4 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-                                    commodo ligula eget dolor. Aenean massa.
+                                <div class="text">Anak cerdas adalah tabungan masa depan
                                 </div>
                                 <div class="more-link">Read More</div>
                             </div><!--//slide-box-inner-->
@@ -404,5 +409,50 @@
     </div><!--//container-->
 </section><!--//cta-section-->
 
-
-
+<!-- Video Modal -->
+<div class="modal modal-video" id="modal-video" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="videoModalLabel" class="modal-title sr-only">Video Tour</h4>
+            </div>
+            <div class="modal-body">
+                <div class="video-container embed-responsive embed-responsive-16by9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/EF1FpEn5qHY?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div><!--//video-container-->
+            </div><!--//modal-body-->
+        </div><!--//modal-content-->
+    </div><!--//modal-dialog-->
+</div><!--//modal-->
+<!-- Video Modal -->
+<div class="modal modal-video" id="modal-video2" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel2"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="videoModalLabel2" class="modal-title sr-only">Video Tour</h4>
+            </div>
+            <div class="modal-body embed-responsive embed-responsive-16by9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OU6Cuf1P0MM?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div><!--//modal-body-->
+        </div><!--//modal-content-->
+    </div><!--//modal-dialog-->
+</div><!--//modal-->
+<!-- Video Modal -->
+<div class="modal modal-video" id="modal-video3" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel3"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 id="videoModalLabel3" class="modal-title sr-only">Video Tour</h4>
+            </div>
+            <div class="modal-body embed-responsive embed-responsive-16by9">
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ed9uX_27R4c?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div><!--//modal-body-->
+        </div><!--//modal-content-->
+    </div><!--//modal-dialog-->
+</div><!--//modal-->
