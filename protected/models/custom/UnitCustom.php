@@ -3,6 +3,7 @@
 
 class UnitCustom extends Unit
 {
+
     public function attributeLabels()
     {
         return array(

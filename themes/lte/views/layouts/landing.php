@@ -50,7 +50,7 @@
                     'items' => array(
                         array(
                             'label'=>'Beranda',
-                            'url' => array('/site/index2'),
+                            'url' => array('/site/index'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
