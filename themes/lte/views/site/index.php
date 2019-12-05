@@ -291,15 +291,18 @@
             <!--//wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item carousel-item active">
-                    <h3 class="review-title"><i class="fas fa-quote-left"></i>I really enjoy my day at Academy!<i
+                    <h3 class="review-title"><i class="fas fa-quote-left"></i>Bimbel Berkembang Pesat<i
                                 class="fas fa-quote-right d-none d-md-inline"></i></h3>
                     <blockquote class="review mx-auto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus porta libero, id
-                            maximus eros maximus quis. Etiam imperdiet fringilla massa eget efficitur.</p>
+                        <p>Alhamdulillah dipertemukan prisma kalkulator tangan, metode yang luar biasa.
+                            Dengan adanya prisma bimbel saya perkembangannya semakin pesat.
+                            Orang tua puas dengan hasilnya, anak2 menyukai proses pembelajarannya.
+                            Metode prisma hanya dengan 10 jari yang gak membebani anak dan sangat membantu anak dalam belajar.
+                            Anak-anak di bimbel saya pada betah belajar prisma. Salam sukses prisma kalkulator tangan☺</p>
                     </blockquote><!--//review-->
                     <div class="source">
-                        <div class="name">Emily Sandoval</div>
-                        <div class="title">Year 7 Student</div>
+                        <div class="name">Liani Mesisotya (Owner)</div>
+                        <div class="title">PRISMA Unit Mekarjaya, Kota Depok</div>
                     </div><!--//source-->
                 </div><!--//item-->
                 <div class="item carousel-item">
@@ -313,43 +316,7 @@
                         <div class="name">Jack Sanders</div>
                         <div class="title">Year 5 Student</div>
                     </div><!--//source-->
-                </div><!--//item-->
-                <div class="item carousel-item">
-                    <h3 class="review-title"><i class="fas fa-quote-left"></i>The lessons are very interesting<i
-                                class="fas fa-quote-right d-none d-md-inline"></i></h3>
-                    <blockquote class="review mx-auto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus porta libero, id
-                            maximus eros maximus quis. Etiam imperdiet fringilla massa eget efficitur.</p>
-                    </blockquote><!--//review-->
-                    <div class="source">
-                        <div class="name">Martha Simmons</div>
-                        <div class="title">Year 6 Student</div>
-                    </div><!--//source-->
-                </div><!--//item-->
-                <div class="item carousel-item">
-                    <h3 class="review-title"><i class="fas fa-quote-left"></i>I love the after school clubs<i
-                                class="fas fa-quote-right d-none d-md-inline"></i></h3>
-                    <blockquote class="review mx-auto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus porta libero, id
-                            maximus eros maximus quis. Etiam imperdiet fringilla massa eget efficitur.</p>
-                    </blockquote><!--//review-->
-                    <div class="source">
-                        <div class="name">Ling Wang</div>
-                        <div class="title">Year 7 Student</div>
-                    </div><!--//source-->
-                </div><!--//item-->
-                <div class="item carousel-item">
-                    <h3 class="review-title"><i class="fas fa-quote-left"></i>I love studying at Academy<i
-                                class="fas fa-quote-right d-none d-md-inline"></i></h3>
-                    <blockquote class="review mx-auto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus porta libero, id
-                            maximus eros maximus quis. Etiam imperdiet fringilla massa eget efficitur.</p>
-                    </blockquote><!--//review-->
-                    <div class="source">
-                        <div class="name">Nathan Brooks</div>
-                        <div class="title">Year 7 Student</div>
-                    </div><!--//source-->
-                </div><!--//item-->
+                </div>
 
             </div><!--//carousel-inner-->
 
