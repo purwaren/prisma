@@ -196,7 +196,7 @@
                 <div class="shortcuts-block block">
                     <div class="item tbg-accent">
                         <i class="fas fa-download" aria-hidden="true"></i>
-                        <span class="text"><a href="#">Unduh Brosur</a></span>
+                        <span class="text"><a target="_blank" href="<?php echo Yii::app()->theme->baseUrl?>/assets2/brosur-prisma.pdf">Unduh Brosur</a></span>
                     </div><!--//item-->
                     <div class="item tbg-secondary">
                         <i class="fas fa-images" aria-hidden="true"></i>
