@@ -51,7 +51,7 @@
         <div class="col-xs-4">
             <?php echo CHtml::submitButton('Login', array('class' => 'btn btn-success btn-block btn-flat')); ?>
         </div><!-- /.col -->
-    </div>
+    </div>  
     <?php $this->endWidget(); ?>
 
     <a href="<?php echo Yii::app()->createUrl('site/forgot') ?>">Lupa password ?</a><br>

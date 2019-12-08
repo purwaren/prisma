@@ -60,7 +60,6 @@ Yii::app()->clientScript->registerScript("safdsdf","
 
 <!-- Main content -->
 <section class="content">
-
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">Persebaran Unit Tiap Provinsi</h3>
@@ -78,5 +77,4 @@ Yii::app()->clientScript->registerScript("safdsdf","
         </div>
         <!-- /.box-body -->
     </div>
-
 </section><!-- /.content -->

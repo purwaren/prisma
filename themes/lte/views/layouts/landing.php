@@ -30,6 +30,7 @@
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/css/theme-3.css">
+    <link id="theme-style" rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/css/custom.css">
 
 </head>
 
@@ -70,7 +71,7 @@
                         ),
                         array(
                             'label'=>'Kontak',
-                            'url' => array('#'),
+                            'url' => array('/site/contact'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
