@@ -27,6 +27,10 @@ class NewsController extends Controller
     public function accessRules()
     {
         return array(
+            array('allow',
+                'actions' => array('read'),
+                'users' => array('*')
+            ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('delete'),
                 'users' => array('@'),
@@ -51,12 +55,39 @@ class NewsController extends Controller
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
+     * @throws CHttpException
      */
     public function actionView($id)
     {
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
+    }
+
+    /**
+     * @param $permalink
+     * @throws CHttpException
+     */
+    public function actionRead($permalink)
+    {
+        $this->layout = '//layouts/blog';
+        $model = $this->loadModelByPermalink($permalink);
+        $this->render('read',array(
+            'model'=>$model,
+        ));
+    }
+
+    /**
+     * @param $permalink
+     * @return mixed
+     * @throws CHttpException
+     */
+    private function loadModelByPermalink($permalink)
+    {
+        $model = NewsCustom::model()->findByPermalink($permalink);
+        if($model === null)
+            throw new CHttpException('404', 'Halaman tidak ditemukan');
+        return $model;
     }
 
     /**
@@ -73,7 +104,7 @@ class NewsController extends Controller
         if (isset($_POST['NewsForm'])) {
             $model->attributes = $_POST['NewsForm'];
             if (!Yii::app()->user->checkAccess('admin'))
-                $model->flag_published = News::FLAG_PUBLISHED_INACTIVE;
+                $model->flag_published = NewsCustom::FLAG_PUBLISHED_INACTIVE;
 
             //pre process tag
             if (!empty($model->tag)) {

@@ -56,7 +56,7 @@
                         ),
                         array(
                             'label'=>'Tentang PRISMA',
-                            'url' => array('#'),
+                            'url' => array('/site/about'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(

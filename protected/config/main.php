@@ -67,6 +67,7 @@ return array(
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<_c:(news)>/<permalink>'=>'<_c>/read',
             ),
         ),
         // database settings are configured in database.php
@@ -123,17 +124,16 @@ return array(
     // using Yii::app()->params['paramName']
     'params' => array(
         // this is used in contact page
-        'adminEmail' => 'notification@alulumterpadu.sch.id',
-        'basePath' => '/ajdevel/www',
+        'adminEmail' => 'info@prismakalkulatortangan.id',
+        'basePath' => '/www',
         'uploadPath' => array(
-            'image' => '/www/alulum/assets/images/',
-            'banner' => '/www/alulum/assets/images/',
-            'file' => '/www/alulum/assets/files/',
-            'album' => '/www/alulum/assets/album/'
+            'image' => 'assets/images/',
+            'banner' => 'assets/images/',
+            'file' => 'assets/files/',
+            'album' => 'assets/album/'
         ),
-        'cardPath' => 'assets/card/',
-        'imageUrl' => 'http://devel.local/alulum/assets/images/',
-        'fileUrl' => 'http://devel.local/alulum/assets/files/',
-        'albumUrl' => 'http://devel.local/alulum/assets/album/'
+        'imageUrl' => '/prisma-yii/assets/images/',
+        'fileUrl' => '/prisma-yii/assets/files/',
+        'albumUrl' => '/prisma-yii/assets/album/'
     ),
 );

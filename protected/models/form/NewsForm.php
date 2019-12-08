@@ -54,8 +54,8 @@ class NewsForm extends CFormModel
         if ($this->validate()) {
             $model = new News();
             $model->attributes = $this->attributes;
-            $model->timestamp_created = new CDbExpression('NOW()');
-            $model->user_create = Yii::app()->user->getName();
+            $model->created_at = new CDbExpression('NOW()');
+            $model->created_by = Yii::app()->user->getName();
             if ($model->save()) {
                 $this->data = $model;
                 return true;

@@ -41,6 +41,7 @@ class CategoryController extends Controller
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed
+     * @throws CHttpException
      */
     public function actionView($id)
     {
@@ -75,6 +76,7 @@ class CategoryController extends Controller
      * Updates a particular model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
+     * @throws CHttpException
      */
     public function actionUpdate($id)
     {
@@ -98,6 +100,8 @@ class CategoryController extends Controller
      * Deletes a particular model.
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
+     * @throws CDbException
+     * @throws CHttpException
      */
     public function actionDelete($id)
     {
@@ -124,10 +128,10 @@ class CategoryController extends Controller
      */
     public function actionAdmin()
     {
-        $model = new Category('search');
+        $model = new CategoryCustom('search');
         $model->unsetAttributes();  // clear any default values
-        if (isset($_GET['Category']))
-            $model->attributes = $_GET['Category'];
+        if (isset($_GET['CategoryCustom']))
+            $model->attributes = $_GET['CategoryCustom'];
 
         $this->render('admin', array(
             'model' => $model,
@@ -143,7 +147,7 @@ class CategoryController extends Controller
      */
     public function loadModel($id)
     {
-        $model = Category::model()->findByPk($id);
+        $model = CategoryCustom::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;

@@ -37,7 +37,7 @@
                     'itemOptions' => array('class' => 'treeview'),
                     'url' => '#',
                     'items' => array(
-                        array('label' => '<i class="fa fa-newspaper-o"></i> Berita', 'url' => array('/news/admin')),
+                        array('label' => '<i class="fa fa-newspaper-o"></i> Artikel', 'url' => array('/news/admin')),
                         array('label' => '<i class="fa fa-folder-o"></i> Kategori', 'url' => array('/category/admin'), 'visible' => !Yii::app()->user->checkAccess('unit')),
                     ),
                     'encodeLabel' => false,

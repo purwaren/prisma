@@ -44,6 +44,11 @@ class SiteController extends Controller
         $this->render('contact');
     }
 
+    public function actionAbout() {
+        $this->layout = '//layouts/blog';
+        $this->render('about');
+    }
+
     /**
      * This is the action to handle external exceptions.
      */

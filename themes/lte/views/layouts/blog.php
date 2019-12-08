@@ -5,7 +5,7 @@
  */
 $this->beginContent('//layouts/landing');
 ?>
-<section class="page-hero" style="background: url(<?php echo $this->pageBanner?>) !important">
+<section class="page-hero" style="background-image: url(<?php echo $this->pageBanner?>) !important">
     <div class="hero-page-title container">
         <h1><?php echo $this->pageTitle ?></h1>
     </div>
