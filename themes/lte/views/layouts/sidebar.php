@@ -43,14 +43,28 @@
                     'encodeLabel' => false,
                 ),
                 array(
+                    'label' => '<i class="fa fa-shopping-cart"></i><span>Transaksi</span><i class="fa fa-angle-left pull-right"></i>',
+                    'itemOptions' => array('class' => 'treeview'),
+                    'url' => '#',
+                    'items' => array(
+                        array('label' => '<i class="fa fa-newspaper-o"></i> Daftar Order', 'url' => array('/order/admin')),
+                        array('label' => '<i class="fa fa-folder-o"></i> Daftar Item', 'url' => array('/item/admin')),
+                    ),
+                    'encodeLabel' => false,
+                    'visible'=>!Yii::app()->user->checkAccess('unit')
+                ),
+                array(
                     'label' => '<i class="fa fa-file-text"></i><span>Data Unit</span><i class="fa fa-angle-left pull-right"></i>',
                     'itemOptions' => array('class' => 'treeview'),
                     'url' => '#',
                     'items' => array(
                         array('label' => '<i class="fa fa-plus-square"></i> Tambah Unit', 'url' => array('/unit/create')),
-                        array('label' => '<i class="fa fa-archive"></i> Kelola Unit', 'url' => array('/unit/admin'), 'visible' => !Yii::app()->user->checkAccess('unit')),
+                        array('label' => '<i class="fa fa-plus-square"></i> Tambah Guru', 'url' => array('/teacher/create')),
+                        array('label' => '<i class="fa fa-archive"></i> Kelola Unit', 'url' => array('/unit/admin')),
+                        array('label' => '<i class="fa fa-archive"></i> Daftar Guru', 'url' => array('/teacher/admin')),
                     ),
                     'encodeLabel' => false,
+                    'visible' => !Yii::app()->user->checkAccess('unit')
                 ),
                 array(
                     'label' => '<i class="fa fa-archive"></i><span>Wilayah</span><i class="fa fa-angle-left pull-right"></i>',

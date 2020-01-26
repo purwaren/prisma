@@ -18,10 +18,8 @@
  * @property string $created_at
  * @property string $updated_by
  * @property string $updated_at
- *
- * The followings are the available model relations:
- * @property Address $address
  */
+
 class Unit extends CActiveRecord
 {
     /**

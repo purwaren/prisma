@@ -1,24 +1,16 @@
 <?php
-/* @var $this UnitController */
-/* @var $model UnitCustom */
-/* @var $teacher TeacherCustom */
-
-$this->pageTitle = 'Detil Unit';
-
+/* @var $this Controller */
+$this->pageTitle = 'Data Guru';
 $this->breadcrumbs = array(
-    'Unit' => array('admin'),
-    $model->unit_no,
-);
-
+    'Guru');
 ?>
-
 <!-- Main content -->
 <section class="content">
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">
-                <small>Informasi Unit</small>
+                <small>Daftar kategori artikel yang tersedia</small>
             </h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i
@@ -28,59 +20,9 @@ $this->breadcrumbs = array(
             </div>
         </div>
         <div class="box-body">
-            <h4><i>Informasi Umum</i></h4>
-            <?php $this->widget('zii.widgets.CDetailView', array(
-                'data' => $model,
-                'attributes' => array(
-                    'no_unit',
-                    'trainer',
-                    'consultant',
-                    'status',
-                    'start_date',
-                    'expired_at'
-                ),
-                'htmlOptions' => array(
-                    'class' => 'table table-hover table-striped table-detail-view'
-                ),
-            )); ?>
-            <h4><i>Pemilik Unit</i></h4>
-            <?php $this->widget('zii.widgets.CDetailView', array(
-                'data' => $model,
-                'attributes' => array(
-                    'owner',
-                    'no_wa'
-                ),
-                'htmlOptions' => array(
-                    'class' => 'table table-hover table-striped table-detail-view'
-                ),
-            )); ?>
-            <h4><i>Alamat Unit</i></h4>
-            <?php $this->widget('zii.widgets.CDetailView', array(
-                'data' => $model,
-                'attributes' => array(
-                    'address.address_1',
-                    'address.address_2',
-                    array(
-                        'name' => 'address.district',
-                        'value' => $model->address->getDistrict()
-                    ),
-                    array(
-                        'name' => 'address.city',
-                        'value' => $model->address->getCity()
-                    ),
-                    array(
-                        'name' => 'address.state',
-                        'value' => $model->address->getState()
-                    )
-                ),
-                'htmlOptions' => array(
-                    'class' => 'table table-hover table-striped table-detail-view'
-                ),
-            )); ?>
-            <h4><i>Guru Pendamping</i></h4>
             <?php $this->widget('zii.widgets.grid.CGridView', array(
                 'id' => 'users-grid',
-                'dataProvider' => $teacher->search(),
+                'dataProvider' => $model->search(),
                 //'filter'=>$model,
                 'columns' => array(
                     array(
@@ -90,13 +32,32 @@ $this->breadcrumbs = array(
                     'name',
                     'phone',
                     array(
+                        'name'=>'unit_id',
+                        'value'=>'$data->'
+                    ),
+                    array(
+                        'name' => 'created_at',
+                        'htmlOptions' => array('class' => 'hidden-xs'),
+                        'headerHtmlOptions' => array('class' => 'hidden-xs'),
+                    ),
+
+                    array(
                         'class' => 'CButtonColumn',
-                        'template' => '{view}',
                         'buttons' => array(
                             'view' => array(
                                 'label' => '<i class="fa fa-search"></i>',
                                 'imageUrl' => false,
                                 'options' => array('class' => 'btn btn-xs btn-primary', 'title' => 'Detail', 'data-toggle' => 'tooltip')
+                            ),
+                            'update' => array(
+                                'label' => '<i class="fa fa-edit"></i>',
+                                'imageUrl' => false,
+                                'options' => array('class' => 'btn btn-xs btn-warning', 'title' => 'Ubah', 'data-toggle' => 'tooltip')
+                            ),
+                            'delete' => array(
+                                'label' => '<i class="fa fa-trash"></i>',
+                                'imageUrl' => false,
+                                'options' => array('class' => 'btn btn-xs btn-danger', 'title' => 'Hapus', 'data-toggle' => 'tooltip'),
                             )
                         )
                     ),
@@ -121,10 +82,7 @@ $this->breadcrumbs = array(
             )); ?>
         </div><!-- /.box-body -->
         <div class="box-footer">
-            <?php echo CHtml::link('Kembali', array('unit/admin'), array('class' => 'btn btn-primary')) ?>
+            <?php echo CHtml::link('Tambah Guru', array('teacher/create'), array('class' => 'btn btn-primary')) ?>
         </div><!-- /.box-footer-->
     </div><!-- /.box -->
 </section><!-- /.content -->
-
-
-

@@ -44,8 +44,11 @@ class UnitController extends Controller
      */
     public function actionView($id)
     {
+        $teacher = new TeacherCustom();
+        $teacher->unit_id = $id;
         $this->render('view', array(
             'model' => $this->loadModel($id),
+            'teacher' => $teacher
         ));
     }
 
