@@ -49,6 +49,14 @@ class SiteController extends Controller
         $this->render('about');
     }
 
+    public function actionUnit() {
+        $this->layout = '//layouts/data';
+        $model = new UnitCustom('search');
+        $this->render('unit',array(
+            'model'=>$model
+        ));
+    }
+
     /**
      * This is the action to handle external exceptions.
      */

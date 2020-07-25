@@ -60,8 +60,8 @@
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
-                            'label'=>'Data Unit',
-                            'url' => array('#'),
+                            'label'=>'Data Cabang/Unit',
+                            'url' => array('/site/unit'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
