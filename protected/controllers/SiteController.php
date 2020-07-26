@@ -110,7 +110,7 @@ class SiteController extends Controller
     {
         $model = DistrictCustom::model()->findAllByAttributes(array('city_id' => $city_id));
         $item = new Select2Options();
-        $item->id = null;
+        $item->id = 0;
         $item->text = 'Pilih Kecamatan';
         $options[] = $item;
         if (!empty($model)) {
