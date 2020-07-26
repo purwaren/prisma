@@ -18,14 +18,16 @@ $this->pageTitle = 'Data Cabang/Unit PRISMA';
                         'columns' => array(
                             array(
                                 'header'=>'No. Unit',
-                                'name'=>'unit_no'
+                                'name'=>'unit_no',
+                                'type'=>'raw',
+                                'value'=>'CHtml::link($data->unit_no,array("/site/unit","id"=>$data->id))'
                             ),
                             'owner',
                             array(
                                 'name' => 'status',
                                 'value' => '$data->getStatus()'
                             ),
-                            'address.address_1',
+                            'address.address_2',
                             array(
                                 'name' => 'address.district',
                                 'value' => '!empty($data->address)?$data->address->getDistrict():null'

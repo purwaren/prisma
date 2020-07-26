@@ -49,12 +49,22 @@ class SiteController extends Controller
         $this->render('about');
     }
 
-    public function actionUnit() {
+    public function actionUnit($id='') {
         $this->layout = '//layouts/data';
-        $model = new UnitSearch('search');
-        $this->render('unit',array(
-            'model'=>$model
-        ));
+        if (!empty($id)) {
+            $model = UnitCustom::model()->findByPk($id);
+            $teacher = new TeacherCustom('search');
+            $teacher->unit_id = $id;
+            $this->render('unit-detail', array(
+                'model'=>$model,
+                'teacher'=>$teacher
+            ));
+        } else {
+            $model = new UnitSearch('search');
+            $this->render('unit',array(
+                'model'=>$model
+            ));
+        }
     }
 
     /**

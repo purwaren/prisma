@@ -32,3 +32,6 @@ section.page-hero {
 .pagination .page-item.hidden {
     display: none;
 }
+table.table-detail-view tr th {
+    width: 25%;
+}
