@@ -13,7 +13,8 @@ class AddressCustom extends Address
     public function attributeLabels()
     {
         return array(
-            'address_1' => 'Jln/Perumahan',
+            'address_1' => 'Alamat',
+            'address_2' => 'Kelurahan',
             'state' => 'Provinsi',
             'city' => 'Kab/Kota',
             'district' => 'Kecamatan'

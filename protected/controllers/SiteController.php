@@ -51,7 +51,7 @@ class SiteController extends Controller
 
     public function actionUnit() {
         $this->layout = '//layouts/data';
-        $model = new UnitCustom('search');
+        $model = new UnitSearch('search');
         $this->render('unit',array(
             'model'=>$model
         ));

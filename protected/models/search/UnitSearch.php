@@ -33,6 +33,9 @@ class UnitSearch extends CFormModel
 
         return new CActiveDataProvider(UnitCustom::model(), array(
             'criteria' => $criteria,
+            'sort'=>array(
+                'defaultOrder' => 'unit_no'
+            )
         ));
     }
 }

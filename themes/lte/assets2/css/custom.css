@@ -4,3 +4,31 @@ section.page-hero {
     background-size: cover;
     background-position: center center;
 }
+.pagination .page-item a {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: none;
+    margin-right: 5px;
+    color: #68c2bd;
+}
+.pagination .page-item.active a {
+    background-color: #68c2bd;
+    color: #fff;
+}
+.pagination .page-item.hidden {
+    display: none;
+}

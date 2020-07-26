@@ -10,7 +10,7 @@ $this->pageTitle = 'Data Cabang/Unit PRISMA';
     <div class="container">
         <div class="row">
             <section class="col-12 col-lg-12" style="padding: 20px 0px 20px 0px">
-                <div class="table-responsive">
+                <div class="table-responsive" style="font-size: 0.9em !important">
                     <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id' => 'unit-grid',
                         'dataProvider' => $model->search(),
@@ -56,12 +56,20 @@ $this->pageTitle = 'Data Cabang/Unit PRISMA';
                         'cssFile' => false,
                         'summaryCssClass' => 'dataTables_info',
                         'template' => '{summary}{items}{pager}',
-                        'pagerCssClass' => 'dataTables_paginate paging_simple_numbers text-center',
+                        'pagerCssClass' => 'pagination-container text-center',
                         'pager' => array(
                             'htmlOptions' => array('class' => 'pagination'),
-                            'internalPageCssClass' => 'paginate_button',
+                            'internalPageCssClass' => 'page-item',
                             'selectedPageCssClass' => 'active',
-                            'header' => ''
+                            'header' => '',
+                            'firstPageCssClass' => 'page-item',
+                            'firstPageLabel'=> '<<',
+                            'previousPageCssClass' => 'page-item',
+                            'prevPageLabel' => '<',
+                            'nextPageCssClass'=>'page-item',
+                            'nextPageLabel' => '>',
+                            'lastPageCssClass' => 'page-item',
+                            'lastPageLabel' => '>>'
                         ),
                         'beforeAjaxUpdate' => "function(){
                             $('#loading').show();

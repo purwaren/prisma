@@ -57,8 +57,8 @@ class CreateUnitForm extends CFormModel
     {
         if ($this->validate()) {
             $addr = new AddressCustom();
-            $addr->address_1 = $this->address_1;
-            $addr->address_2 = $this->address_2;
+            $addr->address_1 = strtoupper($this->address_1);
+            $addr->address_2 = strtoupper($this->address_2);
             $addr->district = $this->district;
             $addr->city = $this->city;
             $addr->state = $this->state;
@@ -68,6 +68,9 @@ class CreateUnitForm extends CFormModel
                 $this->address_id = $addr->id;
                 $unit = new UnitCustom();
                 $unit->attributes = $this->attributes;
+                $unit->owner = strtoupper($unit->owner);
+                $unit->consultant = strtoupper($unit->consultant);
+                $unit->trainer = strtoupper($unit->trainer);
                 $unit->created_by = Yii::app()->user->getName();
                 $unit->created_at = new CDbExpression('NOW()');
                 if ($unit->save()) {
@@ -86,8 +89,8 @@ class CreateUnitForm extends CFormModel
             $unit = UnitCustom::model()->findByPk($this->id);
             if (empty($unit->address_id)) {
                 $addr = new AddressCustom();
-                $addr->address_1 = $this->address_1;
-                $addr->address_2 = $this->address_2;
+                $addr->address_1 = strtoupper($this->address_1);
+                $addr->address_2 = strtoupper($this->address_2);
                 $addr->district = $this->district;
                 $addr->city = $this->city;
                 $addr->state = $this->state;
@@ -98,12 +101,15 @@ class CreateUnitForm extends CFormModel
             }
             $this->address_id = $unit->address_id;
             $unit->attributes = $this->attributes;
+            $unit->owner = strtoupper($unit->owner);
+            $unit->consultant = strtoupper($unit->consultant);
+            $unit->trainer = strtoupper($unit->trainer);
             $unit->updated_by = Yii::app()->user->getName();
             $unit->updated_at = new CDbExpression('NOW()');
             if ($unit->save()) {
                 $addr = $unit->address;
-                $addr->address_1 = $this->address_1;
-                $addr->address_2 = $this->address_2;
+                $addr->address_1 = strtoupper($this->address_1);
+                $addr->address_2 = strtoupper($this->address_2);
                 $addr->district = $this->district;
                 $addr->city = $this->city;
                 $addr->state = $this->state;

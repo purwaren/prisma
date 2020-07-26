@@ -32,10 +32,13 @@ $this->breadcrumbs = array(
             <?php $this->widget('zii.widgets.CDetailView', array(
                 'data' => $model,
                 'attributes' => array(
-                    'no_unit',
+                    'unit_no',
                     'trainer',
                     'consultant',
-                    'status',
+                    array(
+                        'label'=>'Status',
+                        'value'=>$model->getStatus()
+                    ),
                     'start_date',
                     'expired_at'
                 ),
@@ -48,7 +51,7 @@ $this->breadcrumbs = array(
                 'data' => $model,
                 'attributes' => array(
                     'owner',
-                    'no_wa'
+                    'wa_number'
                 ),
                 'htmlOptions' => array(
                     'class' => 'table table-hover table-striped table-detail-view'
