@@ -109,7 +109,10 @@ class SiteController extends Controller
     public function actionDistrict($city_id)
     {
         $model = DistrictCustom::model()->findAllByAttributes(array('city_id' => $city_id));
-        $options = array();
+        $item = new Select2Options();
+        $item->id = null;
+        $item->text = 'Pilih Kecamatan';
+        $options[] = $item;
         if (!empty($model)) {
             foreach ($model as $row) {
                 $item = new Select2Options();
@@ -125,7 +128,10 @@ class SiteController extends Controller
     public function actionCity($state_id)
     {
         $model = CityCustom::model()->findAllByAttributes(array('state_id' => $state_id));
-        $options = array();
+        $item = new Select2Options();
+        $item->id = 0;
+        $item->text = 'Pilih Kab/Kota';
+        $options[] = $item;
         if (!empty($model)) {
             foreach ($model as $row) {
                 $item = new Select2Options();

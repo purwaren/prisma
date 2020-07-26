@@ -28,8 +28,11 @@ class UnitSearch extends CFormModel
         $criteria->compare('unit_no', $this->unit_no);
         $criteria->compare('owner', $this->owner, true);
         $criteria->compare('a.state', $this->state);
-        $criteria->compare('a.city', $this->city);
-        $criteria->compare('a.district', $this->district);
+
+        if ($this->city != 0)
+            $criteria->compare('a.city', $this->city);
+        if ($this->district != 0)
+            $criteria->compare('a.district', $this->district);
 
         return new CActiveDataProvider(UnitCustom::model(), array(
             'criteria' => $criteria,
