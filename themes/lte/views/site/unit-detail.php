@@ -73,18 +73,7 @@ $this->pageTitle = 'Detail Unit';
                                 'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize+$row+1'
                             ),
                             'name',
-                            'phone',
-                            array(
-                                'class' => 'CButtonColumn',
-                                'template' => '{view}',
-                                'buttons' => array(
-                                    'view' => array(
-                                        'label' => '<i class="fa fa-search"></i>',
-                                        'imageUrl' => false,
-                                        'options' => array('class' => 'btn btn-xs btn-primary', 'title' => 'Detail', 'data-toggle' => 'tooltip')
-                                    )
-                                )
-                            ),
+                            'phone'
                         ),
                         'itemsCssClass' => 'table table-striped table-bordered table-hover dataTable',
                         'cssFile' => false,
