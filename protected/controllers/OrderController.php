@@ -27,17 +27,9 @@ class OrderController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','index','view','admin','delete'),
 				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -62,14 +54,14 @@ class OrderController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new OrderCustom;
+		$model=new OrderForm;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['OrderCustom']))
+		if(isset($_POST['OrderForm']))
 		{
-			$model->attributes=$_POST['OrderCustom'];
+			$model->attributes=$_POST['OrderForm'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

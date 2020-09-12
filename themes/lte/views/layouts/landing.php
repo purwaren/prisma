@@ -13,8 +13,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="PRISMA Kalkulator Tangan adalah metode belajar matematika menggunakan 10 jari tangan">
+    <meta name="author" content="purwaren">
+    <meta name="keywords" content="prisma,sepuluh jari, jaritmatika,matematika,les,bimbel">
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i|Source+Serif+Pro:400,600,700"
           rel="stylesheet">

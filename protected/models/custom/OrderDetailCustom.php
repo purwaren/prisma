@@ -1,7 +1,7 @@
 <?php
 
 
-class OrderCustomDetail
+class OrderDetailCustom extends OrderDetail
 {
     public function rules()
     {

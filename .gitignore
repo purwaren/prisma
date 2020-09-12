@@ -2,3 +2,5 @@
 .DS_Store
 assets/*
 protected/runtime
+testdata/postgres
+yii

@@ -48,3 +48,9 @@
 .table-detail-view tbody tr th {
     width: 150px !important;
 }
+#barcode {
+    font-size: 1.6em;
+    width: 240px;
+    height: 40px;
+    text-align: center;
+}

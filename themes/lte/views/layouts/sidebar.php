@@ -32,6 +32,7 @@
                     'url' => array('/site/dashboard'),
                     'itemOptions' => array('class' => 'treeview')
                 ),
+                /**
                 array(
                     'label' => '<i class="fa fa-files-o"></i><span>Konten</span><i class="fa fa-angle-left pull-right"></i>',
                     'itemOptions' => array('class' => 'treeview'),
@@ -42,14 +43,11 @@
                     ),
                     'encodeLabel' => false,
                 ),
+                */
                 array(
                     'label' => '<i class="fa fa-shopping-cart"></i><span>Transaksi</span><i class="fa fa-angle-left pull-right"></i>',
                     'itemOptions' => array('class' => 'treeview'),
-                    'url' => '#',
-                    'items' => array(
-                        array('label' => '<i class="fa fa-newspaper-o"></i> Daftar Order', 'url' => array('/order/admin')),
-                        array('label' => '<i class="fa fa-folder-o"></i> Daftar Item', 'url' => array('/item/admin')),
-                    ),
+                    'url' => array('/order/admin'),
                     'encodeLabel' => false,
                     'visible'=>!Yii::app()->user->checkAccess('unit')
                 ),
@@ -76,6 +74,17 @@
                         array('label' => '<i class="fa fa-map"></i> Kecamatan', 'url' => array('/district/admin')),
                     ),
                     'encodeLabel' => false,
+                ),
+                array(
+                    'label' => '<i class="fa fa-folder-o"></i><span>Master</span><i class="fa fa-angle-left pull-right"></i>',
+                    'itemOptions' => array('class' => 'treeview'),
+                    'url' => '#',
+                    'items' => array(
+                        array('label' => '<i class="fa fa-file-text"></i> Kategori Barang ', 'url' => array('/itemCategory/admin')),
+                        array('label' => '<i class="fa fa-file-text"></i> Barang', 'url' => array('/item/admin')),
+                    ),
+                    'encodeLabel' => false,
+                    'visible'=>!Yii::app()->user->checkAccess('unit')
                 ),
                 array(
                     'label' => '<i class="fa fa-wrench"></i><span>Konfigurasi Sistem</span><i class="fa fa-angle-left pull-right"></i>',

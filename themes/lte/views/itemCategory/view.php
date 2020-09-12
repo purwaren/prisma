@@ -1,10 +1,10 @@
 <?php
-/* @var $this UsersController */
-/* @var $model Users */
-$this->pageTitle = 'Detil Guru';
+/* @var $this ItemCategoryController */
+/* @var $model ItemCategoryCustom */
+$this->pageTitle = 'Detil Kategori Barang';
 
 $this->breadcrumbs = array(
-    'Guru' => array('admin'),
+    'Kategori Barang' => array('admin'),
     $model->name,
 );
 
@@ -16,7 +16,7 @@ $this->breadcrumbs = array(
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">
-                <small>Informasi lengkap tentang guru pendamping</small>
+                <small>Informasi lengkap tentang wilayah</small>
             </h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i
@@ -32,20 +32,19 @@ $this->breadcrumbs = array(
                     'attributes' => array(
                         'id',
                         'name',
-                        'phone',
                         'created_at',
                         'created_by',
                         'updated_at',
-                        'updated_by',
+                        'updated_by'
                     ),
                     'htmlOptions' => array(
-                        'class' => 'table table-hover table-striped'
+                        'class' => 'table table-hover table-striped table-detail-view'
                     ),
                 )); ?>
             </div>
         </div><!-- /.box-body -->
         <div class="box-footer">
-            <?php echo CHtml::link('Kembali', array('teacher/admin'), array('class' => 'btn btn-primary')) ?>
+            <?php echo CHtml::link('Kembali', array('itemCategory/admin'), array('class' => 'btn btn-primary')) ?>
         </div><!-- /.box-footer-->
     </div><!-- /.box -->
 </section><!-- /.content -->

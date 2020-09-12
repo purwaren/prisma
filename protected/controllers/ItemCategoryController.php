@@ -1,6 +1,6 @@
 <?php
 
-class ItemController extends Controller
+class ItemCategoryController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,7 +28,7 @@ class ItemController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view', 'create','update','admin','delete','search'),
+				'actions'=>array('index','view', 'create','update','admin','delete'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -43,13 +43,8 @@ class ItemController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$model = $this->loadModel($id);
-		if (Yii::app()->request->isAjaxRequest) {
-			echo CJSON::encode($model);
-			Yii::app()->end();
-		}
 		$this->render('view',array(
-			'model'=>$model,
+			'model'=>$this->loadModel($id),
 		));
 	}
 
@@ -59,16 +54,19 @@ class ItemController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new ItemCustom;
+		$model=new ItemCategoryCustom;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['ItemCustom']))
+		if(isset($_POST['ItemCategoryCustom']))
 		{
-			$model->attributes=$_POST['ItemCustom'];
-			if($model->saveCustom())
+			$model->attributes=$_POST['ItemCategoryCustom'];
+			$model->created_at = new CDbExpression('NOW()');
+			$model->created_by = Yii::app()->user->getName();
+			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
+			
 		}
 
 		$this->render('create',array(
@@ -88,9 +86,9 @@ class ItemController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['ItemCustom']))
+		if(isset($_POST['ItemCategoryCustom']))
 		{
-			$model->attributes=$_POST['ItemCustom'];
+			$model->attributes=$_POST['ItemCategoryCustom'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -119,7 +117,7 @@ class ItemController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('ItemCustom');
+		$dataProvider=new CActiveDataProvider('ItemCategoryCustom');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -130,39 +128,26 @@ class ItemController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new ItemCustom('search');
+		$model=new ItemCategoryCustom('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['ItemCustom']))
-			$model->attributes=$_GET['ItemCustom'];
+		if(isset($_GET['ItemCategoryCustom']))
+			$model->attributes=$_GET['ItemCategoryCustom'];
 
 		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
 
-	public function actionSearch($query='')
-	{
-		$model = new ItemCustom('search');
-		$model->unsetAttributes();
-
-		if (!empty($key)) {
-			$model->code = $query;
-			$model->name = $query;
-		}
-		$data = $model->searchAutocomplete();
-		echo CJSON::encode($data->getData());
-	}
-
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return ItemCustom the loaded model
+	 * @return ItemCategoryCustom the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=ItemCustom::model()->findByPk($id);
+		$model=ItemCategoryCustom::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -170,11 +155,11 @@ class ItemController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param ItemCustom $model the model to be validated
+	 * @param ItemCategoryCustom $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='item-custom-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='item-category-custom-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

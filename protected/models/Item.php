@@ -14,6 +14,10 @@
  * @property string $created_at
  * @property string $updated_by
  * @property string $updated_at
+ * @property string $cat_id
+ *
+ * The followings are the available model relations:
+ * @property ItemCategory $cat
  */
 class Item extends CActiveRecord
 {
@@ -33,7 +37,7 @@ class Item extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('code, name, stock, price, created_by, created_at', 'required'),
+			array('code, name, stock, price, created_by, created_at, cat_id', 'required'),
 			array('code', 'length', 'max'=>16),
 			array('name', 'length', 'max'=>128),
 			array('acq_price, price', 'length', 'max'=>19),
@@ -41,7 +45,7 @@ class Item extends CActiveRecord
 			array('updated_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, code, name, stock, acq_price, price, created_by, created_at, updated_by, updated_at', 'safe', 'on'=>'search'),
+			array('id, code, name, stock, acq_price, price, created_by, created_at, updated_by, updated_at, cat_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,6 +57,7 @@ class Item extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'cat' => array(self::BELONGS_TO, 'ItemCategory', 'cat_id'),
 		);
 	}
 
@@ -72,6 +77,7 @@ class Item extends CActiveRecord
 			'created_at' => 'Created At',
 			'updated_by' => 'Updated By',
 			'updated_at' => 'Updated At',
+			'cat_id' => 'Cat',
 		);
 	}
 
@@ -103,6 +109,7 @@ class Item extends CActiveRecord
 		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_by',$this->updated_by,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
+		$criteria->compare('cat_id',$this->cat_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

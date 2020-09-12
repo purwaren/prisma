@@ -1,30 +1,27 @@
 <?php
 
 /**
- * This is the model class for table "order".
+ * This is the model class for table "item_category".
  *
- * The followings are the available columns in table 'order':
+ * The followings are the available columns in table 'item_category':
  * @property string $id
- * @property string $order_number
- * @property string $unit_id
- * @property integer $status
- * @property string $delivery_date
- * @property string $delivery_provider
- * @property string $delivery_receipt_no
- * @property string $created_at
+ * @property string $name
  * @property string $created_by
- * @property string $updated_at
+ * @property string $created_at
  * @property string $updated_by
- * @property string $order_date
+ * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property Item[] $items
  */
-class Order extends CActiveRecord
+class ItemCategory extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'order';
+		return 'item_category';
 	}
 
 	/**
@@ -35,14 +32,13 @@ class Order extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('order_number, unit_id, status, created_at, created_by, order_date', 'required'),
-			array('status', 'numerical', 'integerOnly'=>true),
-			array('order_number', 'length', 'max'=>32),
-			array('delivery_provider, delivery_receipt_no, created_by, updated_by', 'length', 'max'=>32),
-			array('delivery_date, updated_at', 'safe'),
+			array('name, created_by, created_at', 'required'),
+			array('name', 'length', 'max'=>128),
+			array('created_by, updated_by', 'length', 'max'=>32),
+			array('updated_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, order_number, unit_id, status, delivery_date, delivery_provider, delivery_receipt_no, created_at, created_by, updated_at, updated_by, order_date', 'safe', 'on'=>'search'),
+			array('id, name, created_by, created_at, updated_by, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +50,7 @@ class Order extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'items' => array(self::HAS_MANY, 'Item', 'cat_id'),
 		);
 	}
 
@@ -64,17 +61,11 @@ class Order extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'order_number' => 'Order Number',
-			'unit_id' => 'Unit',
-			'status' => 'Status',
-			'delivery_date' => 'Delivery Date',
-			'delivery_provider' => 'Delivery Provider',
-			'delivery_receipt_no' => 'Delivery Receipt No',
-			'created_at' => 'Created At',
+			'name' => 'Name',
 			'created_by' => 'Created By',
-			'updated_at' => 'Updated At',
+			'created_at' => 'Created At',
 			'updated_by' => 'Updated By',
-			'order_date' => 'Order Date',
+			'updated_at' => 'Updated At',
 		);
 	}
 
@@ -97,17 +88,11 @@ class Order extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('order_number',$this->order_number,true);
-		$criteria->compare('unit_id',$this->unit_id,true);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('delivery_date',$this->delivery_date,true);
-		$criteria->compare('delivery_provider',$this->delivery_provider,true);
-		$criteria->compare('delivery_receipt_no',$this->delivery_receipt_no,true);
-		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('name',$this->name,true);
 		$criteria->compare('created_by',$this->created_by,true);
-		$criteria->compare('updated_at',$this->updated_at,true);
+		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_by',$this->updated_by,true);
-		$criteria->compare('order_date',$this->order_date,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -118,7 +103,7 @@ class Order extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Order the static model class
+	 * @return ItemCategory the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
