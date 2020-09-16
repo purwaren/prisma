@@ -83,16 +83,16 @@
             <div class="overlay-lower">
                 <div class="container">
                     <div class="links">
-                        <div class="link"><a href="about.html" title="Our School"><i class="fas fa-university link-icon"
+                        <div class="link"><a href="<?php echo Yii::app()->createUrl('site/about')?>" title="Tentang Prisma"><i class="fas fa-university link-icon"
                                                                                      aria-hidden="true"></i><span
                                         class="link-text">Tentang Prisma</span></a></div>
-                        <div class="link"><a href="admissions.html" title="Admissions"><i
+                        <div class="link"><a href="<?php echo Yii::app()->createUrl('site/unit')?>" title="Data Unit"><i
                                         class="fas fa-graduation-cap link-icon" aria-hidden="true"></i><span
-                                        class="link-text">Data Unit</span></a></div>
-                        <div class="link"><a href="news.html" title="News &amp; Events"><i
+                                        class="link-text">Data Cabang/Unit</span></a></div>
+                        <div class="link"><a href="#" title="News &amp; Events"><i
                                         class="fas fa-newspaper link-icon" aria-hidden="true"></i><span
                                         class="link-text">Berita & Kegiatan</span></a></div>
-                        <div class="link"><a href="docs.html" title="Key Info"><i class="fas fa-info-circle link-icon"
+                        <div class="link"><a href="#" title="Key Info"><i class="fas fa-info-circle link-icon"
                                                                                   aria-hidden="true"></i><span
                                         class="link-text">Cara Bergabung</span></a></div>
                     </div>

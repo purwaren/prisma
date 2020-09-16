@@ -10,11 +10,12 @@ class UnitSearch extends CFormModel
     public $state;
     public $city;
     public $district;
+    public $address_2;
 
     public function rules()
     {
         return array(
-            array('unit_no, owner, state, city, district', 'safe')
+            array('unit_no, owner, address_2, state, city, district', 'safe')
         );
     }
 
@@ -28,6 +29,9 @@ class UnitSearch extends CFormModel
         $criteria->compare('unit_no', $this->unit_no);
         $criteria->compare('owner', $this->owner, true);
         $criteria->compare('a.state', $this->state);
+        $criteria->compare('a.city', $this->city);
+        $criteria->compare('a.district', $this->district);
+        $criteria->compare('a.address_2', $this->address_2, true);
 
         if ($this->city != 0)
             $criteria->compare('a.city', $this->city);

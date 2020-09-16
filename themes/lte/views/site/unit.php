@@ -5,11 +5,63 @@
  */
 
 $this->pageTitle = 'Data Cabang/Unit PRISMA';
+
+Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/assets/plugins/select2/select2.css');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/assets/plugins/select2/select2.full.min.js');
+
+Yii::app()->clientScript->registerScript('sdfs', "
+    $('.select2').select2();
+    $('#search-unit').submit(function(event){
+        $('#unit-grid').yiiGridView('update', {
+            data: $(this).serialize()
+        });
+        return false;
+    })
+");
+
+Yii::app()->clientScript->registerCss('csdfs',"
+    .select2-container .select2-selection--single {
+        height: 45px !important;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 45px !important;
+    }
+");
+
 ?>
 <div class="main-cols-wrapper">
     <div class="container">
         <div class="row">
             <section class="col-12 col-lg-12" style="padding: 20px 0px 20px 0px">
+            <?php $form = $this->beginWidget('CActiveForm', array(
+                'action' => Yii::app()->createUrl($this->route),
+                'method' => 'get',
+                'htmlOptions'=>array('id'=> 'search-unit')
+            ));
+            ?>
+                <div class="contact-form-inner">
+                    <div class="form-row">                                                                                       
+                        <div class="col-2 col-xs-6 form-group">
+                            <?php echo $form->textField($model, 'unit_no', array('class' => 'form-control', 'placeholder' => 'No. Unit')); ?>
+                        </div> 
+                        <div class="col-2 col-xs-6 form-group">
+                            <?php echo $form->dropDownList($model, 'state', StateCustom::getAllOptions(),
+                            array('prompt'=>'Provinsi','class'=>'select2 form-control'))?>
+                        </div> 
+                        <div class="col-2 col-xs-6 form-group">
+                        <?php echo $form->dropDownList($model, 'state', CityCustom::getAllOptions(),
+                            array('prompt'=>'Kab / Kota','class'=>'select2 form-control'))?>
+                        </div>                     
+                        <div class="col-2 col-xs-6 form-group">
+                        <?php echo $form->dropDownList($model, 'state', DistrictCustom::getAllOptions(),
+                            array('prompt'=>'Kecamatan','class'=>'select2 form-control'))?>
+                        </div> 
+                        <div class="col-2 col-xs-6 form-group">
+                            <button type="submit" class="btn btn-block btn-cta btn-primary">Search</button>
+                        </div>                           
+                    </div><!--//row-->
+                </div>
+            <?php $this->endWidget(); ?>
                 <div class="table-responsive" style="font-size: 0.9em !important">
                     <?php $this->widget('zii.widgets.grid.CGridView', array(
                         'id' => 'unit-grid',

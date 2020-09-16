@@ -61,6 +61,9 @@ class SiteController extends Controller
             ));
         } else {
             $model = new UnitSearch('search');
+            if (isset($_GET['UnitSearch'])) {
+                $model->attributes = $_GET['UnitSearch'];
+            }
             $this->render('unit',array(
                 'model'=>$model
             ));
