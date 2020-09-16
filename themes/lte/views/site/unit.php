@@ -57,6 +57,9 @@ Yii::app()->clientScript->registerCss('csdfs',"
                             array('prompt'=>'Kecamatan','class'=>'select2 form-control'))?>
                         </div> 
                         <div class="col-2 col-xs-6 form-group">
+                            <?php echo $form->textField($model, 'address_2', array('class' => 'form-control', 'placeholder' => 'Kelurahan')); ?>
+                        </div> 
+                        <div class="col-2 col-xs-6 form-group">
                             <button type="submit" class="btn btn-block btn-cta btn-primary">Search</button>
                         </div>                           
                     </div><!--//row-->

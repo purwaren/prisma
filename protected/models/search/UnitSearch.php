@@ -31,7 +31,7 @@ class UnitSearch extends CFormModel
         $criteria->compare('a.state', $this->state);
         $criteria->compare('a.city', $this->city);
         $criteria->compare('a.district', $this->district);
-        $criteria->compare('a.address_2', $this->address_2, true);
+        $criteria->compare('upper(a.address_2)', strtoupper($this->address_2), true);
 
         if ($this->city != 0)
             $criteria->compare('a.city', $this->city);
