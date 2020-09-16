@@ -49,11 +49,11 @@ Yii::app()->clientScript->registerCss('csdfs',"
                             array('prompt'=>'Provinsi','class'=>'select2 form-control'))?>
                         </div> 
                         <div class="col-2 col-xs-6 form-group">
-                        <?php echo $form->dropDownList($model, 'state', CityCustom::getAllOptions(),
+                        <?php echo $form->dropDownList($model, 'city', CityCustom::getAllOptions(),
                             array('prompt'=>'Kab / Kota','class'=>'select2 form-control'))?>
                         </div>                     
                         <div class="col-2 col-xs-6 form-group">
-                        <?php echo $form->dropDownList($model, 'state', DistrictCustom::getAllOptions(),
+                        <?php echo $form->dropDownList($model, 'district', DistrictCustom::getAllOptions(),
                             array('prompt'=>'Kecamatan','class'=>'select2 form-control'))?>
                         </div> 
                         <div class="col-2 col-xs-6 form-group">
