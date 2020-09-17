@@ -20,7 +20,9 @@ class OrderCustom extends Order
             'created_at' => 'Waktu Entri',
             'created_by' => 'Dibuat Oleh',
             'order_date' => 'Tanggal',
-            'delivery_date' => 'Tanggal Kirim'
+            'delivery_date' => 'Tanggal Kirim',
+            'delivery_provider'=>'Armada Pengiriman',
+            'delivery_receipt_no'=>'No. Resi'
         );
     }
 
@@ -34,7 +36,8 @@ class OrderCustom extends Order
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'unit'=> array(self::BELONGS_TO, 'UnitCustom', 'unit_id')
+            'unit'=> array(self::BELONGS_TO, 'UnitCustom', 'unit_id'),
+            'provider'=> array(self::BELONGS_TO, 'DeliveryProviderCustom', 'delivery_provider')
 		);
 	}
 

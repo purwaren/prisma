@@ -11,6 +11,41 @@ $this->breadcrumbs = array(
 $order_detail = new OrderDetailCustom('search');
 $order_detail->order_id = $model->id;
 
+Yii::app()->clientScript->registerScript('sdaf',"
+    $('.btn-process').click(function(event){
+        event.preventDefault();
+        var url = $(this).attr('href');
+        if (!confirm('Anda yakin akan meproses order ini?')) {
+            return false;
+        }
+        ".CHtml::ajax(array(
+            'url'=>'js:url',
+            'type'=>'POST',
+            'success'=>"function(data){
+                if (data==1) {
+                    document.location.reload()
+                }
+            }"
+        ))."
+    });
+    $('.btn-finish').click(function(event){
+        event.preventDefault();
+        var url = $(this).attr('href');
+        if (!confirm('Anda yakin akan menyelesaikan order ini?')) {
+            return false;
+        }
+        ".CHtml::ajax(array(
+            'url'=>'js:url',
+            'type'=>'POST',
+            'success'=>"function(data){
+                if (data==1) {
+                    document.location.reload()
+                }
+            }"
+        ))."
+    });
+");
+
 ?>
 
 <!-- Main content -->
@@ -36,6 +71,21 @@ $order_detail->order_id = $model->id;
                         array(
                             'label'=>'Status',
                             'value'=>OrderStatus::getValue($model->status)
+                        ),
+                        array(
+                            'label'=>'Tanggal Kirim',
+                            'value'=>$model->delivery_date,
+                            'visible'=>$model->status == OrderStatus::STATUS_DELIVER || $model->status == OrderStatus::STATUS_FINISH
+                        ),
+                        array(
+                            'label'=>'Nama Ekspedisi',
+                            'value'=>$model->provider->name,
+                            'visible'=>$model->status == OrderStatus::STATUS_DELIVER || $model->status == OrderStatus::STATUS_FINISH
+                        ),
+                        array(
+                            'label'=>'No. Resi',
+                            'value'=>$model->delivery_receipt_no,
+                            'visible'=>$model->status == OrderStatus::STATUS_DELIVER || $model->status == OrderStatus::STATUS_FINISH
                         ),
                         'created_at',
                         'created_by',
@@ -109,9 +159,11 @@ $order_detail->order_id = $model->id;
         </div><!-- /.box-body -->
         <div class="box-footer">
             <?php echo CHtml::link('Kembali', array('order/admin'), array('class' => 'btn btn-default')) ?>
-            <?php echo CHtml::link('Proses', array('order/process','id'=>$model->id), array('class' => 'btn btn-primary')) ?>
-            <?php echo CHtml::link('Pengiriman', array('order/delivery','id'=>$model->id), array('class' => 'btn btn-warning')) ?>
-            <?php echo CHtml::link('Batal', array('order/cancel','id'=>$model->id), array('class' => 'btn btn-danger')) ?>
+            <?php echo $model->status==OrderStatus::STATUS_DRAFT ? CHtml::link('Proses', array('order/process','id'=>$model->id), array('class' => 'btn btn-primary btn-process')) : '' ?>
+            <?php echo $model->status < OrderStatus::STATUS_DELIVER ? CHtml::link('Pengiriman', array('order/delivery','id'=>$model->id), array('class' => 'btn btn-warning btn-delivery')): '' ?>
+            <?php echo $model->status < OrderStatus::STATUS_DELIVER ? CHtml::link('Batal', array('order/cancel','id'=>$model->id), array('class' => 'btn btn-danger btn-cancel')): '' ?>
+            <?php echo $model->status==OrderStatus::STATUS_DELIVER ? CHtml::link('Lacak', $model->provider->url_tracking.$model->delivery_receipt_no, array('class' => 'btn btn-warning','target'=>'_new')) : '' ?>
+            <?php echo $model->status==OrderStatus::STATUS_DELIVER ? CHtml::link('Selesai', array('order/finish','id'=>$model->id), array('class' => 'btn btn-danger btn-finish')) : '' ?>
         </div><!-- /.box-footer-->
     </div><!-- /.box -->
 </section><!-- /.content -->

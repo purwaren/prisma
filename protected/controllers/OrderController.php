@@ -28,7 +28,7 @@ class OrderController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view','admin','delete'),
+				'actions'=>array('create','update','index','view','admin','delete','process','delivery','cancel','finish'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -91,6 +91,27 @@ class OrderController extends Controller
 		}
 
 		$this->render('update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionDelivery($id)
+	{
+		$order=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		$model = new OrderDeliveryForm();
+
+		if(isset($_POST['OrderDeliveryForm']))
+		{
+			$model->attributes=$_POST['OrderDeliveryForm'];
+			$model->order_id = $order->id;
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->order_id));
+		}
+
+		$this->render('delivery',array(
 			'model'=>$model,
 		));
 	}
@@ -160,6 +181,23 @@ class OrderController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+
+	public function actionProcess($id) 
+	{
+		if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
+			$order = $this->loadModel($id);
+			$order->status = OrderStatus::STATUS_PROCESS;
+			echo $order->update(array('status'));
+		}
+	}
+	public function actionFinish($id) 
+	{
+		if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
+			$order = $this->loadModel($id);
+			$order->status = OrderStatus::STATUS_FINISH;
+			echo $order->update(array('status'));
 		}
 	}
 }

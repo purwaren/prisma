@@ -62,12 +62,14 @@ $this->breadcrumbs = array(
                             'update' => array(
                                 'label' => '<i class="fa fa-edit"></i>',
                                 'imageUrl' => false,
-                                'options' => array('class' => 'btn btn-xs btn-warning', 'title' => 'Ubah', 'data-toggle' => 'tooltip')
+                                'options' => array('class' => 'btn btn-xs btn-warning', 'title' => 'Ubah', 'data-toggle' => 'tooltip'),
+                                'visible' => '$data->status < OrderStatus::STATUS_DELIVER'
                             ),
                             'delete' => array(
                                 'label' => '<i class="fa fa-trash"></i>',
                                 'imageUrl' => false,
                                 'options' => array('class' => 'btn btn-xs btn-danger', 'title' => 'Hapus', 'data-toggle' => 'tooltip'),
+                                'visible' => '$data->status < OrderStatus::STATUS_DELIVER'
                             )
                         )
                     ),
