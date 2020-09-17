@@ -44,6 +44,22 @@ Yii::app()->clientScript->registerScript('sdaf',"
             }"
         ))."
     });
+    $('.btn-cancel').click(function(event){
+        event.preventDefault();
+        var url = $(this).attr('href');
+        if (!confirm('Anda yakin akan membatalkan order ini?')) {
+            return false;
+        }
+        ".CHtml::ajax(array(
+            'url'=>'js:url',
+            'type'=>'POST',
+            'success'=>"function(data){
+                if (data==1) {
+                    document.location.reload()
+                }
+            }"
+        ))."
+    });
 ");
 
 ?>

@@ -200,4 +200,12 @@ class OrderController extends Controller
 			echo $order->update(array('status'));
 		}
 	}
+	public function actionCancel($id) 
+	{
+		if (Yii::app()->request->isPostRequest && Yii::app()->request->isAjaxRequest) {
+			$order = $this->loadModel($id);
+			$order->status = OrderStatus::STATUS_CANCELED;
+			echo $order->update(array('status'));
+		}
+	}
 }
