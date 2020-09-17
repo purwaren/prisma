@@ -79,7 +79,7 @@ Yii::app()->clientScript->registerScript('sdaf',"
                         ),
                         array(
                             'label'=>'Nama Ekspedisi',
-                            'value'=>$model->provider->name,
+                            'value'=>isset($model->provider) ? $model->provider->name : '',
                             'visible'=>$model->status == OrderStatus::STATUS_DELIVER || $model->status == OrderStatus::STATUS_FINISH
                         ),
                         array(

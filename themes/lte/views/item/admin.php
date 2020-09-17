@@ -28,7 +28,10 @@ $this->breadcrumbs = array(
                     'code',
                     'name',
                     'stock',
-                    'price',
+                    array(
+                        'name'=>'price',
+                        //'value'=>'number_format($data->price)'
+                    ),
                     array(
                         'class' => 'CButtonColumn',
                         'template' => '{view} {update} {delete}',
