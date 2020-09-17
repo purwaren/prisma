@@ -39,6 +39,7 @@ $this->breadcrumbs = array(
                         'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize+$row+1'
                     ),
                     'order_date',
+                    'order_number',
                     'unit.unit_no',
                     'unit.owner',
                     array(
@@ -50,7 +51,6 @@ $this->breadcrumbs = array(
                         'value'=>'$data->getTotalBill()',
                         'htmlOptions'=>array('class'=>'text-right')
                     ),
-                    'delivery_date',
                     array(
                         'class' => 'CButtonColumn',
                         'buttons' => array(

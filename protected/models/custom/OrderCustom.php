@@ -48,9 +48,9 @@ class OrderCustom extends Order
 		$criteria=new CDbCriteria;
 
         $criteria->select = "t.id, t.order_number, t.unit_id, t.status, t.delivery_date, to_char(t.order_date,'DD-MON-YYYY') AS order_date";
-		$criteria->compare('id',$this->id,true);
+		$criteria->compare('id',$this->id);
 		$criteria->compare('order_number',$this->order_number,true);
-		$criteria->compare('unit_id',$this->unit_id,true);
+		$criteria->compare('unit_id',$this->unit_id);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('delivery_date',$this->delivery_date,true);
 		$criteria->compare('delivery_provider',$this->delivery_provider,true);

@@ -14,6 +14,7 @@ Yii::app()->clientScript->registerScript('search', "
         });
         return false;
     });
+    $('.select2').select2();
 ");
 
 $form = $this->beginWidget('CActiveForm', array(
@@ -24,7 +25,7 @@ $form = $this->beginWidget('CActiveForm', array(
 ?>
 <div class="box-body" id="search">
     <div class="form-group">
-        <?php echo $form->textField($model, 'unit_id', array('class' => 'form-control', 'placeholder' => 'Unit')); ?>
+        <?php echo $form->dropDownList($model, 'unit_id', UnitCustom::getAllOptions(),array('prompt' => 'Pilih Unit/Cabang','class'=>'form-control select2')); ?>
     </div>
     <div class="form-group">
         <?php echo $form->textField($model, 'order_number', array('class' => 'form-control', 'placeholder' => 'Nomor Order')); ?>
