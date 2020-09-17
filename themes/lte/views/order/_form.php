@@ -127,7 +127,7 @@ $model->order_date = date('Y-m-d');
     <div class="box-footer">
         <?php echo CHtml::submitButton('Simpan', array('class' => 'btn btn-success')); ?>
         &nbsp;
-        <?php echo CHtml::linkButton('Kembali', array('class' => 'btn btn-danger', 'href' => array('order/admin'))); ?>
+        <?php echo CHtml::link('Kembali',array('order/admin'), array('class'=>'btn btn-danger')); ?>
     </div>
     <?php $this->endWidget(); ?>
 </div>

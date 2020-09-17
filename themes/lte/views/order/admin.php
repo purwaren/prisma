@@ -38,9 +38,18 @@ $this->breadcrumbs = array(
                         'header' => 'No',
                         'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize+$row+1'
                     ),
-                    'order_number',
-                    'unit_id',
-                    'status',
+                    'order_date',
+                    'unit.unit_no',
+                    'unit.owner',
+                    array(
+                        'name'=>'status',
+                        'value'=>'OrderStatus::getValue($data->status)'
+                    ),
+                    array(
+                        'header'=>'Total (Rp)',
+                        'value'=>'$data->getTotalBill()',
+                        'htmlOptions'=>array('class'=>'text-right')
+                    ),
                     'delivery_date',
                     array(
                         'class' => 'CButtonColumn',
