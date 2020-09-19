@@ -32,7 +32,7 @@ return array(
             'class' => 'system.gii.GiiModule',
             'password' => 'bolo',
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
-            'ipFilters' => array('127.0.0.1', '::1', '192.168.33.1'),
+            'ipFilters' => array('127.0.0.1', '::1', '172.17.0.1'),
         ),
 
     ),
@@ -132,8 +132,8 @@ return array(
             'file' => 'assets/files/',
             'album' => 'assets/album/'
         ),
-        'imageUrl' => '/prisma-yii/assets/images/',
-        'fileUrl' => '/prisma-yii/assets/files/',
-        'albumUrl' => '/prisma-yii/assets/album/'
+        'imageUrl' => '/assets/images/',
+        'fileUrl' => '/assets/files/',
+        'albumUrl' => '/assets/album/'
     ),
 );

@@ -37,7 +37,7 @@ class NewsForm extends CFormModel
             'banner' => 'Banner',
             'cat_id' => 'Kategori',
             'flag_published' => 'Status Publikasi',
-            'tag' => 'Unit'
+            'tag' => 'Tag'
         );
     }
 

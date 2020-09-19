@@ -65,6 +65,30 @@
                     'visible' => !Yii::app()->user->checkAccess('unit')
                 ),
                 array(
+                    'label' => '<i class="fa fa-file-text"></i><span>Artikel</span><i class="fa fa-angle-left pull-right"></i>',
+                    'itemOptions' => array('class' => 'treeview'),
+                    'url' => '#',
+                    'items' => array(
+                        array('label' => '<i class="fa fa-plus-square"></i> Tambah Artikel', 'url' => array('/news/create')),
+                        array('label' => '<i class="fa fa-plus-square"></i> Tambah Kategori', 'url' => array('/category/create')),
+                        array('label' => '<i class="fa fa-archive"></i> Kelola Artikel', 'url' => array('/news/admin')),
+                        array('label' => '<i class="fa fa-archive"></i> Kelola Kategori', 'url' => array('/category/admin')),
+                    ),
+                    'encodeLabel' => false,
+                    'visible' => !Yii::app()->user->checkAccess('unit')
+                ),
+                array(
+                    'label' => '<i class="fa fa-calendar"></i><span>Event</span><i class="fa fa-angle-left pull-right"></i>',
+                    'itemOptions' => array('class' => 'treeview'),
+                    'url' => '#',
+                    'items' => array(
+                        array('label' => '<i class="fa fa-plus-square"></i> Tambah Event', 'url' => array('/event/create')),
+                        array('label' => '<i class="fa fa-archive"></i> Kelola Event', 'url' => array('/event/admin')),
+                    ),
+                    'encodeLabel' => false,
+                    'visible' => !Yii::app()->user->checkAccess('unit')
+                ),
+                array(
                     'label' => '<i class="fa fa-archive"></i><span>Wilayah</span><i class="fa fa-angle-left pull-right"></i>',
                     'itemOptions' => array('class' => 'treeview'),
                     'url' => '#',

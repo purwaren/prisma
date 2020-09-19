@@ -10,56 +10,42 @@ class EventForm extends CFormModel
 {
     public $title;
     public $description;
-    public $location;
-    public $datetime;
+    public $start_time;
+    public $end_time;
+    public $banner_url;
     public $id;
+    public $isNewRecord = true;
 
     public function rules()
     {
         return array(
-            array('title, description, location, datetime', 'required')
+            array('title, start_time, description', 'required'),
+            array('title, description, start_time, end_time, banner_url','safe')
         );
     }
 
     public function attributeLabels()
     {
         return array(
-            'title' => 'Nama Kegiatan',
-            'description' => 'Deskripsi',
-            'location' => 'Lokasi',
-            'datetime' => 'Waktu Pelaksanaan'
+            'title' => 'Judul Event',
+            'description' => 'Keterangan',
+            'start_time' => 'Waktu Mulai',
+            'end_time' => 'Waktu Berakhir',
+            'banner_url' => 'Banner'
         );
     }
 
-    public function save()
+    public function save() 
     {
         if ($this->validate()) {
-            if (empty($this->id)) {
-                $model = new Event();
-                $model->attributes = $this->attributes;
-                $model->user_create = Yii::app()->user->getName();
-                $model->timestamp_create = new CDbExpression('NOW()');
-
-            } else {
-                $model = Event::model()->findByPk($this->id);
-                $model->attributes = $this->attributes;
-                $model->id = $this->id;
-                $model->user_update = Yii::app()->user->getName();
-                $model->timestamp_update = new CDbExpression('NOW()');
-            }
-
-            //break datetime
-            $tmp = explode('-', $this->datetime);
-            $model->start_date = trim(str_replace('/', '-', $tmp[0]));
-            $model->end_date = trim(str_replace('/', '-', $tmp[1]));
-
+            $model = new EventCustom();
+            $model->attributes = $this->attributes;
+            $model->created_at = new CDbExpression('NOW()');
+            $model->created_by = Yii::app()->user->getName();
             if ($model->save()) {
-                $this->id = $model->id;
                 return true;
             } else {
                 $this->addErrors($model->getErrors());
-                $this->addError('datetime', $model->getError('start_date'));
-                $this->addError('datetime', $model->getError('end_date'));
             }
         }
     }

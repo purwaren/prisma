@@ -1,35 +1,35 @@
 <?php
 /* @var $this EventController */
-/* @var $model Event */
+/* @var $model EventCustom */
 
-$this->breadcrumbs = array(
-    'Events' => array('index'),
-    $model->title,
+$this->breadcrumbs=array(
+	'Event Customs'=>array('index'),
+	$model->title,
 );
 
-$this->menu = array(
-    array('label' => 'List Event', 'url' => array('index')),
-    array('label' => 'Create Event', 'url' => array('create')),
-    array('label' => 'Update Event', 'url' => array('update', 'id' => $model->id)),
-    array('label' => 'Delete Event', 'url' => '#', 'linkOptions' => array('submit' => array('delete', 'id' => $model->id), 'confirm' => 'Are you sure you want to delete this item?')),
-    array('label' => 'Manage Event', 'url' => array('admin')),
+$this->menu=array(
+	array('label'=>'List EventCustom', 'url'=>array('index')),
+	array('label'=>'Create EventCustom', 'url'=>array('create')),
+	array('label'=>'Update EventCustom', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Delete EventCustom', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage EventCustom', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Event #<?php echo $model->id; ?></h1>
+<h1>View EventCustom #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
-    'data' => $model,
-    'attributes' => array(
-        'id',
-        'title',
-        'description',
-        'location',
-        'start_date',
-        'end_date',
-        'user_create',
-        'user_update',
-        'timestamp_create',
-        'timestamp_update',
-    ),
+	'data'=>$model,
+	'attributes'=>array(
+		'id',
+		'title',
+		'description',
+		'start_time',
+		'end_time',
+		'banner_url',
+		'created_at',
+		'created_by',
+		'updated_at',
+		'updated_by',
+	),
 )); ?>

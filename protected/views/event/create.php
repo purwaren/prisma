@@ -1,18 +1,18 @@
 <?php
 /* @var $this EventController */
-/* @var $model Event */
+/* @var $model EventCustom */
 
-$this->breadcrumbs = array(
-    'Events' => array('index'),
-    'Create',
+$this->breadcrumbs=array(
+	'Event Customs'=>array('index'),
+	'Create',
 );
 
-$this->menu = array(
-    array('label' => 'List Event', 'url' => array('index')),
-    array('label' => 'Manage Event', 'url' => array('admin')),
+$this->menu=array(
+	array('label'=>'List EventCustom', 'url'=>array('index')),
+	array('label'=>'Manage EventCustom', 'url'=>array('admin')),
 );
 ?>
 
-    <h1>Create Event</h1>
+<h1>Create EventCustom</h1>
 
-<?php $this->renderPartial('_form', array('model' => $model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model)); ?>

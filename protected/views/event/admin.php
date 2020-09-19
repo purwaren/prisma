@@ -1,15 +1,15 @@
 <?php
 /* @var $this EventController */
-/* @var $model Event */
+/* @var $model EventCustom */
 
-$this->breadcrumbs = array(
-    'Events' => array('index'),
-    'Manage',
+$this->breadcrumbs=array(
+	'Event Customs'=>array('index'),
+	'Manage',
 );
 
-$this->menu = array(
-    array('label' => 'List Event', 'url' => array('index')),
-    array('label' => 'Create Event', 'url' => array('create')),
+$this->menu=array(
+	array('label'=>'List EventCustom', 'url'=>array('index')),
+	array('label'=>'Create EventCustom', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#event-grid').yiiGridView('update', {
+	$('#event-custom-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,40 +26,39 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Events</h1>
+<h1>Manage Event Customs</h1>
 
 <p>
-    You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>,
-    <b>&lt;&gt;</b>
-    or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
+or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button')); ?>
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
-    <?php $this->renderPartial('_search', array(
-        'model' => $model,
-    )); ?>
+<?php $this->renderPartial('_search',array(
+	'model'=>$model,
+)); ?>
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id' => 'event-grid',
-    'dataProvider' => $model->search(),
-    'filter' => $model,
-    'columns' => array(
-        'id',
-        'title',
-        'description',
-        'location',
-        'start_date',
-        'end_date',
-        /*
-        'user_create',
-        'user_update',
-        'timestamp_create',
-        'timestamp_update',
-        */
-        array(
-            'class' => 'CButtonColumn',
-        ),
-    ),
+	'id'=>'event-custom-grid',
+	'dataProvider'=>$model->search(),
+	'filter'=>$model,
+	'columns'=>array(
+		'id',
+		'title',
+		'description',
+		'start_time',
+		'end_time',
+		'banner_url',
+		/*
+		'created_at',
+		'created_by',
+		'updated_at',
+		'updated_by',
+		*/
+		array(
+			'class'=>'CButtonColumn',
+		),
+	),
 )); ?>
