@@ -1,6 +1,6 @@
 <?php
 
-class EventCustom extends event {
+class EventCustom extends Event {
 
     public function attributeLabels()
     {
