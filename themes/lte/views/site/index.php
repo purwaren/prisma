@@ -225,41 +225,45 @@ $news = new NewsCustom();
                     </div><!--//source-->
                 </div><!--//item-->
                 <div class="item carousel-item">
-                    <h3 class="review-title"><i class="fas fa-quote-left"></i>My teachers are great!<i
+                    <h3 class="review-title"><i class="fas fa-quote-left"></i>Meningkatkan Level<i
                                 class="fas fa-quote-right d-none d-md-inline"></i></h3>
                     <blockquote class="review mx-auto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis rhoncus porta libero, id
-                            maximus eros maximus quis. Etiam imperdiet fringilla massa eget efficitur.</p>
+                        <p>Alhamdulillah terimakasih pak Zaenal sudah membimbing kami...
+                        walaupun sempet oleng di perkalian tapi akhirnya selesai sampai pembagian.. 
+                        next naik ke tingkat lebih tinggi ya..amin</p>
                     </blockquote><!--//review-->
                     <div class="source">
-                        <div class="name">Jack Sanders</div>
-                        <div class="title">Year 5 Student</div>
+                        <div class="name">Rinah (Owner)</div>
+                        <div class="title">Unit 221 Bogor</div>
                     </div><!--//source-->
                 </div>
-
+                <div class="item carousel-item">
+                    <h3 class="review-title"><i class="fas fa-quote-left"></i>Mencerdaskan anak bangsa<i
+                                class="fas fa-quote-right d-none d-md-inline"></i></h3>
+                    <blockquote class="review mx-auto">
+                        <p>Terimakasih kdatanganny pa Zainal Founder Prisma Kalkulator Pusat, Mdh2n Prisma smakin mlebarkan sayapny dmana pun tmpatny, smakin byk saudarany. Smakin brmanfaat ilmuny, Smakin sukses teman2 yg mngembangkn bimbelny aamiin yra 🤲🤲
+Wah bsa mngadakan event lomba kcepatan berhitung Prisma dsubang nih, smakin meluas mncerdaskn ank2 bangsa indonesia</p>
+                    </blockquote><!--//review-->
+                    <div class="source">
+                        <div class="name">Umi Riana (Owner)</div>
+                        <div class="title">Unit Kalijati, Jakata Barat</div>
+                    </div><!--//source-->
+                </div>
             </div><!--//carousel-inner-->
 
             <!--//Indicators-->
             <ol class="carousel-indicators">
                 <li class="active" data-target="#reviews-carousel" data-slide-to="0">
                     <img class="img-fluid"
-                         src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/profiles/profile-1.png" alt="">
+                         src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/profiles/profile-1.jpg" alt="">
                 </li>
                 <li data-target="#reviews-carousel" data-slide-to="1" class="">
                     <img class="img-fluid"
-                         src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/profiles/profile-2.png" alt="">
+                         src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/profiles/profile-2.jpg" alt="">
                 </li>
                 <li data-target="#reviews-carousel" data-slide-to="2" class="">
                     <img class="img-fluid"
-                         src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/profiles/profile-3.png" alt="">
-                </li>
-                <li data-target="#reviews-carousel" data-slide-to="3" class="">
-                    <img class="img-fluid"
-                         src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/profiles/profile-4.png" alt="">
-                </li>
-                <li data-target="#reviews-carousel" data-slide-to="4" class="">
-                    <img class="img-fluid"
-                         src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/profiles/profile-5.png" alt="">
+                         src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/profiles/profile-3.jpg" alt="">
                 </li>
             </ol><!--//carousel-indicators-->
 
