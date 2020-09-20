@@ -43,6 +43,7 @@ class EventForm extends CFormModel
             $model->created_at = new CDbExpression('NOW()');
             $model->created_by = Yii::app()->user->getName();
             if ($model->save()) {
+                $this->id = $model->id;
                 return true;
             } else {
                 $this->addErrors($model->getErrors());

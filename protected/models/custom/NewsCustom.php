@@ -53,4 +53,30 @@ class NewsCustom extends News
             'flag_published'=>self::FLAG_PUBLISHED_ACTIVE
         ));
     }
+
+    public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('cat_id',$this->cat_id);
+		$criteria->compare('title',$this->title,true);
+		$criteria->compare('permalink',$this->permalink,true);
+		$criteria->compare('summary',$this->summary,true);
+		$criteria->compare('content',$this->content,true);
+		$criteria->compare('banner',$this->banner,true);
+		$criteria->compare('video_url',$this->video_url,true);
+		$criteria->compare('flag_published',$this->flag_published);
+		$criteria->compare('created_at',$this->created_at,true);
+		$criteria->compare('created_by',$this->created_by,true);
+		$criteria->compare('updated_at',$this->updated_at,true);
+		$criteria->compare('updated_by',$this->updated_by,true);
+		$criteria->compare('tag',$this->tag,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 }

@@ -18,12 +18,14 @@ class NewsForm extends CFormModel
     public $data;
     public $isNewRecord = true;
     public $tag;
+    public $video_url;
+    public $id;
 
     public function rules()
     {
         return array(
             array('title, permalink, summary, content, banner, cat_id, flag_published', 'required'),
-            array('tag', 'safe')
+            array('tag, video_url', 'safe')
         );
     }
 
@@ -37,7 +39,8 @@ class NewsForm extends CFormModel
             'banner' => 'Banner',
             'cat_id' => 'Kategori',
             'flag_published' => 'Status Publikasi',
-            'tag' => 'Tag'
+            'tag' => 'Tag',
+            'video_url' => 'Video'
         );
     }
 
@@ -52,7 +55,7 @@ class NewsForm extends CFormModel
     public function save()
     {
         if ($this->validate()) {
-            $model = new News();
+            $model = new NewsCustom();
             $model->attributes = $this->attributes;
             $model->created_at = new CDbExpression('NOW()');
             $model->created_by = Yii::app()->user->getName();
@@ -63,6 +66,19 @@ class NewsForm extends CFormModel
                 $this->addErrors($model->getErrors());
                 return false;
             }
+        }
+    }
+
+    public function update() 
+    {
+        if ($this->validate()) {
+            $model = NewsCustom::model()->findByPk($this->id);
+            $model->attributes = $this->attributes;
+            $model->updated_by = Yii::app()->user->getName();
+            $model->updated_at = new CDbExpression('NOW()');
+            if ($model->save()) {
+                return true;
+            } else $this->addErrors($model->getErrors());
         }
     }
 }

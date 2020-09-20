@@ -137,13 +137,17 @@ class NewsController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->loadModel($id);
+        $news = $this->loadModel($id);
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
+        $model = new NewsForm();
+        $model->attributes = $news->attributes;
+        $model->isNewRecord = false;
+        $model->id = $id;
 
-        if (isset($_POST['News'])) {
-            $model->attributes = $_POST['News'];
+        if (isset($_POST['NewsForm'])) {
+            $model->attributes = $_POST['NewsForm'];
 
             //pre process tag
             if (!empty($model->tag)) {
@@ -160,7 +164,7 @@ class NewsController extends Controller
                 }
             }
 
-            if ($model->save())
+            if ($model->update())
                 $this->redirect(array('view', 'id' => $model->id));
             var_dump($model->getErrors());
         }
@@ -286,12 +290,12 @@ class NewsController extends Controller
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer $id the ID of the model to be loaded
-     * @return News the loaded model
+     * @return NewsCustom the loaded model
      * @throws CHttpException
      */
     public function loadModel($id)
     {
-        $model = News::model()->findByPk($id);
+        $model = NewsCustom::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;

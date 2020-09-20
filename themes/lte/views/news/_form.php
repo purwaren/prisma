@@ -1,6 +1,6 @@
 <?php
-/* @var $this PageController */
-/* @var $model Page */
+/* @var $this NewsController */
+/* @var $model NewsForm */
 /* @var $form CActiveForm */
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/assets/plugins/bootstrap-fileinput/fileinput.min.js', CClientScript::POS_END);
 Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/assets/plugins/bootstrap-fileinput/css/fileinput.min.css');
@@ -37,7 +37,8 @@ Yii::app()->clientScript->registerScript('uploaded', "
 	String.prototype.replaceAll = function(search, replacement) {
 		var target = this;
 		return target.replace(new RegExp(search, 'g'), replacement);
-	};	
+    };
+    var tag = ".CJSON::encode($model->tag).";	
 ");
 ?>
 
@@ -69,6 +70,12 @@ Yii::app()->clientScript->registerScript('uploaded', "
             <?php echo $form->labelEx($model, 'permalink'); ?>
             <?php echo $form->textField($model, 'permalink', array('class' => 'form-control', 'placeholder' => 'Permalink', 'id' => 'permalink')); ?>
             <?php echo $form->error($model, 'permalink'); ?>
+        </div>
+
+        <div class="form-group">
+            <?php echo $form->labelEx($model, 'video_url'); ?>
+            <?php echo $form->textField($model, 'video_url', array('class' => 'form-control', 'placeholder' => 'Youtube Link')); ?>
+            <?php echo $form->error($model, 'video_url'); ?>
         </div>
 
         <div class="form-group">
@@ -123,11 +130,12 @@ Yii::app()->clientScript->registerScript('uploaded', "
                 'taggerWrapperClass' => 'tagger-input-container form-control',
                 'autocompleteOptions' => array(
                     'source' => Yii::app()->createUrl('news/listTag'),
-                    'delay' => 0,
+                    'delay' => 200,
                     'close' => "js:function(event, ui) {
-							if(event.keyCode == 13)
-								$(this).val('');
-						}"
+                        if(event.keyCode == 13)
+                            $(this).val('');
+                    }",
+                    'startWith' => 'js:tag'
                 ),
             )) ?>
             <?php echo $form->error($model, 'tag'); ?>
