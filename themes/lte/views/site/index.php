@@ -1,3 +1,14 @@
+<?php 
+/**
+ * @var $this SiteController
+ * @var $event EventCustom
+ */
+
+$event = new EventCustom();
+
+
+?>
+
 <section class="promo-section section section-on-bg">
     <div class="hero-slider-wrapper">
         <div class="flexslider hero-slider">
@@ -194,68 +205,19 @@
 
             <aside class="col-side col-12 col-lg-4">
                 <div class="shortcuts-block block">
-                    <div class="item tbg-accent">
-                        <i class="fas fa-download" aria-hidden="true"></i>
-                        <span class="text"><a target="_blank" href="<?php echo Yii::app()->theme->baseUrl?>/assets2/brosur-prisma.pdf">Unduh Brosur</a></span>
-                    </div><!--//item-->
                     <div class="item tbg-secondary">
-                        <i class="fas fa-images" aria-hidden="true"></i>
-                        <span class="text"><a href="#">Galeri Foto</a></span>
+                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                        <span class="text"><a target="_blank" href="<?php echo Yii::app()->theme->baseUrl?>/assets2/brosur-prisma.pdf">Brosur PRISMA</a></span>
                     </div><!--//item-->
                 </div><!--//shortcuts-block-->
                 <div class="events-block block">
-                    <h3 class="block-title">Upcoming Events</h3>
-                    <div class="events-items">
-                        <div class="item">
-                            <div class="time">
-                                <div class="time-inner">
-                                    <div class="date">26</div>
-                                    <div class="month">Jan</div>
-                                </div>
-                            </div><!--//time-->
-                            <div class="details">
-                                <h4 class="event-title">Open Evening</h4>
-                                <div class="intro">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor...
-                                </div><!--//intro-->
-                            </div><!--//details-->
-                        </div><!--//item-->
-                        <div class="item">
-                            <div class="time">
-                                <div class="time-inner">
-                                    <div class="date">07</div>
-                                    <div class="month">Dec</div>
-                                </div>
-                            </div><!--//time-->
-                            <div class="details">
-                                <h4 class="event-title">Drama Workshop</h4>
-                                <div class="intro">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor...
-                                </div><!--//intro-->
-                            </div><!--//details-->
-                        </div><!--//item-->
-                        <div class="item">
-                            <div class="time">
-                                <div class="time-inner">
-                                    <div class="date">20</div>
-                                    <div class="month">Nov</div>
-                                </div>
-                            </div><!--//time-->
-                            <div class="details">
-                                <h4 class="event-title">Science Day</a></h4>
-                                <div class="intro">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-                                    dolor...
-                                </div><!--//intro-->
-                            </div><!--//details-->
-                        </div><!--//item-->
-                        <div class="action text-center">
-                            <a class="btn btn-ghost-alt" href="calendar.html">View Calendar<i class="fas fa-angle-right"
-                                                                                              aria-hidden="true"></i></a>
-                        </div>
-                    </div><!--//events-items-->
+                    <h3 class="block-title">Event Terbaru</h3>
+                    <?php $this->widget('zii.widgets.CListView', array(
+                        'dataProvider'=>$event->search(),
+                        'itemView'=>'_event',
+                        'itemsCssClass'=>'events-items',
+                        'template'=> '{items}'
+                    )); ?>
                 </div><!--//block-->
             </aside><!--//col-side-->
 
