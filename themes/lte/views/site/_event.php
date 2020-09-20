@@ -21,7 +21,7 @@ $date = explode('-', $data->start_time);
 </div><!--//item-->
 <?php if ($index == $widget->dataProvider->itemCount-1) { ?>
 <div class="action text-center">
-    <a class="btn btn-ghost-alt" href="calendar.html">
+    <a class="btn btn-ghost-alt" href="#">
         View Calendar<i class="fas fa-angle-right"aria-hidden="true"></i>
     </a>
 </div>

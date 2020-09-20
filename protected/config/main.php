@@ -68,6 +68,7 @@ return array(
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<_c:(site)>/news/<permalink>'=>'<_c>/news',
+                '<_c:(news)>/<permalink>'=>'<_c>/read',
             ),
         ),
         // database settings are configured in database.php

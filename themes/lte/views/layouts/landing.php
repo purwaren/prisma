@@ -135,9 +135,8 @@
                     <div class="sub-col col-12 col-md-4">
                         <h4 class="col-title">Tentang PRISMA</h4>
                         <ul class="footer-links list-unstyled">
-                            <li class="link-item"><a href="#">Profile PRISMA</a></li>
-                            <li class="link-item"><a href="#">Pendiri</a></li>
-                            <li class="link-item"><a href="#">Unit</a></li>
+                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/about')?>">Tentang PRISMA</a></li>
+                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/unit')?>">Cabang & Unit</a></li>
                             <li class="link-item"><a href="#">Cara Bergabung</a></li>
                         </ul>
                     </div><!--//sub-col-->
@@ -145,8 +144,8 @@
                         <h4 class="col-title">Informasi Lain</h4>
                         <ul class="footer-links list-unstyled">
                             <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/login') ?>">Web Admin</a></li>
-                            <li class="link-item"><a href="#">Berita</a></li>
-                            <li class="link-item"><a href="#">Event</a></li>
+                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/news')?>">Berita</a></li>
+                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/news')?>">Event</a></li>
                         </ul>
                     </div><!--//sub-col-->
                 </div><!--//row-->
@@ -162,113 +161,6 @@
     </div>
     </div><!--//container-->
 </footer><!--//footer-->
-
-<!-- News Modal 1-->
-<div id="news-modal-1" class="news-modal modal modal-fullscreen" tabindex="-1" role="dialog"
-     aria-labelledby="newsModal1Label">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title text-center" id="newsModal1Label">School Concert</h4>
-
-            </div><!--//modal-header-->
-            <div class="modal-body">
-                <div class="meta text-center">Thursday, 16th August 2017</div>
-                <div class="post">
-                    <p><img class="img-fluid"
-                            src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/news/news-1.jpg" alt=""/></p>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                        mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-                        quis enim.</p>
-                    <p>Maecenas ac turpis sit amet leo semper ultricies lobortis sed purus. Integer erat felis, maximus
-                        in placerat vel, fermentum a libero. Ut quis mollis est. Pellentesque semper nibh ut scelerisque
-                        tincidunt. Nullam commodo quam eu lectus ullamcorper, quis sagittis ligula sagittis. Fusce id
-                        pellentesque risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                        cubilia Curae.</p>
-                </div>
-            </div><!--//modal-body-->
-            <div class="modal-footer text-center">
-                <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal">Close</button>
-            </div>
-        </div><!--//modal-content-->
-    </div>
-</div><!--//modal-->
-
-<!-- News Modal 2-->
-<div id="news-modal-2" class="news-modal modal modal-fullscreen" tabindex="-1" role="dialog"
-     aria-labelledby="newsModal2Label">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title text-center" id="newsModal2Label">Year 6 Sports Day</h4>
-            </div><!--//modal-header-->
-            <div class="modal-body">
-                <div class="meta text-center">Friday, 8th June 2017</div>
-                <div class="post">
-                    <p><img class="img-fluid"
-                            src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/news/news-2.jpg" alt=""/></p>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                        mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-                        quis enim.</p>
-                    <p>Maecenas ac turpis sit amet leo semper ultricies lobortis sed purus. Integer erat felis, maximus
-                        in placerat vel, fermentum a libero. Ut quis mollis est. Pellentesque semper nibh ut scelerisque
-                        tincidunt. Nullam commodo quam eu lectus ullamcorper, quis sagittis ligula sagittis. Fusce id
-                        pellentesque risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                        cubilia Curae.</p>
-                    <p>Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
-                        consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a,
-                        tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                        ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
-                        Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
-                        sem neque sed ipsum.</p>
-                </div>
-            </div><!--//modal-body-->
-            <div class="modal-footer text-center">
-                <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal">Close</button>
-            </div>
-        </div><!--//modal-content-->
-    </div>
-</div><!--//modal-->
-
-<!-- News Modal 3-->
-<div id="news-modal-3" class="news-modal modal modal-fullscreen" tabindex="-1" role="dialog"
-     aria-labelledby="newsModal3Label">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title text-center" id="newsModal3Label">ICT Week</h4>
-            </div><!--//modal-header-->
-            <div class="modal-body">
-                <div class="meta text-center">Tuesday, 24th May 2017</div>
-                <div class="post">
-                    <p><img class="img-fluid"
-                            src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/news/news-3.jpg" alt=""/></p>
-                    <p>Suspendisse et accumsan velit, non sollicitudin nisl. Donec dapibus augue eu viverra eleifend.
-                        Etiam finibus eu arcu nec tempus. Sed luctus metus leo, non pellentesque tortor tempor aliquam.
-                        Sed sit amet egestas est. Sed varius, urna ac bibendum porta, nunc risus suscipit turpis, sed
-                        condimentum neque metus non purus. Quisque volutpat nulla dignissim diam malesuada, id tincidunt
-                        orci scelerisque. Phasellus est orci, varius sit amet imperdiet ac, faucibus id urna. Mauris
-                        varius odio et nisl finibus, sed fringilla ligula eleifend.</p>
-                    <p>Curabitur volutpat bibendum mi sed hendrerit. Etiam commodo molestie facilisis. Nulla sed lectus
-                        eu metus consequat vehicula eu ac justo. Phasellus posuere vehicula rhoncus. Praesent a molestie
-                        tortor. Phasellus ornare imperdiet vehicula. Vivamus nec odio vitae ligula semper facilisis quis
-                        id odio.</p>
-                </div>
-            </div><!--//modal-body-->
-            <div class="modal-footer text-center">
-                <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal">Close</button>
-            </div>
-        </div><!--//modal-content-->
-    </div>
-</div><!--//modal-->
 
 <!-- Javascript -->
 <script type="text/javascript"
