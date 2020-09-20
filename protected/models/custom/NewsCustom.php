@@ -35,7 +35,7 @@ class NewsCustom extends News
     {
         return array(
             'detail'=>array(
-                'select'=>"id, title, content, permalink, banner, flag_published, to_char(created_at,'DD Month YYYY, HH24:MI:SS') AS created_at, created_by" ,
+                'select'=>"id, title, content, permalink, banner, flag_published, to_char(created_at,'DD Month YYYY, HH24:MI:SS') AS created_at, created_by, tag" ,
             ),
             'latest'=>array(
                 'order'=>'timestamp_created DESC'

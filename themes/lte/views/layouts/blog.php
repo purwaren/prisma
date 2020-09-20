@@ -15,10 +15,16 @@ $this->beginContent('//layouts/landing');
 <div class="breadcrumb-container">
     <div class="container">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><i class="fas fa-home" aria-hidden="true"></i> <a href="<?php echo Yii::app()->createUrl('site/index')?>">Beranda</a></li>
-                <li class="breadcrumb-item active">Kontak</li>
-            </ol>
+        <?php if(isset($this->breadcrumbs)) {
+            $this->widget('ext.EBreadcrumbs', array(
+                'breadcrumbLabel'=>'Anda berada di',
+                'links'=>$this->breadcrumbs,
+                'htmlOptions'=>array('class'=>'breadcrumb'),
+                'tagName'=>'ol',
+                'encodeLabel'=>false
+
+            )); 
+        } ?>
         </nav>
     </div><!--//container-->
 </div><!--//breadcrumb-container-->

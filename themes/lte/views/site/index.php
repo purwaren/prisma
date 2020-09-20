@@ -5,7 +5,7 @@
  */
 
 $event = new EventCustom();
-
+$news = new NewsCustom();
 
 ?>
 
@@ -151,55 +151,12 @@ $event = new EventCustom();
                 </div><!--//welcome-block-->
                 <div class="news-block block">
                     <h3 class="block-title">Latest News</h3>
-                    <div class="news-items">
-                        <div class="item item-1">
-                            <div class="thumb-holder">
-
-                            </div><!--//thumb-holder-->
-                            <div class="content-holder">
-                                <h4 class="news-title"><a href="#">Pembukaan Unit Bandung</a></h4>
-                                <div class="intro">
-                                    Pembukaan PRISMA Kalkulator Tangan Unit Bandung, Cabang ke 68, Unit Ke 147, 148, 149, 150,
-                                    dan 151 Pelatihan dilaksanakan pada hari Sabtu, 23 November 2019. Mereka semua adalah para
-                                    pengelola Bimbel Profesional, bahkan yang membuat kami terharu ada salah satu Peserta
-                                    yang datang dari Subang rela datang dan menginap di Bandung hanya untuk pelatihan Kalkulator Tangan.
-                                </div><!--//intro-->
-                                <a class="btn btn-ghost" href="#" >Selengkapnya<i class="fas fa-angle-right" aria-hidden="true"></i></a>
-                            </div><!--//content-holder-->
-                        </div><!--//item-->
-                        <div class="item item-2">
-                            <div class="thumb-holder">
-
-                            </div><!--//thumb-holder-->
-                            <div class="content-holder">
-                                <h4 class="news-title">
-                                    <a href="#">
-                                        Pelatihan PRISMA Wilayah Kebumen
-                                    </a></h4>
-                                <div class="intro">
-                                    Proses pelatihan PRISMA Cabang Kebumen untuk unit Puring, Kebumen, Klirong dan Alian
-                                    yang dilaksanakan pada tanggal 13 Oktober 2019.
-                                </div><!--//intro-->
-                                <a class="btn btn-ghost" href="#">
-                                    Selengkapnya <i class="fas fa-angle-right" aria-hidden="true"></i>
-                                </a>
-                            </div><!--//content-holder-->
-                        </div><!--//item-->
-                        <div class="item item-3">
-                            <div class="thumb-holder">
-
-                            </div><!--//thumb-holder-->
-                            <div class="content-holder">
-                                <h4 class="news-title"><a href="#" >Pembukaan Unit Bali</a></h4>
-                                <div class="intro">
-                                    Alhamdulillah berdiri lagi 2 Unit PRISMA Kalkulator Tangan di Denpasar Bali, Unit Ke 131 dan 132,
-                                    Padahal baru 2 Calon Mitra tapi sudah langsung mulai pelatihan, karena kepingin segera di aplikasikan ke Anak didik.
-                                </div><!--//intro-->
-                                <a class="btn btn-ghost" href="#" >
-                                    Selengkapnya<i class="fas fa-angle-right" aria-hidden="true"></i></a>
-                            </div><!--//content-holder-->
-                        </div><!--//item-->
-                    </div><!--//news-items-->
+                    <?php $this->widget('zii.widgets.CListView', array(
+                        'dataProvider'=>$news->search(),
+                        'itemView'=>'_news',
+                        'itemsCssClass'=>'news-items',
+                        'template'=> '{items}'
+                    )); ?>
                 </div><!--//news-block-->
             </section><!--//col-main-->
 

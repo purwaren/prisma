@@ -9,9 +9,9 @@ Yii::import('zii.widgets.CBreadcrumbs');
 
 class EBreadcrumbs extends CBreadcrumbs
 {
-    public $activeLinkTemplate = '<li><a href="{url}">{label}</a></li>';
-    public $inactiveLinkTemplate = '<li class="active">{label}</li>';
-    public $breadcrumbLabelTemplate = '<li>{label}</i></li>';
+    public $activeLinkTemplate = '<li class="breadcrumb-item active"><a href="{url}">{label}</a></li>';
+    public $inactiveLinkTemplate = '<li class="breadcrumb-item">{label}</li>';
+    public $breadcrumbLabelTemplate = '<li class="breadcrumb-item">{label}</i></li>';
     public $breadcrumbLabel = 'You are here';
 
     /**
@@ -26,11 +26,10 @@ class EBreadcrumbs extends CBreadcrumbs
         $definedLinks = $this->links;
 
         echo CHtml::openTag($this->tagName, $this->htmlOptions) . "\n";
-        //echo Chtml::openTag('ol',array('class'=>'breadcrumb'))."\n";
         $links = array();
         //$links[] = str_replace('{label}', $this->breadcrumbLabel, $this->breadcrumbLabelTemplate);
         if ($this->homeLink === null)
-            $definedLinks = array('<i class="fa fa-home"></i>Beranda' => Yii::app()->homeUrl) + $definedLinks;
+            $definedLinks = array('<i class="fas fa-home" aria-hidden="true"></i>Beranda' => Yii::app()->homeUrl) + $definedLinks;
         elseif ($this->homeLink !== false)
             $links[] = $this->homeLink;
         foreach ($definedLinks as $label => $url) {
@@ -43,7 +42,6 @@ class EBreadcrumbs extends CBreadcrumbs
                 $links[] = str_replace('{label}', $this->encodeLabel ? CHtml::encode($url) : $url, $this->inactiveLinkTemplate);
         }
         echo implode('', $links);
-        //echo CHtml::closeTag('ol');
         echo CHtml::closeTag($this->tagName);
     }
 }

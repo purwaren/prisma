@@ -49,7 +49,8 @@ class SiteController extends Controller
         $this->render('about');
     }
 
-    public function actionUnit($id='') {
+    public function actionUnit($id='') 
+    {
         $this->layout = '//layouts/data';
         if (!empty($id)) {
             $model = UnitCustom::model()->findByPk($id);
@@ -68,6 +69,15 @@ class SiteController extends Controller
                 'model'=>$model
             ));
         }
+    }
+
+    public function actionNews($permalink)
+    {
+        $this->layout = '//layouts/blog';
+        $model = NewsCustom::model()->findByPermalink($permalink);
+        $this->render('news',array(
+            'model'=>$model
+        ));
     }
 
     /**
