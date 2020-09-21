@@ -1,6 +1,6 @@
 <?php
 /* @var $this UnitController */
-/* @var $model UnitCustom */
+/* @var $model UnitSearch */
 
 $this->pageTitle = 'Kelola Unit';
 $this->breadcrumbs = array(

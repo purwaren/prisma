@@ -26,6 +26,17 @@ Yii::app()->clientScript->registerCss('csdfs',"
     .select2-container--default .select2-selection--single .select2-selection__rendered {
         line-height: 45px !important;
     }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 50;
+        background: rgba(255,255,255,0.7);
+        border-radius: 3px;
+        padding-top: 30%;
+    }
 ");
 
 ?>
@@ -135,6 +146,9 @@ Yii::app()->clientScript->registerCss('csdfs',"
                             $('#loading').hide();
                         }"
                     )); ?>
+                </div>
+                <div class="overlay text-center" id="loading" style="display: none">
+                    <i class="fas fa-2x fa-sync fa-spin"></i>
                 </div>
             </section><!--//col-main-->
         </div><!--//row-->

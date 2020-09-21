@@ -28,11 +28,10 @@ class UnitSearch extends CFormModel
         $criteria->join = 'LEFT JOIN address a ON a.id = address_id';
         $criteria->compare('unit_no', $this->unit_no);
         $criteria->compare('owner', $this->owner, true);
-        $criteria->compare('a.state', $this->state);
-        $criteria->compare('a.city', $this->city);
-        $criteria->compare('a.district', $this->district);
         $criteria->compare('upper(a.address_2)', strtoupper($this->address_2), true);
 
+        if ($this->state != 0)
+            $criteria->compare('a.state', $this->state);
         if ($this->city != 0)
             $criteria->compare('a.city', $this->city);
         if ($this->district != 0)
