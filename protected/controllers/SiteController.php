@@ -71,13 +71,10 @@ class SiteController extends Controller
         }
     }
 
-    public function actionNews($permalink)
+    public function actionNews()
     {
         $this->layout = '//layouts/blog';
-        $model = NewsCustom::model()->findByPermalink($permalink);
-        $this->render('news',array(
-            'model'=>$model
-        ));
+        $this->render('news');
     }
 
     /**

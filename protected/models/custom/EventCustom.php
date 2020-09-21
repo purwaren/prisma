@@ -2,6 +2,8 @@
 
 class EventCustom extends Event {
 
+    public $start_hour;
+
     public function attributeLabels()
     {
         return array(
@@ -29,7 +31,7 @@ class EventCustom extends Event {
 
         $criteria=new CDbCriteria;
         
-        $criteria->select = "id, title, description, to_char(start_time, 'DD-MON-YYYY') as start_time, end_time, created_at, created_by";
+        $criteria->select = "id, title, description, to_char(start_time, 'DD-MON-YYYY') as start_time, to_char(start_time, 'HH24:MI') as start_hour, end_time, created_at, created_by";
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
