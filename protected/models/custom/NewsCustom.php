@@ -76,7 +76,10 @@ class NewsCustom extends News
 		$criteria->compare('tag',$this->tag,true);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+            'criteria'=>$criteria,
+            'sort'=> array(
+                'defaultOrder' => 'created_at DESC'
+            )
 		));
 	}
 }
