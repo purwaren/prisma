@@ -7,6 +7,16 @@
 $event = new EventCustom();
 $news = new NewsCustom();
 
+Yii::app()->clientScript->registerScript('landing',"
+    $('.signup-form').submit(function(event){
+        event.preventDefault();
+        if (!confirm('Apakah data anda sudah benar?'))
+            return false;
+        var url = 'https://api.whatsapp.com/send?phone=6281327027605&text=Halo Admin, saya '+$('#name').val()+ ' tertarik untuk bergabung di PRISMA. Mohon informasi selanjutnya ke '+$('#phone').val();
+        window.location.replace(url);
+    });
+")
+
 ?>
 
 <section class="promo-section section section-on-bg">
@@ -275,17 +285,17 @@ Wah bsa mngadakan event lomba kcepatan berhitung Prisma dsubang nih, smakin melu
 <section class="cta-section">
     <div class="container text-center">
         <h3 class="section-title">Segera daftarkan unit Anda</h3>
-        <div class="section-intro">Untuk informasi lebih lengkap, masukkan alamat email anda di bawah ini agar kami bisa segera menghubungi anda.
+        <div class="section-intro">Untuk informasi lebih lengkap, masukkan No HP anda di bawah ini agar kami bisa segera menghubungi anda.
         </div>
-        <form class="signup-form mx-auto">
+        <form class="signup-form mx-auto" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-5 col-12">
                     <label for="firstname" class="sr-only">Nama</label>
-                    <input type="text" class="form-control" id="sname" name="sname" placeholder="Name">
+                    <input type="text" class="form-control" id="name" placeholder="Nama">
                 </div><!--//form-group-->
                 <div class="form-group col-md-5 col-12">
-                    <label for="firstname" class="sr-only">Alamat Email</label>
-                    <input type="email" class="form-control" id="semail" name="semail" placeholder="Email Address">
+                    <label for="firstname" class="sr-only">Nomor HP</label>
+                    <input type="number" class="form-control" id="phone"  placeholder="Nomor HP">
                 </div><!--//form-group-->
 
                 <div class="btn-wrapper col-md-2 col-12">
