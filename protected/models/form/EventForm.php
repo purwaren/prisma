@@ -40,6 +40,9 @@ class EventForm extends CFormModel
         if ($this->validate()) {
             $model = new EventCustom();
             $model->attributes = $this->attributes;
+            if (empty($model->end_time))
+                $model->end_time = null;
+                
             $model->created_at = new CDbExpression('NOW()');
             $model->created_by = Yii::app()->user->getName();
             if ($model->save()) {
