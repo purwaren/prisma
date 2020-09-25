@@ -15,6 +15,10 @@ Yii::app()->clientScript->registerScript('landing',"
         var url = 'https://api.whatsapp.com/send?phone=6281327027605&text=Halo Admin, saya '+$('#name').val()+ ' tertarik untuk bergabung di PRISMA. Mohon informasi selanjutnya ke '+$('#phone').val();
         window.location.replace(url);
     });
+    $('#register').click(function(){
+        var url = 'https://api.whatsapp.com/send?phone=6281327027605&text=Halo Admin, saya tertarik untuk bergabung di PRISMA. Mohon informasi lebih lanjut.';
+        window.location.replace(url);
+    })
 ")
 
 ?>
@@ -125,7 +129,7 @@ Yii::app()->clientScript->registerScript('landing',"
     <div class="hero-badge">
         <div class="badge-content">
             <div class="script">Daftar Sekarang</div>
-            <a href="admissions.html" class="link-mask"></a>
+            <a href="#" class="link-mask" id="register"></a>
         </div><!--//bagde-content-->
     </div><!--//hero-badge-->
 

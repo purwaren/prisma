@@ -54,13 +54,13 @@ class ItemCustom extends Item
     {
         $criteria=new CDbCriteria;
 
-		$criteria->compare('code',$this->code,true, 'OR');
-        $criteria->compare('name',$this->name,true, 'OR');
+		$criteria->compare('UPPER(code)',strtoupper($this->code),true, 'OR');
+        $criteria->compare('UPPER(name)',strtoupper($this->name),true, 'OR');
         
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,
             'sort'=> array(
-                'defaultOrder' => 'name'
+                'defaultOrder' => 'name',
             )
 		));
     }

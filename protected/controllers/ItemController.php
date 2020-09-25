@@ -145,7 +145,7 @@ class ItemController extends Controller
 		$model = new ItemCustom('search');
 		$model->unsetAttributes();
 
-		if (!empty($key)) {
+		if (!empty($query)) {
 			$model->code = $query;
 			$model->name = $query;
 		}

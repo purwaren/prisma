@@ -31,15 +31,8 @@ $this->breadcrumbs = array(
                     ),
                     'name',
                     'phone',
-                    array(
-                        'name'=>'unit_id',
-                        'value'=>'$data->'
-                    ),
-                    array(
-                        'name' => 'created_at',
-                        'htmlOptions' => array('class' => 'hidden-xs'),
-                        'headerHtmlOptions' => array('class' => 'hidden-xs'),
-                    ),
+                    'unit.unit_no',
+                    'unit.owner',
 
                     array(
                         'class' => 'CButtonColumn',

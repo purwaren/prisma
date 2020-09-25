@@ -47,9 +47,14 @@
                 array(
                     'label' => '<i class="fa fa-shopping-cart"></i><span>Transaksi</span><i class="fa fa-angle-left pull-right"></i>',
                     'itemOptions' => array('class' => 'treeview'),
-                    'url' => array('/order/admin'),
+                    'url' => '#',
                     'encodeLabel' => false,
-                    'visible'=>!Yii::app()->user->checkAccess('unit')
+                    'visible'=>!Yii::app()->user->checkAccess('unit'),
+                    'items' => array(
+                        array('label'=>'<i class="fa fa-plus-square"></i> Order Baru', 'url'=>array('order/create')),
+                        array('label'=>'<i class="fa fa-archive"></i>Daftar Order','url'=>array('order/admin')),
+                        array('label'=>'<i class="fa fa-file-pdf-o"></i>Laporan', 'url'=>array('order/report'))
+                    ),
                 ),
                 array(
                     'label' => '<i class="fa fa-file-text"></i><span>Data Unit</span><i class="fa fa-angle-left pull-right"></i>',
