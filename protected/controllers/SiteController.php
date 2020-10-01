@@ -30,7 +30,15 @@ class SiteController extends Controller
         $this->layout = '//layouts/column2';
         if (Yii::app()->user->isGuest)
             $this->redirect(array('login'));
-        else $this->render('dashboard');
+        else {
+            $model = new UnitStatistic();
+            if (isset($_POST['UnitStatistic'])) {
+                $model->attributes = $_POST['UnitStatistic'];
+            }
+            $this->render('dashboard', array(
+                'model' => $model
+            ));
+        }
     }
 
     public function actionIndex()

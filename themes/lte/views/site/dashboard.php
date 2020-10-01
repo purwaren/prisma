@@ -1,10 +1,24 @@
 <?php
-/* @var $this Controller */
+/*
+* @var $this Controller 
+* @var $model UnitStatistic
+*/
 $this->pageTitle = 'Beranda';
+
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/assets/plugins/chartjs/Chart.js');
-Yii::app()->clientScript->registerScript("safdsdf","
+if (!empty($model->state)) {
+  Yii::app()->clientScript->registerScript("varss","
+    var state = ".$model->getAllCityName()."
+    var unitData = ".$model->countByCity()."
+  ");
+} else {
+  Yii::app()->clientScript->registerScript("varsss","
     var state = ".UnitStatistic::getAllStateName()."
     var unitData = ".UnitStatistic::countByState()."
+  ");
+}
+Yii::app()->clientScript->registerScript("safdsdf","
+    
     var areaChartData = {
       labels  : state,
       datasets: [
@@ -70,6 +84,9 @@ Yii::app()->clientScript->registerScript("safdsdf","
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
             </div>
         </div>
+        <?php $this->renderPartial('_search_stats', array(
+          'model'=>$model
+        ))?>
         <div class="box-body">
             <div class="chart">
                 <canvas id="barChart"></canvas>
