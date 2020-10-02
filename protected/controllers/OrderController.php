@@ -28,7 +28,7 @@ class OrderController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index','view','admin','delete','process','delivery','cancel','finish'),
+				'actions'=>array('create','update','index','view','admin','delete','process','delivery','cancel','finish','report'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -207,5 +207,18 @@ class OrderController extends Controller
 			$order->status = OrderStatus::STATUS_CANCELED;
 			echo $order->update(array('status'));
 		}
+	}
+
+	public function actionReport()
+	{
+		$model = new DailyReportSearch();
+
+		if (isset($_POST['DailyReportSearch'])) {
+			$model->attributes = $_POST['DailyReportSearch'];
+		}
+
+		$this->render('report', array(
+			'model' => $model
+		));
 	}
 }

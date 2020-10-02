@@ -1,3 +1,7 @@
+--
+-- Name: YiiSession; Type: TABLE; Schema: public; Owner: -
+--
+
 CREATE TABLE public."YiiSession" (
     id character(32) NOT NULL,
     expire integer,
@@ -108,10 +112,47 @@ CREATE TABLE public.category (
 
 
 --
--- Name: item_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: event; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.item_id_seq
+CREATE TABLE public.event (
+    id bigint NOT NULL,
+    title character varying(256) NOT NULL,
+    description character varying(1024),
+    start_time timestamp without time zone NOT NULL,
+    end_time timestamp without time zone,
+    banner_url character varying(128),
+    created_at timestamp without time zone NOT NULL,
+    created_by character varying(32) NOT NULL,
+    updated_at timestamp without time zone,
+    updated_by character varying(32)
+);
+
+
+--
+-- Name: event_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.event_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: event_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.event_id_seq OWNED BY public.event.id;
+
+
+--
+-- Name: item_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.item_id_seq1
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -124,7 +165,8 @@ CREATE SEQUENCE public.item_id_seq
 --
 
 CREATE TABLE public.item (
-    id bigint DEFAULT nextval('public.item_id_seq'::regclass) NOT NULL,
+    id bigint DEFAULT nextval('public.item_id_seq1'::regclass) NOT NULL,
+    cat_id bigint NOT NULL,
     code character varying(16) NOT NULL,
     name character varying(128) NOT NULL,
     stock bigint NOT NULL,
@@ -135,6 +177,45 @@ CREATE TABLE public.item (
     updated_by character varying(32),
     updated_at timestamp without time zone
 );
+
+
+--
+-- Name: item_category_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.item_category_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: item_category; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.item_category (
+    id bigint DEFAULT nextval('public.item_category_id_seq'::regclass) NOT NULL,
+    name character varying(256) NOT NULL,
+    description text,
+    created_by character varying(32) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_by character varying(32),
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: item_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.item_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
 --
@@ -162,6 +243,28 @@ CREATE TABLE public.meta_tag (
 
 
 --
+-- Name: news; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.news (
+    id bigint NOT NULL,
+    cat_id bigint NOT NULL,
+    title character varying(512) NOT NULL,
+    permalink character varying(128) NOT NULL,
+    summary character varying(1024) NOT NULL,
+    content text NOT NULL,
+    tag character varying(512),
+    banner character varying(256) NOT NULL,
+    video_url character varying(256),
+    flag_published integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    created_by character varying(32) NOT NULL,
+    updated_at timestamp without time zone,
+    updated_by character varying(32)
+);
+
+
+--
 -- Name: news_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -174,30 +277,10 @@ CREATE SEQUENCE public.news_id_seq
 
 
 --
--- Name: news; Type: TABLE; Schema: public; Owner: -
+-- Name: news_id_seq1; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.news (
-    id bigint DEFAULT nextval('public.news_id_seq'::regclass) NOT NULL,
-    cat_id bigint NOT NULL,
-    title character varying(512) NOT NULL,
-    permalink character varying(128) NOT NULL,
-    summary character varying(1024) NOT NULL,
-    content text NOT NULL,
-    banner character varying(256) NOT NULL,
-    flag_published integer NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    created_by character varying(32) NOT NULL,
-    updated_at timestamp without time zone,
-    updated_by character varying(32)
-);
-
-
---
--- Name: order_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.order_id_seq
+CREATE SEQUENCE public.news_id_seq1
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -206,22 +289,10 @@ CREATE SEQUENCE public.order_id_seq
 
 
 --
--- Name: order; Type: TABLE; Schema: public; Owner: -
+-- Name: news_id_seq1; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-CREATE TABLE public.orders (
-    id bigint DEFAULT nextval('public.order_id_seq'::regclass) NOT NULL,
-    order_number character varying(16) NOT NULL,
-    unit_id bigint NOT NULL,
-    status integer NOT NULL,
-    delivery_date timestamp without time zone NOT NULL,
-    delivery_provider character varying(32),
-    delivery_receipt_no character varying(32),
-    created_at timestamp without time zone NOT NULL,
-    created_by character varying(32) NOT NULL,
-    updated_at timestamp without time zone,
-    updated_by character varying(32)
-);
+ALTER SEQUENCE public.news_id_seq1 OWNED BY public.news.id;
 
 
 --
@@ -245,6 +316,51 @@ CREATE TABLE public.order_detail (
     order_id bigint NOT NULL,
     item_id bigint NOT NULL,
     qty bigint NOT NULL
+);
+
+
+--
+-- Name: order_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.order_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.orders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: orders; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.orders (
+    id bigint DEFAULT nextval('public.orders_id_seq'::regclass) NOT NULL,
+    order_date timestamp without time zone,
+    order_number character varying(32) NOT NULL,
+    unit_id bigint NOT NULL,
+    status integer NOT NULL,
+    delivery_date timestamp without time zone,
+    delivery_provider character varying(32),
+    delivery_receipt_no character varying(32),
+    created_at timestamp without time zone NOT NULL,
+    created_by character varying(32) NOT NULL,
+    updated_at timestamp without time zone,
+    updated_by character varying(32),
+    cancel_reason character varying(512)
 );
 
 
@@ -416,6 +532,7 @@ CREATE TABLE public.teacher (
 --
 
 CREATE SEQUENCE public.teacher_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -497,3 +614,25 @@ CREATE TABLE public.users (
     timestamp_updated timestamp without time zone,
     user_update character varying(32)
 );
+
+
+--
+-- Name: event id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.event ALTER COLUMN id SET DEFAULT nextval('public.event_id_seq'::regclass);
+
+
+--
+-- Name: news id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.news ALTER COLUMN id SET DEFAULT nextval('public.news_id_seq1'::regclass);
+
+
+--
+-- Name: teacher id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.teacher ALTER COLUMN id SET DEFAULT nextval('public.teacher_id_seq'::regclass);
+

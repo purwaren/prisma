@@ -24,7 +24,21 @@ class UnitStatistic extends CFormModel
     public function countByCity() {
         $sql = 'SELECT COUNT(t2.id) AS qty, t1.id, t1.name FROM ref_cities t1 LEFT JOIN address t2 ON t1.id = t2.city WHERE t2.state = :state GROUP BY t1.id, t1.name ORDER BY id';
         $cmd = Yii::app()->db->createCommand($sql)->bindValue(':state', $this->state);
-        return CJSON::encode($cmd->queryColumn());
+        $data = $cmd->queryAll();
+        $cities = CJSON::decode($this->getAllCityName());
+        $stats = array();
+        if (!empty($data)) {
+            $i = 0;
+            foreach($cities as $city) {
+                if ($city == $data[$i]['name']) {
+                    $stats[] = $data[$i]['qty'];
+                    $i++;
+                } else {
+                    $stats[] = 0;
+                }
+            }
+        }
+        return CJSON::encode($stats);
     }
 
     public static function getAllStateName() {
