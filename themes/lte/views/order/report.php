@@ -15,18 +15,29 @@ foreach ($items as $item) {
 
 $data = $model->searchMonthlySummary();
 $row_data = '';
+$total = array();
 foreach ($data as $key=>$row) {
     $row_data .= '<tr><td>'.$key.'</td>';
-    foreach($items as $item) {
+    foreach($items as $idx=>$item) {
         if (isset($row[$item->id])) {
             $row_data .= '<td>'.$row[$item->id].'</td>';
+            $total[$idx] = isset($total[$idx]) ? $total[$idx]+$row[$item->id] : $row[$item->id];
         }
         else {
+            $total[$idx] = isset($total[$idx]) ? $total[$idx] : 0;
             $row_data .= '<td> - </td>';
         }
     }
     $row_data .= '</tr>';
 }
+if (!empty($total)) {
+    $row_total = '<tr><td>TOTAL</td>';
+    foreach ($total as $row) {
+        $row_total .= '<td>'.$row.'</td>';
+    }
+    $row_total .= '</tr>';
+}
+
 
 ?>
 
@@ -57,7 +68,7 @@ foreach ($data as $key=>$row) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php echo $row_data ?>
+                    <?php echo $row_data.$row_total ?>
                 </tbody>
             </table>
         </div><!-- /.box-body -->
