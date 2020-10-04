@@ -1,0 +1,53 @@
+.page-header-space {
+    height: 100px;
+}
+
+.page-footer-space {
+    height: 50px;
+
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid black; /* for demo */
+    padding: 10px 0px 10px 0px;
+}
+
+.page-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid black; /* for demo */
+    padding: 10px 0px 0px 0px;
+}
+.page-header .left {
+    width: 10%;
+    float: left;
+}
+.page-header .right {
+    width: 90%;
+    float: right;
+}
+
+.page {
+    page-break-after: always;
+}
+.page p {
+    text-align: justify;
+}
+
+@page {
+    margin: 20mm
+}
+
+@media print {
+    table {font-family: Times, "Times New Roman", serif}
+    thead {display: table-header-group;}
+    tfoot {display: table-footer-group;}
+
+    button {display: none;}
+
+    body {margin: 0;}
+}

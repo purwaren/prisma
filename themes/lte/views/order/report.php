@@ -3,7 +3,31 @@
  * @var $this OrderController
  * @var $model ReportDailySearch
  */
-$this->pageTitle = 'Laporan'
+$this->pageTitle = 'Laporan';
+$items = ItemCustom::model()->findAllByAttributes(array(
+    'cat_id' => 1
+));
+
+$itemList = '';
+foreach ($items as $item) {
+    $itemList .= '<th class="text-center">'.$item->name.'</th>';
+}
+
+$data = $model->searchMonthlySummary();
+$row_data = '';
+foreach ($data as $key=>$row) {
+    $row_data .= '<tr><td>'.$key.'</td>';
+    foreach($items as $item) {
+        if (isset($row[$item->id])) {
+            $row_data .= '<td>'.$row[$item->id].'</td>';
+        }
+        else {
+            $row_data .= '<td> - </td>';
+        }
+    }
+    $row_data .= '</tr>';
+}
+
 ?>
 
 <section class="content">
@@ -15,62 +39,30 @@ $this->pageTitle = 'Laporan'
         <?php $this->renderPartial('_search_report', array('model' => $model)) ?>
     </div>
     <!-- Default box -->
-    <?php if($model->type == ReportType::TYPE_DETAIL_MONTHLY) { 
-        $model->searchMonthlySummary();    
-    ?>
+    <?php if($model->type == ReportType::TYPE_DETAIL_MONTHLY) {  ?>
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">
-                <small>Daftar order yang tercatat di sistem</small>
+                <small>Laporan Transaksi Bulanan</small>
             </h3>
-            <div class="box-tools pull-right">
-                <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i
-                            class="fa fa-minus"></i></button>
-                <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i
-                            class="fa fa-times"></i></button>
-            </div>
         </div>
         <div class="box-body table-responsive">
-            <?php $this->widget('zii.widgets.grid.CGridView', array(
-                'id' => 'unit-grid',
-                'dataProvider' => $model->search(),
-                //'filter'=>$model,
-                'columns' => array(
-                    array(
-                        'header' => 'No',
-                        'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize+$row+1'
-                    ),
-                    'order_date',
-                    'order_number',
-                    'unit.unit_no',
-                    'unit.owner',
-                    array(
-                        'header'=>'Total (Rp)',
-                        'value'=>'$data->getTotalBill()',
-                        'htmlOptions'=>array('class'=>'text-right')
-                    ),
-                ),
-                'itemsCssClass' => 'table table-striped table-bordered table-hover dataTable',
-                'cssFile' => false,
-                'summaryCssClass' => 'dataTables_info',
-                'template' => '{summary}{items}{pager}',
-                'pagerCssClass' => 'dataTables_paginate paging_simple_numbers text-center',
-                'pager' => array(
-                    'htmlOptions' => array('class' => 'pagination'),
-                    'internalPageCssClass' => 'paginate_button',
-                    'selectedPageCssClass' => 'active',
-                    'header' => ''
-                ),
-                'beforeAjaxUpdate' => "function(){
-                    $('#loading').show();
-                }",
-                'afterAjaxUpdate' => "function(){
-                    $('#loading').hide();
-                }"
-            )); ?>
+            <p><?php echo CHtml::link('Print',array('report/monthly','start'=>$model->start_date, 'end'=>$model->end_date), array('class'=>'btn btn-primary','target'=>'_new')) ?></p>
+            
+            <table class="table table-striped table-bordered table-hover dataTable">
+                <thead>
+                    <tr>
+                        <th class="text-center">Tanggal</th>
+                        <?php echo $itemList ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php echo $row_data ?>
+                </tbody>
+            </table>
         </div><!-- /.box-body -->
-        <div class="overlay" id="loading" style="display: none">
-            <i class="fa fa-refresh fa-spin"></i>
+        <div class="box-footer">
+        <?php echo CHtml::link('Print',array('report/monthly','start'=>$model->start_date, 'end'=>$model->end_date), array('class'=>'btn btn-primary', 'target'=>'_new')) ?>
         </div>
     </div><!-- /.box -->
     <?php } ?>

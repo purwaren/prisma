@@ -16,7 +16,7 @@ Yii::app()->clientScript->registerScript('search', "
     });
     $('.datepicker').datepicker({
         autoclose: true,
-        format: 'dd-M-yyyy'
+        format: 'yyyy-mm-dd'
     });
 ");
 

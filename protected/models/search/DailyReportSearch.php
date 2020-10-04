@@ -46,34 +46,47 @@ class DailyReportSearch extends CFormModel {
         $cmd->from('orders t1');
         $cmd->leftJoin('order_detail t2', 't1.id = t2.order_id');
         $cmd->leftJoin('item t3', 't2.item_id = t3.id');
-        $cmd->where("t1.order_date >= TO_DATE(:start, 'DD-MON-YYYY') AND t1.order_date <= TO_DATE(:end, 'DD-MON-YYYY HH24:MI:SS')", array(
-            ':start' => $this->start_date,
-            ':end'=> $this->end_date.' 23:59:59'
-        ));
+        $cmd->where("t3.cat_id = :cat", array(':cat'=> 1));
         $cmd->group('order_date, item_id, name');
-        $cmd->order('order_date');
+        $cmd->order('order_date, item_id');
         $cmd->select("TO_CHAR(order_date, 'DD-MON-YYYY') AS order_date, item_id, name, SUM(qty) AS qty");
-
-        $data = $cmd->queryAll();
+        
+        $allday = $this->generateAllDayInPeriod();
         $tables = array();
-        $curr_date = $this->start_date;
-        foreach($data as $row) {
-            if ($row['order_date'] === $curr_date) {
-                $tables[$curr_date][$row['name']] = $row['qty']; 
-            }
-            else {
-                $tables[$curr_date] = array();
+        if (!empty($allday)) {
+            foreach($allday as $day) {
+                $cmd->andWhere("TO_CHAR(t1.order_date, 'DD-MON-YYYY') = UPPER(:date)", array(':date'=>strtoupper($day)));
+                $data = $cmd->queryAll();
+                if (!empty($data)) {
+                    foreach ($data as $item) {
+                        $tables[$day][$item['item_id']] = $item['qty'];
+                    }
+                }
+                else {
+                    $tables[$day] = array();
+                }
             }
         }
+
+        return $tables;
     }
 
     protected function generateAllDayInPeriod() 
     {
-
-    }
-
-    protected function getAllItemByCategory()
-    {
+        $period = new DatePeriod(
+            new DateTime($this->start_date),
+            new DateInterval('P1D'),
+            new DateTime($this->end_date)
+        );
         
+        $dates = array();
+        foreach($period as $row) {
+            $dates[] = $row->format('d-M-Y');
+        }
+        $dates[] = (new DateTime($this->end_date))->format('d-M-Y');
+
+        return $dates;
     }
+
+    
 }
