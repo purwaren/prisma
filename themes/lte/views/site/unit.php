@@ -83,6 +83,10 @@ Yii::app()->clientScript->registerCss('csdfs',"
                         //'filter'=>$model,
                         'columns' => array(
                             array(
+                                'header' => 'No',
+                                'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize+$row+1'
+                            ),
+                            array(
                                 'header'=>'No. Unit',
                                 'name'=>'unit_no',
                                 'type'=>'raw',
