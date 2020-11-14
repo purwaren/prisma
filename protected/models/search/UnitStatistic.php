@@ -30,7 +30,7 @@ class UnitStatistic extends CFormModel
         if (!empty($data)) {
             $i = 0;
             foreach($cities as $city) {
-                if ($city == $data[$i]['name']) {
+                if (isset($data[$i]) && $city == $data[$i]['name']) {
                     $stats[] = $data[$i]['qty'];
                     $i++;
                 } else {
