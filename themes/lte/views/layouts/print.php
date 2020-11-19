@@ -12,15 +12,14 @@
         <img src="<?php echo Yii::app()->theme->baseUrl?>/assets/img/logo.png" style="height: 75px">
     </div>
     <div class="right">
-        <p style="font-weight: bold">
-            <span style="font-size: 20px">PRISMA KALKULATOR TANGAN</span> <br />
-            <span style="font-size: 16px">Perum Argopeni, Wonosobo</span><br />
+        <p style="font-weight: bold; text-align: center;">
+            <span style="font-size: 20px"><?php echo $this->pageTitle ?></span> <br />
         </p>
     </div>
 </div>
 
 <div class="page-footer">
-    <?php echo $this->pageTitle ?><br />
+    <?php echo 'Dicetak : '.date('d F Y, H:i:s'); ?>
 </div>
 
 <table>

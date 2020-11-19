@@ -16,4 +16,16 @@ class ReportController extends Controller
 		));
 	}
 
+	public function actionDetail($start, $end) {
+		$this->layout =  '//layouts/print';
+		
+		$model = new DailyReportSearch();
+		$model->start_date = $start;
+		$model->end_date = $end;
+
+		$this->render('detail', array(
+			'model'=>$model
+		));
+	}
+	
 }

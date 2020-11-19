@@ -100,4 +100,17 @@ class UnitCustom extends Unit
         }
         return $options;
     }
+
+    public static function getAllUnits() {
+        $criteria = new CDbCriteria();
+        $criteria->order = 'unit_no ASC';
+        $models = self::model()->findAll($criteria);
+        $options = array();
+        if (!empty($models)){
+            foreach ($models as $row) {
+                $options[$row->id] = $row->unit_no.' - '.$row->owner;
+            }
+        }
+        return $options;
+    }
 }

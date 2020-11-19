@@ -27,20 +27,26 @@ $form = $this->beginWidget('CActiveForm', array(
 ));
 ?>
 <div class="box-body" id="search">
+    <!--
     <div class="form-group">
         <?php echo $form->dropDownList($model, 'type', ReportType::getAllOptions(), array(
             'class'=>'form-control',
             'prompt'=>'Pilih Tipe Laporan'
         )) ?>
     </div>
-    <div class="form-group">
+    -->
+    <div class="row">
+    <div class="form-group col-md-6">
         <?php echo $form->textField($model, 'start_date', array('class'=>'datepicker form-control', 'placeholder' => 'Tanggal Awal')); ?>
+        <?php echo $form->error($model, 'start_date'); ?>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6">
         <?php echo $form->textField($model, 'end_date', array('class'=>'datepicker form-control', 'placeholder' => 'Tanggal Akhir')); ?>
+        <?php echo $form->error($model, 'end_date'); ?>     
     </div>
-    <div class="form-group">
+    <div class="form-group col-xs-12">
         <?php echo CHtml::submitButton('Preview', array('class' => 'btn btn-primary search-button')); ?>
+    </div>
     </div>
 </div>
 

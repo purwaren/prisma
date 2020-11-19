@@ -116,6 +116,16 @@
                     'visible'=>!Yii::app()->user->checkAccess('unit')
                 ),
                 array(
+                    'label' => '<i class="fa fa-file-text"></i><span>Laporan</span><i class="fa fa-angle-left pull-right"></i>',
+                    'itemOptions' => array('class' => 'treeview'),
+                    'url' => '#',
+                    'items' => array(
+                        array('label' => '<i class="fa fa-file"></i> Rekap Unit Harian', 'url' => array('/order/report')),
+                    ),
+                    'encodeLabel' => false,
+                    'visible'=>!Yii::app()->user->checkAccess('unit')
+                ),
+                array(
                     'label' => '<i class="fa fa-wrench"></i><span>Konfigurasi Sistem</span><i class="fa fa-angle-left pull-right"></i>',
                     'itemOptions' => array('class' => 'treeview'),
                     'url' => '#',
