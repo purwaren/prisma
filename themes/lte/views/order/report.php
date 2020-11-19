@@ -46,7 +46,7 @@ if (!empty($total)) {
     foreach ($total as $row) {
         $row_total .= '<td>'.$row.'</td>';
     }
-    $row_total .= '<td>'.$all_total.'</td></tr>';
+    $row_total .= '<td>'.number_format($all_total).'</td></tr>';
 }
 
 ?>
@@ -70,7 +70,7 @@ if (!empty($total)) {
         <div class="box-body table-responsive">
             <p>
                 <?php echo CHtml::link('Print',array('report/detail','start'=>$model->start_date, 'end'=>$model->end_date), array('class'=>'btn btn-primary','target'=>'_new')) ?>
-                <?php echo CHtml::link('Download Excel',array('report/detail','start'=>$model->start_date, 'end'=>$model->end_date, 'type'=>'xls'), array('class'=>'btn btn-primary','target'=>'_new')) ?>
+                <?php echo CHtml::link('Download Excel',array('report/detail','start'=>$model->start_date, 'end'=>$model->end_date, 'type'=>'xls'), array('class'=>'btn btn-success','target'=>'_new')) ?>
             </p>
             
             <table class="table table-striped table-bordered table-hover dataTable">
@@ -90,7 +90,7 @@ if (!empty($total)) {
         </div><!-- /.box-body -->
         <div class="box-footer">
             <?php echo CHtml::link('Print',array('report/detail','start'=>$model->start_date, 'end'=>$model->end_date), array('class'=>'btn btn-primary', 'target'=>'_new')) ?>
-            <?php echo CHtml::link('Download Excel',array('report/detail','start'=>$model->start_date, 'end'=>$model->end_date, 'type'=>'xls'), array('class'=>'btn btn-primary','target'=>'_new')) ?>
+            <?php echo CHtml::link('Download Excel',array('report/detail','start'=>$model->start_date, 'end'=>$model->end_date, 'type'=>'xls'), array('class'=>'btn btn-success','target'=>'_new')) ?>
         </div>
     </div><!-- /.box -->
     <?php } ?>
