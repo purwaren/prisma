@@ -29,18 +29,18 @@ class AddressCustom extends Address
     public function getState()
     {
         $model = StateCustom::model()->findByPk($this->state);
-        return $model->name;
+        return !empty($model) ? $model->name : 'not set';
     }
 
     public function getCity()
     {
         $model = CityCustom::model()->findByPk($this->city);
-        return $model->name;
+        return !empty($model) ? $model->name : 'not set';
     }
 
     public function getDistrict()
     {
         $model = DistrictCustom::model()->findByPk($this->district);
-        return $model->name;
+        return !empty($model) ? $model->name : 'not set';
     }
 }
