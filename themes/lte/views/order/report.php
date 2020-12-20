@@ -3,7 +3,7 @@
  * @var $this OrderController
  * @var $model ReportDailySearch
  */
-$this->pageTitle = 'Rekap Transaksi Per Unit';
+$this->pageTitle = 'Rekap Transaksi Unit';
 $items = ItemCustom::model()->findAllByAttributes(array(
     'cat_id' => 1
 ));

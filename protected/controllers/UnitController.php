@@ -28,7 +28,7 @@ class UnitController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete'),
+                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete','report'),
                 'users' => array('@'),
             ),
             array('deny',  // deny all users
@@ -168,5 +168,17 @@ class UnitController extends Controller
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+    public function actionReport() {
+        $model = new UnitReportSearch();
+
+        if (isset($_POST['UnitReportSearch'])) {
+            $model->attributes = $_POST['UnitReportSearch'];
+        }
+
+        $this->render('report', array(
+            'model' => $model
+        ));
     }
 }

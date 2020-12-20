@@ -101,6 +101,91 @@ class ReportController extends Controller
 		
 	}
 
+	public function actionUnit($start, $end, $type='') {
+		$this->layout =  '//layouts/print';
+		
+		$model = new UnitReportSearch();
+		$model->start_date = $start;
+		$model->end_date = $end;
+		if($type == 'xls') {
+			$obj = new PHPExcel();
+			//set properties
+			$obj->getProperties()->setCreator("Purwa Ren")
+             ->setLastModifiedBy("Purwaren")
+             ->setTitle("Rekap Order Unit")
+             ->setSubject("Rekap Order Unit")
+             ->setDescription("Rekap order unit yang dilakukan untuk melihat unit yang terbanyak order")
+             ->setKeywords("rekap, unit")
+			 ->setCategory("Report");   
+			
+			$sheet = $obj->setActiveSheetIndex(0);
+			$sheet->setCellValue('A1', 'PRISMA KALKULATOR TANGAN PUSAT');
+			$sheet->setCellValue('A2', 'LAPORAN REKAP ORDER UNIT');
+			$sheet->setCellValue('A3', 'TANGGAL AWAL');
+			$sheet->setCellValue('B3', $start);
+			$sheet->setCellValue('A4', 'TANGGAL AKHIR');
+			$sheet->setCellValue('B4', $end);
+
+			//proceed the report
+			$criteria = new CDbCriteria();
+			$criteria->compare('cat_id', 1);
+			$criteria->order = 'id ASC';
+			$items = ItemCustom::model()->findAll($criteria);
+
+			$units = UnitCustom::getAllUnits();
+			$summary = $model->searchUnitsSummary();
+			$data = $model->searchMonthlySummary();
+			$column = $this->generateColumn();
+
+			//set header data
+			$sheet->setCellValue('A6', 'NO');
+			$sheet->setCellValue('B6', 'UNIT');
+			$r = 2; $s = 6;
+			foreach ($items as $row) {
+				$sheet->setCellValue($column[$r++].$s, $row->name);
+			}
+			$sheet->setCellValue($column[$r++].$s, 'TOTAL');
+
+			$y = 7;
+			$x = 0; 
+			$i = 0;
+			foreach($summary as $row) {
+				$sheet->setCellValue($column[$x++].$y, ++$i);
+				$sheet->setCellValue($column[$x++].$y, $units[$row['unit_id']]);
+				foreach($items as $item) {
+					if (isset($data[$row['unit_id']][$item->id])) {
+						$sheet->setCellValue($column[$x++].$y, $data[$row['unit_id']][$item->id]);
+					} else {
+						$sheet->setCellValue($column[$x++].$y, 0);
+					}
+				}
+				$sheet->setCellValue($column[$x++].$y, $row['qty']);
+				$x=0;$y++;
+			}
+
+			// Save a xls file
+			$filename = 'Rekap-Order-'.$start.'-'.$end;
+			header('Content-Type: application/vnd.ms-excel');
+			header('Content-Disposition: attachment;filename="'.$filename.'.xls"');
+			header('Cache-Control: max-age=0');
+			 
+			$objWriter = PHPExcel_IOFactory::createWriter($obj, 'Excel5');
+	 
+			$objWriter->save('php://output');
+			unset($this->objWriter);
+			unset($this->objWorksheet);
+			unset($this->objReader);
+			unset($this->obj);
+			exit();
+
+		} else {
+			$this->render('unit', array(
+				'model'=>$model
+			));
+		}
+		
+	}
+
 	private function generateColumn() {
 		return $column = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
 	}

@@ -53,7 +53,6 @@
                     'items' => array(
                         array('label'=>'<i class="fa fa-plus-square"></i> Order Baru', 'url'=>array('order/create')),
                         array('label'=>'<i class="fa fa-archive"></i>Daftar Order','url'=>array('order/admin')),
-                        array('label'=>'<i class="fa fa-file-pdf-o"></i>Laporan', 'url'=>array('order/report'))
                     ),
                 ),
                 array(
@@ -121,6 +120,7 @@
                     'url' => '#',
                     'items' => array(
                         array('label' => '<i class="fa fa-file"></i> Rekap Unit Harian', 'url' => array('/order/report')),
+                        array('label' => '<i class="fa fa-file"></i> Akumulasi Transaksi Unit', 'url' => array('/unit/report')),
                     ),
                     'encodeLabel' => false,
                     'visible'=>!Yii::app()->user->checkAccess('unit')
