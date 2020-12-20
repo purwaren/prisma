@@ -10,13 +10,43 @@ Yii::app()->clientScript->registerCssFile(Yii::app()->theme->baseUrl . '/assets/
 Yii::app()->clientScript->registerScriptFile(Yii::app()->theme->baseUrl . '/assets/plugins/select2/select2.full.min.js');
 
 Yii::app()->clientScript->registerScript('sdfs', "
-    $('.select2').select2();
     $('#search-unit').submit(function(event){
         $('#unit-grid').yiiGridView('update', {
             data: $(this).serialize()
         });
         return false;
     })
+    $('#state').select2();
+    $('#state').on('change', function(){
+        var state = $(this).val();
+        var url = '" . Yii::app()->createUrl('site/city') . "?state_id='+state;
+        " . CHtml::ajax(array(
+        'url' => 'js:url',
+        'type' => 'POST',
+        'dataType' => 'JSON',
+        'success' => "function(response){
+                $('#city').html('');
+                $('#city').select2({
+                    data: response
+                });
+            }"
+    )) . "
+    });
+    $('#city').on('change', function(){
+        var city = $(this).val();
+        var url = '" . Yii::app()->createUrl('site/district') . "?city_id='+city;
+        " . CHtml::ajax(array(
+        'url' => 'js:url',
+        'type' => 'POST',
+        'dataType' => 'JSON',
+        'success' => "function(response){
+                $('#district').html('');
+                $('#district').select2({
+                    data: response
+                });
+            }"
+    )) . "
+    });
 ");
 
 Yii::app()->clientScript->registerCss('csdfs',"
@@ -57,15 +87,15 @@ Yii::app()->clientScript->registerCss('csdfs',"
                         </div> 
                         <div class="col-2 col-xs-6 form-group">
                             <?php echo $form->dropDownList($model, 'state', StateCustom::getAllOptions(),
-                            array('prompt'=>'Provinsi','class'=>'select2 form-control'))?>
+                            array('prompt'=>'Provinsi','class'=>'select2 form-control', 'id'=>'state'))?>
                         </div> 
                         <div class="col-2 col-xs-6 form-group">
-                        <?php echo $form->dropDownList($model, 'city', CityCustom::getAllOptions(),
-                            array('prompt'=>'Kab / Kota','class'=>'select2 form-control'))?>
+                        <?php echo $form->dropDownList($model, 'city', array(),
+                            array('prompt'=>'Kab / Kota','class'=>'form-control','id'=>'city'))?>
                         </div>                     
                         <div class="col-2 col-xs-6 form-group">
-                        <?php echo $form->dropDownList($model, 'district', DistrictCustom::getAllOptions(),
-                            array('prompt'=>'Kecamatan','class'=>'select2 form-control'))?>
+                        <?php echo $form->dropDownList($model, 'district', array(),
+                            array('prompt'=>'Kecamatan','class'=>'form-control', 'id'=>'district'))?>
                         </div> 
                         <div class="col-2 col-xs-6 form-group">
                             <?php echo $form->textField($model, 'address_2', array('class' => 'form-control', 'placeholder' => 'Kelurahan')); ?>
