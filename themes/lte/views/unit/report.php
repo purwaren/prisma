@@ -24,21 +24,22 @@ $total = array();
 $i=0;
 $all_total = 0;
 $row_total = '';
-
-foreach($summary as $row) {
-    $url = CHtml::link($units[$row['unit_id']], Yii::app()->createUrl('unit/view', array('id'=>$row['unit_id'])), array('target'=>'_new'));
-    $row_data .= '<tr><td>'.++$i.'</td><td>'.$url.'</td>';
-    foreach($items as $item) {
-        if (isset($detail[$row['unit_id']][$item->id])) {
-            $row_data .= '<td>'.$detail[$row['unit_id']][$item->id].'</td>';
-            $total[$item->id] = isset($total[$item->id]) ? $total[$item->id]+$detail[$row['unit_id']][$item->id] : 0;
-        } else {
-            $row_data .= '<td> - </td>';
+if (!empty($summary)) {
+    foreach($summary as $row) {
+        $url = CHtml::link($units[$row['unit_id']], Yii::app()->createUrl('unit/view', array('id'=>$row['unit_id'])), array('target'=>'_new'));
+        $row_data .= '<tr><td>'.++$i.'</td><td>'.$url.'</td>';
+        foreach($items as $item) {
+            if (isset($detail[$row['unit_id']][$item->id])) {
+                $row_data .= '<td>'.$detail[$row['unit_id']][$item->id].'</td>';
+                $total[$item->id] = isset($total[$item->id]) ? $total[$item->id]+$detail[$row['unit_id']][$item->id] : 0;
+            } else {
+                $row_data .= '<td> - </td>';
+            }
+            
         }
-        
-    }
-    $row_data .= '<td>'.$row['qty'].'</td></tr>';
-    $all_total += $row['qty'];
+        $row_data .= '<td>'.$row['qty'].'</td></tr>';
+        $all_total += $row['qty'];
+    }    
 }
 if (!empty($total)) {
     $row_total = '<tr><td colspan="2">TOTAL</td>';

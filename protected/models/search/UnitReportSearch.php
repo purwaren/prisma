@@ -23,17 +23,35 @@ class UnitReportSearch extends CFormModel {
     }
 
     public function searchUnitsSummary() {
-        //query level 1 => get the total, sort by total
-        $cmd1 = Yii::app()->db->createCommand();
-        $cmd1->select('unit_id, SUM(qty) AS qty');
-        $cmd1->from('orders t1');
-        $cmd1->leftJoin('order_detail t2', 't1.id = t2.order_id');
-        $cmd1->leftJoin('item t3', 't2.item_id = t3.id');
-        $cmd1->where('t3.cat_id = :cat', array(':cat'=> 1));
-        $cmd1->andWhere('t1.order_date >= :start AND t1.order_date <= :end', array(':start'=>$this->start_date, ':end'=>$this->end_date));
-        $cmd1->group('unit_id');
-        $cmd1->order = 'SUM(qty) '.$this->sort_type;
-        return $cmd1->queryAll();
+        if ($this->validate()) {
+            //query level 1 => get the total, sort by total
+            $cmd1 = Yii::app()->db->createCommand();
+            $cmd1->select('unit_id, SUM(qty) AS qty');
+            $cmd1->from('orders t1');
+            $cmd1->leftJoin('order_detail t2', 't1.id = t2.order_id');
+            $cmd1->leftJoin('item t3', 't2.item_id = t3.id');
+            $cmd1->where('t3.cat_id = :cat', array(':cat'=> 1));
+            $cmd1->andWhere('t1.order_date >= :start AND t1.order_date <= :end', array(':start'=>$this->start_date, ':end'=>$this->end_date));
+            $cmd1->group('unit_id');
+            $cmd1->order = 'SUM(qty) '.$this->sort_type;
+            $data = $cmd1->queryAll();
+            if (!empty($data)) {
+                $temp = array();
+                foreach($data as $row) {
+                    $temp[$row['unit_id']] = $row['qty'];
+                }
+                $units = UnitCustom::getAllUnits();
+                foreach($units as $key=>$val) {
+                    if (!isset($temp[$key])) {
+                        $data[] = array(
+                            'unit_id'=>$key,
+                            'qty'=> 0
+                        );
+                    }
+                }
+                return $data;
+            }
+        }
     }
 
     public function searchMonthlySummary()
