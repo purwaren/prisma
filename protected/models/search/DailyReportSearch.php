@@ -4,12 +4,13 @@ class DailyReportSearch extends CFormModel {
     public $start_date;
     public $end_date;
     public $type;
+    public $unit_id;
 
     public function rules()
     {
         return array(
             array('start_date, end_date', 'required'),
-            array('start_date, end_date', 'safe')
+            array('start_date, end_date, unit_id', 'safe')
         );
     }
 
@@ -50,6 +51,9 @@ class DailyReportSearch extends CFormModel {
         $cmd->group('order_date, unit_id, item_id, name');
         $cmd->order('order_date, unit_id, item_id');
         $cmd->select("TO_CHAR(order_date, 'DD-MON-YYYY') AS order_date, unit_id, item_id, name, SUM(qty) AS qty");
+        if (!empty($this->unit_id)) {
+            $cmd->andWhere("t1.unit_id = :unit", array(':unit'=>$this->unit_id));
+        }
         
         $allday = $this->generateAllDayInPeriod();
         $tables = array();
