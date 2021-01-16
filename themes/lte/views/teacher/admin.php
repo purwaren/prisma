@@ -6,6 +6,13 @@ $this->breadcrumbs = array(
 ?>
 <!-- Main content -->
 <section class="content">
+    <div class="box box-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title"><a href="#search" data-widget="collapse" aria-controls="#search" aria-expanded="false"
+                                    role="button">Advance Search</a></h3>
+        </div>
+        <?php $this->renderPartial('_search', array('model' => $model)) ?>
+    </div>
     <!-- Default box -->
     <div class="box">
         <div class="box-header with-border">
@@ -21,7 +28,7 @@ $this->breadcrumbs = array(
         </div>
         <div class="box-body">
             <?php $this->widget('zii.widgets.grid.CGridView', array(
-                'id' => 'users-grid',
+                'id' => 'teachers-grid',
                 'dataProvider' => $model->search(),
                 //'filter'=>$model,
                 'columns' => array(
@@ -29,11 +36,16 @@ $this->breadcrumbs = array(
                         'header' => 'No',
                         'value' => '$this->grid->dataProvider->pagination->currentPage*$this->grid->dataProvider->pagination->pageSize+$row+1'
                     ),
+                    array(
+                        'header'=> 'Unit',
+                        'value'=> '$data->unit->unit_no." - ".$data->unit->owner'
+                    ),
                     'name',
                     'phone',
-                    'unit.unit_no',
-                    'unit.owner',
-
+                    array(
+                        'header'=>'Kab / Kota',
+                        'value' => '$data->unit->address->getCity()'
+                    ),
                     array(
                         'class' => 'CButtonColumn',
                         'buttons' => array(
@@ -74,6 +86,9 @@ $this->breadcrumbs = array(
                 }"
             )); ?>
         </div><!-- /.box-body -->
+        <div class="overlay" id="loading" style="display: none">
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
         <div class="box-footer">
             <?php echo CHtml::link('Tambah Guru', array('teacher/create'), array('class' => 'btn btn-primary')) ?>
         </div><!-- /.box-footer-->

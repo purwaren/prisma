@@ -46,18 +46,18 @@ class TeacherCustom extends Teacher
         // @todo Please modify the following code to remove attributes that should not be searched.
 
         $criteria=new CDbCriteria;
-
+        $criteria->join = 'LEFT JOIN unit u ON t.unit_id = u.id';
         $criteria->compare('id',$this->id);
         $criteria->compare('unit_id',$this->unit_id);
         $criteria->compare('name',$this->name,true);
         $criteria->compare('phone',$this->phone,true);
-        $criteria->compare('created_at',$this->created_at,true);
-        $criteria->compare('created_by',$this->created_by,true);
-        $criteria->compare('updated_at',$this->updated_at,true);
-        $criteria->compare('updated_by',$this->updated_by,true);
+        
 
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,
+            'sort'=> array(
+                'defaultOrder' => 'u.unit_no ASC'
+            )
         ));
     }
 
