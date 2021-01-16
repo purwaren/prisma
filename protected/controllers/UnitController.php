@@ -28,7 +28,7 @@ class UnitController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete','report'),
+                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete','report','download'),
                 'users' => array('@'),
             ),
             array('deny',  // deny all users
@@ -180,5 +180,67 @@ class UnitController extends Controller
         $this->render('report', array(
             'model' => $model
         ));
+    }
+
+    /**
+     * @var $model CActiveDataProvider
+     */
+    public function actionDownload() {
+        $data = UnitCustom::getAllUnitForDownload();
+        if (!empty($data)) {
+            $obj = new PHPExcel();
+			//set properties
+			$obj->getProperties()->setCreator("Purwa Ren")
+             ->setLastModifiedBy("Purwaren")
+             ->setTitle("Data Unit ")
+             ->setSubject("Data Unit")
+             ->setDescription("Data Unit untuk cetak sertifikat")
+             ->setKeywords("rekap, unit")
+             ->setCategory("data");   
+            
+            $sheet = $obj->setActiveSheetIndex(0);
+			$sheet->setCellValue('A1', 'PRISMA KALKULATOR TANGAN PUSAT');
+            $sheet->setCellValue('A2', 'DATA UNIT UNTUK SERTIFIKAT');
+            
+            $sheet->setCellValue('A5', 'NO');
+            $sheet->setCellValue('B5', 'NO UNIT');
+            $sheet->setCellValue('C5', 'NO CABANG');
+            $sheet->setCellValue('D5', 'PEMILIK');
+            $sheet->setCellValue('E5', 'KELURAHAN');
+            $sheet->setCellValue('F5', 'KECAMATAN');
+            $sheet->setCellValue('G5', 'KAB / KOTA');
+            $sheet->setCellValue('H5', 'PROVINSI');
+            $sheet->setCellValue('I5', 'MASA BERLAKU');
+            $sheet->setCellValue('J5', 'HINGGA');
+
+            $i=0;$y=6;
+            foreach($data as $row) {
+                $sheet->setCellValue('A'.$y, ++$i);
+                $sheet->setCellValue('B'.$y, $row->unit_no);
+                //$sheet->setCellValue('C'.$y, $row->unit_no);
+                $sheet->setCellValue('D'.$y, $row->owner);
+                $sheet->setCellValue('E'.$y, $row->address->address_2);
+                $sheet->setCellValue('F'.$y, $row->address->getDistrict());
+                $sheet->setCellValue('G'.$y, $row->address->getCity());
+                $sheet->setCellValue('H'.$y, $row->address->getState());
+                $sheet->setCellValue('I'.$y, $row->start_date);
+                $sheet->setCellValue('J'.$y++, $row->expired_at);
+            }
+
+            // Save a xls file
+			$filename = 'Data-Unit-'.date('Y-m-d');
+			header('Content-Type: application/vnd.ms-excel');
+			header('Content-Disposition: attachment;filename="'.$filename.'.xls"');
+			header('Cache-Control: max-age=0');
+			 
+			$objWriter = PHPExcel_IOFactory::createWriter($obj, 'Excel5');
+	 
+			$objWriter->save('php://output');
+			unset($this->objWriter);
+			unset($this->objWorksheet);
+			unset($this->objReader);
+			unset($this->obj);
+			exit();
+        }
     }
 }

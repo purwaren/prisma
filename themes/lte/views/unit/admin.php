@@ -98,6 +98,8 @@ $this->breadcrumbs = array(
         </div>
         <div class="box-footer">
             <?php echo CHtml::link('Tambah Unit', array('unit/create'), array('class' => 'btn btn-primary')) ?>
+            <?php echo CHtml::link('Data Unit', array('unit/download'), array('class' => 'btn btn-success')) ?>
+            <?php echo CHtml::link('Data Guru', array('teacher/download'), array('class' => 'btn btn-success')) ?>
         </div><!-- /.box-footer-->
     </div><!-- /.box -->
 </section><!-- /.content -->

@@ -113,4 +113,11 @@ class UnitCustom extends Unit
         }
         return $options;
     }
+
+    public static function getAllUnitForDownload() {
+        $criteria = new CDbCriteria();
+        $criteria->order = 'unit_no ASC';
+        $criteria->select = "unit_no, owner, address_id, TO_CHAR(start_date, 'DD-MON-YYYY') as start_date, TO_CHAR(expired_at, 'DD-MON-YYYY') as expired_at";
+        return self::model()->findAll($criteria);
+    }
 }

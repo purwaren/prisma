@@ -60,4 +60,11 @@ class TeacherCustom extends Teacher
             'criteria'=>$criteria,
         ));
     }
+
+    public static function getAllTeacherForDownload() {
+        $criteria = new CDbCriteria();
+        $criteria->order = 'name ASC';
+        $criteria->select = 'name, phone, unit_id';
+        return self::model()->findAll($criteria);
+    }
 }

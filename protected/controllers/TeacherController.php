@@ -27,17 +27,9 @@ class TeacherController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','admin','delete','index','view','download'),
 				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -169,5 +161,66 @@ class TeacherController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	public function actionDownload() {
+		$data = TeacherCustom::getAllTeacherForDownload();
+		if (!empty($data)) {
+            $obj = new PHPExcel();
+			//set properties
+			$obj->getProperties()->setCreator("Purwa Ren")
+             ->setLastModifiedBy("Purwaren")
+             ->setTitle("Data Guru ")
+             ->setSubject("Data Guru")
+             ->setDescription("Data Guru untuk cetak sertifikat")
+             ->setKeywords("rekap, guru")
+             ->setCategory("data");   
+            
+            $sheet = $obj->setActiveSheetIndex(0);
+			$sheet->setCellValue('A1', 'PRISMA KALKULATOR TANGAN PUSAT');
+            $sheet->setCellValue('A2', 'DATA UNIT BESERTA GURU UNTUK SERTIFIKAT');
+            
+			$sheet->setCellValue('A5', 'NO');
+			$sheet->setCellValue('B5', 'NAMA GURU');
+            $sheet->setCellValue('C5', 'NO UNIT');
+            $sheet->setCellValue('D5', 'NO CABANG');
+            $sheet->setCellValue('E5', 'PEMILIK');
+            $sheet->setCellValue('F5', 'KELURAHAN');
+            $sheet->setCellValue('G5', 'KECAMATAN');
+            $sheet->setCellValue('H5', 'KAB / KOTA');
+            $sheet->setCellValue('I5', 'PROVINSI');
+            $sheet->setCellValue('J5', 'MASA BERLAKU');
+            $sheet->setCellValue('K5', 'HINGGA');
+
+            $i=0;$y=6;
+            foreach($data as $row) {
+				$sheet->setCellValue('A'.$y, ++$i);
+				$sheet->setCellValue('B'.$y, $row->name);
+                $sheet->setCellValue('C'.$y, $row->unit->unit_no);
+                //$sheet->setCellValue('C'.$y, $row->unit_no);
+                $sheet->setCellValue('E'.$y, $row->unit->owner);
+                $sheet->setCellValue('F'.$y, $row->unit->address->address_2);
+                $sheet->setCellValue('G'.$y, $row->unit->address->getDistrict());
+                $sheet->setCellValue('H'.$y, $row->unit->address->getCity());
+                $sheet->setCellValue('I'.$y, $row->unit->address->getState());
+                $sheet->setCellValue('J'.$y, $row->unit->start_date);
+                $sheet->setCellValue('K'.$y++, $row->unit->expired_at);
+            }
+
+            // Save a xls file
+			$filename = 'Data-Guru-'.date('Y-m-d');
+			header('Content-Type: application/vnd.ms-excel');
+			header('Content-Disposition: attachment;filename="'.$filename.'.xls"');
+			header('Cache-Control: max-age=0');
+			 
+			$objWriter = PHPExcel_IOFactory::createWriter($obj, 'Excel5');
+	 
+			$objWriter->save('php://output');
+			unset($this->objWriter);
+			unset($this->objWorksheet);
+			unset($this->objReader);
+			unset($this->obj);
+			exit();
+        }
 	}
 }
