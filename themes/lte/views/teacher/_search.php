@@ -28,6 +28,9 @@ $form = $this->beginWidget('CActiveForm', array(
         <?php echo $form->dropDownList($model, 'unit_id', UnitCustom::getAllOptions(),array('prompt' => 'Pilih Unit/Cabang','class'=>'form-control select2')); ?>
     </div>
     <div class="form-group">
+        <?php echo $form->dropDownList($model, 'sortBy', TeacherCustom::getSortByOptions(),array('prompt' => 'Pilih Unit/Cabang','class'=>'form-control')); ?>
+    </div>
+    <div class="form-group">
         <?php echo CHtml::submitButton('Search', array('class' => 'btn btn-primary search-button')); ?>
     </div>
 </div>
