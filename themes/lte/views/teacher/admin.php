@@ -91,6 +91,7 @@ $this->breadcrumbs = array(
         </div>
         <div class="box-footer">
             <?php echo CHtml::link('Tambah Guru', array('teacher/create'), array('class' => 'btn btn-primary')) ?>
+            <?php echo CHtml::link('Download Data Guru', array('teacher/download'), array('class' => 'btn btn-success')) ?>
         </div><!-- /.box-footer-->
     </div><!-- /.box -->
 </section><!-- /.content -->

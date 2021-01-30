@@ -63,8 +63,9 @@ class TeacherCustom extends Teacher
 
     public static function getAllTeacherForDownload() {
         $criteria = new CDbCriteria();
-        $criteria->order = 'name ASC';
+        $criteria->order = 'unit_no ASC';
         $criteria->select = 'name, phone, unit_id';
+        $criteria->join = 'LEFT JOIN unit u ON u.id = t.unit_id';
         return self::model()->findAll($criteria);
     }
 }

@@ -181,10 +181,10 @@ class TeacherController extends Controller
             $sheet->setCellValue('A2', 'DATA UNIT BESERTA GURU UNTUK SERTIFIKAT');
             
 			$sheet->setCellValue('A5', 'NO');
-			$sheet->setCellValue('B5', 'NAMA GURU');
-            $sheet->setCellValue('C5', 'NO UNIT');
-            $sheet->setCellValue('D5', 'NO CABANG');
-            $sheet->setCellValue('E5', 'PEMILIK');
+            $sheet->setCellValue('B5', 'NO UNIT');
+            $sheet->setCellValue('C5', 'NO CABANG');
+			$sheet->setCellValue('D5', 'PEMILIK');
+			$sheet->setCellValue('E5', 'NAMA GURU');
             $sheet->setCellValue('F5', 'KELURAHAN');
             $sheet->setCellValue('G5', 'KECAMATAN');
             $sheet->setCellValue('H5', 'KAB / KOTA');
@@ -195,10 +195,10 @@ class TeacherController extends Controller
             $i=0;$y=6;
             foreach($data as $row) {
 				$sheet->setCellValue('A'.$y, ++$i);
-				$sheet->setCellValue('B'.$y, $row->name);
-                $sheet->setCellValue('C'.$y, $row->unit->unit_no);
+                $sheet->setCellValue('B'.$y, $row->unit->unit_no);
                 //$sheet->setCellValue('C'.$y, $row->unit_no);
-                $sheet->setCellValue('E'.$y, $row->unit->owner);
+				$sheet->setCellValue('D'.$y, $row->unit->owner);
+				$sheet->setCellValue('E'.$y, $row->name);
                 $sheet->setCellValue('F'.$y, $row->unit->address->address_2);
                 $sheet->setCellValue('G'.$y, $row->unit->address->getDistrict());
                 $sheet->setCellValue('H'.$y, $row->unit->address->getCity());
