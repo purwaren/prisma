@@ -23,6 +23,7 @@ return array(
         'application.models.const.*',
         'application.models.search.*',
         'application.components.*',
+        'application.vendor.phpexcel.PHPExcel'
     ),
 
     'modules' => array(
@@ -111,12 +112,10 @@ return array(
                     'class' => 'CFileLogRoute',
                     'levels' => 'error, warning',
                 ),
-                // uncomment the following to show log messages on web pages
-                /*
-                array(
-                    'class'=>'CWebLogRoute',
-                ),
-                */
+                //uncomment the following to show log messages on web pages
+                // array(
+                //   'class'=>'CWebLogRoute',
+                // ),
             ),
         ),
     ),
