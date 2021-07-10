@@ -197,8 +197,8 @@ class TeacherController extends Controller
 				$sheet->setCellValue('A'.$y, ++$i);
                 $sheet->setCellValue('B'.$y, $row->unit->unit_no);
                 //$sheet->setCellValue('C'.$y, $row->unit_no);
-				$sheet->setCellValue('D'.$y, $row->unit->owner);
-				$sheet->setCellValue('E'.$y, $row->name);
+				$sheet->setCellValue('D'.$y, ucwords($row->unit->owner));
+				$sheet->setCellValue('E'.$y, ucwords($row->name));
                 $sheet->setCellValue('F'.$y, $row->unit->address->address_2);
                 $sheet->setCellValue('G'.$y, $row->unit->address->getDistrict());
                 $sheet->setCellValue('H'.$y, $row->unit->address->getCity());

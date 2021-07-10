@@ -218,7 +218,7 @@ class UnitController extends Controller
                 $sheet->setCellValue('A'.$y, ++$i);
                 $sheet->setCellValue('B'.$y, $row->unit_no);
                 //$sheet->setCellValue('C'.$y, $row->unit_no);
-                $sheet->setCellValue('D'.$y, $row->owner);
+                $sheet->setCellValue('D'.$y, ucwords($row->owner));
                 $sheet->setCellValue('E'.$y, $row->address->address_2);
                 $sheet->setCellValue('F'.$y, $row->address->getDistrict());
                 $sheet->setCellValue('G'.$y, $row->address->getCity());
