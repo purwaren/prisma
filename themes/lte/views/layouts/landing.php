@@ -66,6 +66,11 @@
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
+                            'label'=>'ABAMA Cabang/Unit',
+                            'url' => 'https://abama.prismakalkulatortangan.id/index.php/site/unit',
+                            'linkOptions'=>array('class'=>'nav-link')
+                        ),
+                        array(
                             'label'=>'Berita & Kegiatan',
                             'url' => array('#'),
                             'linkOptions'=>array('class'=>'nav-link')
