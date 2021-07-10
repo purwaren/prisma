@@ -16,7 +16,7 @@ class UnitCustom extends Unit
             'owner' => 'Pemilik',
             'address_id' => 'Alamat',
             'wa_number' => 'Nomor WA',
-            'trainer' => 'Pelatih',
+            'trainer' => 'Tasima',
             'consultant' => 'Konsultan',
             'status' => 'Status',
             'start_date' => 'Mulai Aktif',

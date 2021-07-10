@@ -32,7 +32,7 @@ class CreateUnitForm extends CFormModel
             'owner' => 'Pemilik',
             'address_id' => 'Alamat',
             'wa_number' => 'Nomor Whatsapp',
-            'trainer' => 'Pelatih',
+            'trainer' => 'Tasima',
             'consultant' => 'Konsultan',
             'status' => 'Status',
             'start_date' => 'Mulai Aktif',
