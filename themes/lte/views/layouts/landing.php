@@ -61,7 +61,7 @@
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
-                            'label'=>'Data Cabang/Unit',
+                            'label'=>'ABAMA Cabang/Unit',
                             'url' => array('/site/unit'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
@@ -114,7 +114,7 @@
         <div class="row">
             <div class="footer-col col-12 col-lg-4">
                 <div class="logo-holder">
-                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/img/logo.png" alt="">
+                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-abama.png" alt="">
                 </div><!--//logo-holder-->
                 <div class="contact-details">
                     <div class="address">
@@ -130,9 +130,9 @@
             <div class="footer-col col-12 col-lg-8">
                 <div class="footer-links row">
                     <div class="sub-col col-12 col-md-4">
-                        <h4 class="col-title">Tentang PRISMA</h4>
+                        <h4 class="col-title">Tentang ABAMA</h4>
                         <ul class="footer-links list-unstyled">
-                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/about')?>">Tentang PRISMA</a></li>
+                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/about')?>">Tentang ABAMA</a></li>
                             <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/unit')?>">Cabang & Unit</a></li>
                             <li class="link-item"><a href="#">Cara Bergabung</a></li>
                         </ul>
