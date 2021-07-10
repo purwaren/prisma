@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PRISMA Kalkulator Tangan</title>
+    <title>ABAMA Les Baca</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,7 +56,7 @@
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
-                            'label'=>'Tentang PRISMA',
+                            'label'=>'Tentang ABAMA',
                             'url' => array('/site/about'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
@@ -99,11 +99,8 @@
     <div class="branding">
         <div class="container">
             <h1 class="tagline" style="padding-top: 0px !important">
-                <img style="max-height: 60px" src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-prisma-grayscale.png"
+                <img style="max-height: 80px" src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-abama.png"
                      alt="" class="img-responsive"></a>
-                <img style="max-height: 60px"
-                     src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-prisma-white.png" alt=""
-                     class="img-responsive">
             </h1>
         </div><!--//container-->
     </div><!--//branding-->

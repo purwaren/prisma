@@ -110,7 +110,7 @@ Yii::app()->clientScript->registerScript('landing',"
                     <div class="links">
                         <div class="link"><a href="<?php echo Yii::app()->createUrl('site/about')?>" title="Tentang Prisma"><i class="fas fa-university link-icon"
                                                                                      aria-hidden="true"></i><span
-                                        class="link-text">Tentang Prisma</span></a></div>
+                                        class="link-text">Tentang ABAMA</span></a></div>
                         <div class="link"><a href="<?php echo Yii::app()->createUrl('site/unit')?>" title="Data Unit"><i
                                         class="fas fa-graduation-cap link-icon" aria-hidden="true"></i><span
                                         class="link-text">Data Cabang/Unit</span></a></div>

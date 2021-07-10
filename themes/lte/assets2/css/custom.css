@@ -35,3 +35,8 @@ section.page-hero {
 table.table-detail-view tr th {
     width: 25%;
 }
+
+div.branding {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}

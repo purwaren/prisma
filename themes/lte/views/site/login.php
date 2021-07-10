@@ -8,7 +8,7 @@
 
 <div class="login-logo">
     <a href="<?php echo Yii::app()->request->baseUrl?>">
-        <?php echo CHtml::image(Yii::app()->theme->baseUrl . '/assets/img/logo.png', 'logo', array('class' => 'img-responsive')) ?>
+        <?php echo CHtml::image(Yii::app()->theme->baseUrl . '/assets2/images/logo-abama.png', 'logo', array('class' => 'img-responsive')) ?>
     </a>
 </div><!-- /.login-logo -->
 <div class="login-box-body">
