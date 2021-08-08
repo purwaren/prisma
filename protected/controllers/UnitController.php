@@ -28,7 +28,7 @@ class UnitController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete','report','download'),
+                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete','report','download','address'),
                 'users' => array('@'),
             ),
             array('deny',  // deny all users
@@ -242,5 +242,19 @@ class UnitController extends Controller
 			unset($this->obj);
 			exit();
         }
+    }
+
+    public function actionAddress($state, $city, $district, $address2) {
+        $addr = AddressCustom::model()->findByAttributes(array(
+            'state'=>$state,
+            'city'=>$city,
+            'district'=> $district,
+            'address_2'=> strtoupper($address2)
+        ));
+        if (!empty($addr)) {
+            echo CJSON::encode($addr);
+        } else echo CJSON::encode(array());
+        
+        Yii::app()->end();
     }
 }

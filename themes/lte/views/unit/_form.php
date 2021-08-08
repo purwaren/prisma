@@ -44,7 +44,24 @@ Yii::app()->clientScript->registerScript("sadf", "
             }"
     )) . "
     });
-    
+    $('#addr2').on('change',function(){
+        var state = $('#state').val();
+        var city = $('#city').val();
+        var district = $('#district').val();
+        var address2 = $(this).val();
+        var url = '".Yii::app()->createUrl('unit/address')."?state='+state+'&city='+city+'&district='+district+'&address2='+address2;
+        ".CHtml::ajax(array(
+            'url'=>'js:url',
+            'type'=>'POST',
+            'dataType'=>'JSON',
+            'success'=>"function(resp){
+                var msg = 'Sudah terdapat unit pada alamat: '+resp.address_1+', '+resp.address_2+'. Mohon cek kembali';
+                alert(msg);
+                $('#addr2-msg').html(msg);
+                $('#addr2').attr('class', 'form-control error');
+            }"
+        ))."
+    });
 ", CClientScript::POS_END);
 
 ?>
@@ -111,16 +128,6 @@ Yii::app()->clientScript->registerScript("sadf", "
         </div>
         <h4><i>Alamat Unit</i></h4>
         <div class="form-group">
-            <?php echo $form->labelEx($model, 'address_1'); ?>
-            <?php echo $form->textField($model, 'address_1', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'address_1'); ?>
-        </div>
-        <div class="form-group">
-            <?php echo $form->labelEx($model, 'address_2'); ?>
-            <?php echo $form->textField($model, 'address_2', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'address_2'); ?>
-        </div>
-        <div class="form-group">
             <?php echo $form->labelEx($model, 'state'); ?>
             <?php echo $form->dropDownList($model, 'state', StateCustom::getAllOptions(),
                 array('class' => 'form-control', 'prompt' => 'Pilih Provinsi', 'id' => 'state')); ?>
@@ -137,6 +144,16 @@ Yii::app()->clientScript->registerScript("sadf", "
             <?php echo $form->dropDownList($model, 'district', DistrictCustom::getAllOptions(),
                 array('class' => 'form-control', 'id' => 'district', 'prompt' => 'Pilih Kecamatan')); ?>
             <?php echo $form->error($model, 'district'); ?>
+        </div>
+        <div class="form-group">
+            <?php echo $form->labelEx($model, 'address_2'); ?>
+            <?php echo $form->textField($model, 'address_2', array('class' => 'form-control', 'id'=>'addr2')); ?>
+            <div class="errorMessage" id="addr2-msg"></div>
+        </div>
+        <div class="form-group">
+            <?php echo $form->labelEx($model, 'address_1'); ?>
+            <?php echo $form->textField($model, 'address_1', array('class' => 'form-control')); ?>
+            <?php echo $form->error($model, 'address_1'); ?>
         </div>
 
     </div><!-- /.box-body -->
