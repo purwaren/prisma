@@ -55,10 +55,12 @@ Yii::app()->clientScript->registerScript("sadf", "
             'type'=>'POST',
             'dataType'=>'JSON',
             'success'=>"function(resp){
-                var msg = 'Sudah terdapat unit pada alamat: '+resp.address_1+', '+resp.address_2+'. Mohon cek kembali';
-                alert(msg);
-                $('#addr2-msg').html(msg);
-                $('#addr2').attr('class', 'form-control error');
+                if (resp.id) {
+                    var msg = 'Sudah terdapat unit pada alamat: '+resp.address_1+', '+resp.address_2+'. Mohon cek kembali';
+                    alert(msg);
+                    $('#addr2-msg').html(msg);
+                    $('#addr2').attr('class', 'form-control error');
+                }
             }"
         ))."
     });
