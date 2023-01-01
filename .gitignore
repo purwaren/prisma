@@ -4,3 +4,4 @@ assets/*
 protected/runtime
 testdata/postgres
 yii
+framework

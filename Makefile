@@ -16,7 +16,7 @@ default: help
 .PHONY: run
 run: ## run the API server
 	docker run --rm --name php5.6 -v $(shell pwd):/var/www -d \
-	-p 11000:11000 php5.6-postgres php -S 0.0.0.0:11000 -t /var/www
+	-p 11000:11000 purwaren/php5.6-postgres php -S 0.0.0.0:11000 -t /var/www
 
 .PHONY: clean
 clean: ## remove temporary files

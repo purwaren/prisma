@@ -101,8 +101,12 @@ class UnitCustom extends Unit
         return $options;
     }
 
-    public static function getAllUnits() {
+    public static function getAllUnits($filter=array()) {
         $criteria = new CDbCriteria();
+        $criteria->join = 'LEFT JOIN address t1 ON t.address_id = t1.id';
+        foreach($filter as $key => $val) {
+            $criteria->compare('t1.'.$key, $val);
+        }
         $criteria->order = 'unit_no ASC';
         $models = self::model()->findAll($criteria);
         $options = array();
