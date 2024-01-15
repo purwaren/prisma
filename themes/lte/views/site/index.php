@@ -12,11 +12,11 @@ Yii::app()->clientScript->registerScript('landing',"
         event.preventDefault();
         if (!confirm('Apakah data anda sudah benar?'))
             return false;
-        var url = 'https://api.whatsapp.com/send?phone=6281327027605&text=Halo Admin, saya '+$('#name').val()+ ' tertarik untuk bergabung di ABAMA. Mohon informasi selanjutnya ke '+$('#phone').val();
+        var url = 'https://api.whatsapp.com/send?phone=6281327027605&text=Halo Admin, saya '+$('#name').val()+ ' tertarik untuk bergabung di CERMAT. Mohon informasi selanjutnya ke '+$('#phone').val();
         window.location.replace(url);
     });
     $('#register').click(function(){
-        var url = 'https://api.whatsapp.com/send?phone=6281327027605&text=Halo Admin, saya tertarik untuk bergabung di ABAMA. Mohon informasi lebih lanjut.';
+        var url = 'https://api.whatsapp.com/send?phone=6281327027605&text=Halo Admin, saya tertarik untuk bergabung di CERMAT. Mohon informasi lebih lanjut.';
         window.location.replace(url);
     })
 ")
@@ -110,7 +110,7 @@ Yii::app()->clientScript->registerScript('landing',"
                     <div class="links">
                         <div class="link"><a href="<?php echo Yii::app()->createUrl('site/about')?>" title="Tentang Prisma"><i class="fas fa-university link-icon"
                                                                                      aria-hidden="true"></i><span
-                                        class="link-text">Tentang ABAMA</span></a></div>
+                                        class="link-text">Tentang CERMAT</span></a></div>
                         <div class="link"><a href="<?php echo Yii::app()->createUrl('site/unit')?>" title="Data Unit"><i
                                         class="fas fa-graduation-cap link-icon" aria-hidden="true"></i><span
                                         class="link-text">Data Cabang/Unit</span></a></div>

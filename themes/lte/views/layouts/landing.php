@@ -130,9 +130,9 @@
             <div class="footer-col col-12 col-lg-8">
                 <div class="footer-links row">
                     <div class="sub-col col-12 col-md-4">
-                        <h4 class="col-title">Tentang ABAMA</h4>
+                        <h4 class="col-title">Tentang CERMAT</h4>
                         <ul class="footer-links list-unstyled">
-                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/about')?>">Tentang ABAMA</a></li>
+                            <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/about')?>">Tentang CERMAT</a></li>
                             <li class="link-item"><a href="<?php echo Yii::app()->createUrl('site/unit')?>">Cabang & Unit</a></li>
                             <li class="link-item"><a href="#">Cara Bergabung</a></li>
                         </ul>
