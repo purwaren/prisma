@@ -1,0 +1,41 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:11.6
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=prisma
+    networks:
+      - app-network
+    ports:
+      - target: 5432
+        published: 15432
+        protocol: tcp
+        mode: host
+    logging:
+      driver: json-file
+    volumes:
+      - ./testdata/postgres:/var/lib/postgresql/data
+    deploy:
+      restart_policy:
+        condition: on-failure
+  prisma:
+    image: purwaren/php7.2-alpine:0.1
+    command:
+      - sh 
+      - /app/entrypoint.sh
+    ports:
+      - target: 80
+        published: 11000
+        protocol: tcp
+        mode: host
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+    logging:
+      driver: json-file
+networks:
+  app-network:
+    driver: bridge
