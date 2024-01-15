@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>ABAMA Les Baca</title>
+    <title>CERMAT - Cerdas Matematika</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,12 +56,12 @@
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
-                            'label'=>'Tentang ABAMA',
+                            'label'=>'Tentang CERMAT',
                             'url' => array('/site/about'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
-                            'label'=>'ABAMA Cabang/Unit',
+                            'label'=>'CERMAT Cabang/Unit',
                             'url' => array('/site/unit'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
@@ -99,7 +99,7 @@
     <div class="branding">
         <div class="container">
             <h1 class="tagline" style="padding-top: 0px !important">
-                <img style="max-height: 80px" src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-abama.png"
+                <img style="max-height: 80px" src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-cermat.png"
                      alt="" class="img-responsive"></a>
             </h1>
         </div><!--//container-->
@@ -114,7 +114,7 @@
         <div class="row">
             <div class="footer-col col-12 col-lg-4">
                 <div class="logo-holder">
-                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-abama.png" alt="">
+                    <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets2/images/logo-cermat.png" alt="">
                 </div><!--//logo-holder-->
                 <div class="contact-details">
                     <div class="address">
