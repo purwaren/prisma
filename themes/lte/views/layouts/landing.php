@@ -61,13 +61,18 @@
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
-                            'label'=>'Data Cabang/Unit',
+                            'label'=>'PRISMA Cabang/Unit',
                             'url' => array('/site/unit'),
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
                             'label'=>'ABAMA Cabang/Unit',
                             'url' => 'https://abama.prismakalkulatortangan.id/index.php/site/unit',
+                            'linkOptions'=>array('class'=>'nav-link')
+                        ),
+                        array(
+                            'label'=>'CERMAT Cabang/Unit',
+                            'url' => 'https://cermat.prismakalkulatortangan.id/index.php/site/unit',
                             'linkOptions'=>array('class'=>'nav-link')
                         ),
                         array(
