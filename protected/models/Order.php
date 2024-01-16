@@ -111,6 +111,9 @@ class Order extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'sort'=> array(
+				'defaultOrder' => 'created_at ASC'
+			)
 		));
 	}
 
