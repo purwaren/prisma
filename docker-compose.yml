@@ -21,7 +21,7 @@ services:
       restart_policy:
         condition: on-failure
   prisma:
-    image: purwaren/php7.2-alpine:0.1
+    image: purwaren/php7.2-alpine:0.4
     command:
       - sh 
       - /app/entrypoint.sh
